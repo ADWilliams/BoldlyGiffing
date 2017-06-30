@@ -1,0 +1,456 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C87C80AE1F071C4D00704E19 /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C89DE5661F06E981000ABC82 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C89DE5471F06E636000ABC82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C89DE5461F06E636000ABC82 /* Assets.xcassets */; };
+		C89DE54E1F06E636000ABC82 /* BoldyGiffing MessagesExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C89DE54D1F06E636000ABC82 /* BoldyGiffing MessagesExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C89DE5531F06E636000ABC82 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C89DE5521F06E636000ABC82 /* Messages.framework */; };
+		C89DE5561F06E636000ABC82 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89DE5551F06E636000ABC82 /* MessagesViewController.swift */; };
+		C89DE5591F06E636000ABC82 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C89DE5571F06E636000ABC82 /* MainInterface.storyboard */; };
+		C89DE55B1F06E636000ABC82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C89DE55A1F06E636000ABC82 /* Assets.xcassets */; };
+		C89DE5681F06EC93000ABC82 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C89DE5661F06E981000ABC82 /* Alamofire.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C89DE54F1F06E636000ABC82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C89DE53D1F06E636000ABC82 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C89DE54C1F06E636000ABC82;
+			remoteInfo = "BoldyGiffing MessagesExtension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C87C80AD1F071C3800704E19 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C87C80AE1F071C4D00704E19 /* Alamofire.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C89DE5621F06E636000ABC82 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				C89DE54E1F06E636000ABC82 /* BoldyGiffing MessagesExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		C89DE5431F06E636000ABC82 /* BoldyGiffing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoldyGiffing.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C89DE5461F06E636000ABC82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C89DE5481F06E636000ABC82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C89DE54D1F06E636000ABC82 /* BoldyGiffing MessagesExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "BoldyGiffing MessagesExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C89DE5521F06E636000ABC82 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
+		C89DE5551F06E636000ABC82 /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		C89DE5581F06E636000ABC82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		C89DE55A1F06E636000ABC82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C89DE55C1F06E636000ABC82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C89DE5661F06E981000ABC82 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C89DE54A1F06E636000ABC82 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C89DE5531F06E636000ABC82 /* Messages.framework in Frameworks */,
+				C89DE5681F06EC93000ABC82 /* Alamofire.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C89DE53C1F06E636000ABC82 = {
+			isa = PBXGroup;
+			children = (
+				C89DE5451F06E636000ABC82 /* BoldyGiffing */,
+				C89DE5541F06E636000ABC82 /* BoldyGiffing MessagesExtension */,
+				C89DE5511F06E636000ABC82 /* Frameworks */,
+				C89DE5441F06E636000ABC82 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C89DE5441F06E636000ABC82 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C89DE5431F06E636000ABC82 /* BoldyGiffing.app */,
+				C89DE54D1F06E636000ABC82 /* BoldyGiffing MessagesExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C89DE5451F06E636000ABC82 /* BoldyGiffing */ = {
+			isa = PBXGroup;
+			children = (
+				C89DE5461F06E636000ABC82 /* Assets.xcassets */,
+				C89DE5481F06E636000ABC82 /* Info.plist */,
+			);
+			path = BoldyGiffing;
+			sourceTree = "<group>";
+		};
+		C89DE5511F06E636000ABC82 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C89DE5661F06E981000ABC82 /* Alamofire.framework */,
+				C89DE5521F06E636000ABC82 /* Messages.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C89DE5541F06E636000ABC82 /* BoldyGiffing MessagesExtension */ = {
+			isa = PBXGroup;
+			children = (
+				C89DE5551F06E636000ABC82 /* MessagesViewController.swift */,
+				C89DE5571F06E636000ABC82 /* MainInterface.storyboard */,
+				C89DE55A1F06E636000ABC82 /* Assets.xcassets */,
+				C89DE55C1F06E636000ABC82 /* Info.plist */,
+			);
+			path = "BoldyGiffing MessagesExtension";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C89DE5421F06E636000ABC82 /* BoldyGiffing */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C89DE5631F06E636000ABC82 /* Build configuration list for PBXNativeTarget "BoldyGiffing" */;
+			buildPhases = (
+				C89DE5411F06E636000ABC82 /* Resources */,
+				C89DE5621F06E636000ABC82 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C89DE5501F06E636000ABC82 /* PBXTargetDependency */,
+			);
+			name = BoldyGiffing;
+			productName = BoldyGiffing;
+			productReference = C89DE5431F06E636000ABC82 /* BoldyGiffing.app */;
+			productType = "com.apple.product-type.application.messages";
+		};
+		C89DE54C1F06E636000ABC82 /* BoldyGiffing MessagesExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C89DE55F1F06E636000ABC82 /* Build configuration list for PBXNativeTarget "BoldyGiffing MessagesExtension" */;
+			buildPhases = (
+				C89DE5491F06E636000ABC82 /* Sources */,
+				C89DE54A1F06E636000ABC82 /* Frameworks */,
+				C89DE54B1F06E636000ABC82 /* Resources */,
+				C87C80AD1F071C3800704E19 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "BoldyGiffing MessagesExtension";
+			productName = "BoldyGiffing MessagesExtension";
+			productReference = C89DE54D1F06E636000ABC82 /* BoldyGiffing MessagesExtension.appex */;
+			productType = "com.apple.product-type.app-extension.messages";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C89DE53D1F06E636000ABC82 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = SweetieApps;
+				TargetAttributes = {
+					C89DE5421F06E636000ABC82 = {
+						CreatedOnToolsVersion = 9.0;
+					};
+					C89DE54C1F06E636000ABC82 = {
+						CreatedOnToolsVersion = 9.0;
+					};
+				};
+			};
+			buildConfigurationList = C89DE5401F06E636000ABC82 /* Build configuration list for PBXProject "BoldyGiffing" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C89DE53C1F06E636000ABC82;
+			productRefGroup = C89DE5441F06E636000ABC82 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C89DE5421F06E636000ABC82 /* BoldyGiffing */,
+				C89DE54C1F06E636000ABC82 /* BoldyGiffing MessagesExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C89DE5411F06E636000ABC82 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C89DE5471F06E636000ABC82 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C89DE54B1F06E636000ABC82 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C89DE55B1F06E636000ABC82 /* Assets.xcassets in Resources */,
+				C89DE5591F06E636000ABC82 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C89DE5491F06E636000ABC82 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C89DE5561F06E636000ABC82 /* MessagesViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C89DE5501F06E636000ABC82 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C89DE54C1F06E636000ABC82 /* BoldyGiffing MessagesExtension */;
+			targetProxy = C89DE54F1F06E636000ABC82 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C89DE5571F06E636000ABC82 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C89DE5581F06E636000ABC82 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C89DE55D1F06E636000ABC82 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C89DE55E1F06E636000ABC82 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C89DE5601F06E636000ABC82 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				DEVELOPMENT_TEAM = AVB95ZHUR8;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "BoldyGiffing MessagesExtension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.aaronwilliams.BoldyGiffing.MessagesExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C89DE5611F06E636000ABC82 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				DEVELOPMENT_TEAM = AVB95ZHUR8;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "BoldyGiffing MessagesExtension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.aaronwilliams.BoldyGiffing.MessagesExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C89DE5641F06E636000ABC82 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = AVB95ZHUR8;
+				INFOPLIST_FILE = BoldyGiffing/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aaronwilliams.BoldyGiffing;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C89DE5651F06E636000ABC82 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = AVB95ZHUR8;
+				INFOPLIST_FILE = BoldyGiffing/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aaronwilliams.BoldyGiffing;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C89DE5401F06E636000ABC82 /* Build configuration list for PBXProject "BoldyGiffing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C89DE55D1F06E636000ABC82 /* Debug */,
+				C89DE55E1F06E636000ABC82 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C89DE55F1F06E636000ABC82 /* Build configuration list for PBXNativeTarget "BoldyGiffing MessagesExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C89DE5601F06E636000ABC82 /* Debug */,
+				C89DE5611F06E636000ABC82 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C89DE5631F06E636000ABC82 /* Build configuration list for PBXNativeTarget "BoldyGiffing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C89DE5641F06E636000ABC82 /* Debug */,
+				C89DE5651F06E636000ABC82 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C89DE53D1F06E636000ABC82 /* Project object */;
+}
