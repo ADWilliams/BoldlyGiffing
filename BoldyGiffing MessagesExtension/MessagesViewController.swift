@@ -9,11 +9,22 @@
 import UIKit
 import Messages
 
-class MessagesViewController: MSMessagesAppViewController {
+class MessagesViewController: MSMessagesAppViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
+    @IBOutlet weak var thubmnailCollectionView: UICollectionView!
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+
+    private let dataSource = CollectionViewDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+
+        thubmnailCollectionView.delegate = self
+        thubmnailCollectionView.dataSource = dataSource
+        thubmnailCollectionView.register(ThumbnailCell.self, forCellWithReuseIdentifier: thumbmailCellIdentifier)
+        flowLayout.estimatedItemSize = CGSize(width: 100.0, height: 90.0)
+        NotificationCenter.default.addObserver(self.thubmnailCollectionView, selector: #selector(UICollectionView.reloadData), name: dataSetUpdatedNotification, object: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -28,6 +39,8 @@ class MessagesViewController: MSMessagesAppViewController {
         // This will happen when the extension is about to present UI.
         
         // Use this method to configure the extension and restore previously stored state.
+
+        dataSource.fetchThumbnails()
     }
     
     override func didResignActive(with conversation: MSConversation) {
@@ -38,6 +51,8 @@ class MessagesViewController: MSMessagesAppViewController {
         // Use this method to release shared resources, save user data, invalidate timers,
         // and store enough state information to restore your extension to its current state
         // in case it is terminated later.
+
+        NotificationCenter.default.removeObserver(self)
     }
    
     override func didReceive(_ message: MSMessage, conversation: MSConversation) {
@@ -69,4 +84,13 @@ class MessagesViewController: MSMessagesAppViewController {
         // Use this method to finalize any behaviors associated with the change in presentation style.
     }
 
+    // MARK: - FlowLayoutDelegate
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let numberOfItems: CGFloat = 3.0
+//        let itemSpacing: CGFloat = 10.0
+//        let availableWidth = view.bounds.width - itemSpacing * (numberOfItems + 1)
+//        let width = availableWidth / numberOfItems
+//
+//        return CGSize(width: width, height: 70.0)
+//    }
 }
