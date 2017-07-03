@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C8013B3D1F09ED4700F6B507 /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8013B3C1F09EC8300F6B507 /* CollectionViewDataSource.swift */; };
 		C8013B421F09F2C900F6B507 /* Kingfisher.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C8013B411F09F2B100F6B507 /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C8013B441F09F65D00F6B507 /* ThumbnailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8013B431F09F65D00F6B507 /* ThumbnailCell.swift */; };
 		C87C80AE1F071C4D00704E19 /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C89DE5661F06E981000ABC82 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -56,6 +57,7 @@
 
 /* Begin PBXFileReference section */
 		C8013B3C1F09EC8300F6B507 /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
+		C8013B411F09F2B100F6B507 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		C8013B431F09F65D00F6B507 /* ThumbnailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailCell.swift; sourceTree = "<group>"; };
 		C89DE5431F06E636000ABC82 /* BoldyGiffing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoldyGiffing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C89DE5461F06E636000ABC82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				C89DE5551F06E636000ABC82 /* MessagesViewController.swift */,
+				C8013B3C1F09EC8300F6B507 /* CollectionViewDataSource.swift */,
 				C8013B431F09F65D00F6B507 /* ThumbnailCell.swift */,
 				C89DE5571F06E636000ABC82 /* MainInterface.storyboard */,
 				C89DE55A1F06E636000ABC82 /* Assets.xcassets */,
@@ -234,6 +237,7 @@
 			files = (
 				C8013B441F09F65D00F6B507 /* ThumbnailCell.swift in Sources */,
 				C89DE5561F06E636000ABC82 /* MessagesViewController.swift in Sources */,
+				C8013B3D1F09ED4700F6B507 /* CollectionViewDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
