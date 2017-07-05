@@ -8,6 +8,7 @@
 
 import UIKit
 import Messages
+import Kingfisher
 
 class MessagesViewController: MSMessagesAppViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
@@ -15,11 +16,13 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
 
     private let dataSource = CollectionViewDataSource()
+    private let cache = NSCache<NSString, AnyObject>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
 
+        KingfisherManager.shared.cache.pathExtension = "gif"
+        
         thubmnailCollectionView.delegate = self
         thubmnailCollectionView.dataSource = dataSource
         thubmnailCollectionView.register(ThumbnailCell.self, forCellWithReuseIdentifier: thumbmailCellIdentifier)
@@ -82,6 +85,25 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
         // Called after the extension transitions to a new presentation style.
     
         // Use this method to finalize any behaviors associated with the change in presentation style.
+    }
+
+    // MARK: - CollectionViewDelegate
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let conversation = activeConversation else { return }
+
+        let gif = dataSource.dataSet[indexPath.item]
+
+        KingfisherManager.shared.retrieveImage(with: gif.fullSizeURL, options: nil, progressBlock: nil) { image, error, cacheType, url in
+            guard
+                error == nil,
+                cacheType != .none
+                else { return }
+            let cachePath = ImageCache.default.cachePath(forKey: gif.fullSizeURL.cacheKey)
+            let url = URL(fileURLWithPath: cachePath)
+
+            conversation.insertAttachment(url, withAlternateFilename: nil, completionHandler: nil)
+        }
     }
 
     // MARK: - FlowLayoutDelegate
