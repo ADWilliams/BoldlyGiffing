@@ -25,8 +25,11 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
         
         thubmnailCollectionView.delegate = self
         thubmnailCollectionView.dataSource = dataSource
+        thubmnailCollectionView.prefetchDataSource = dataSource
+        
         thubmnailCollectionView.register(ThumbnailCell.self, forCellWithReuseIdentifier: thumbmailCellIdentifier)
         flowLayout.estimatedItemSize = CGSize(width: 100.0, height: 90.0)
+        
         NotificationCenter.default.addObserver(self.thubmnailCollectionView, selector: #selector(UICollectionView.reloadData), name: dataSetUpdatedNotification, object: nil)
     }
     

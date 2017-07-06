@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import Kingfisher
 
 struct Post {
     let gifs: [Gif]
@@ -52,7 +53,7 @@ struct Gif {
 
 let dataSetUpdatedNotification = Notification.Name("notification.dataSetUpdated")
 
-final class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
+final class CollectionViewDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDataSourcePrefetching {
 
     // MARK: - Properties
     private let baseURL = "https://api.tumblr.com/v2/blog/boldlygiffing.tumblr.com/"
@@ -104,5 +105,16 @@ final class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
 
         cell.configure(with: dataSet[indexPath.item])
         return cell
+    }
+    
+    // MARK: - Prefetching
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        let urls = indexPaths.flatMap { return dataSet[$0.item].fullSizeURL }
+        ImagePrefetcher(urls: urls).start()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
+        let urls = indexPaths.flatMap { return dataSet[$0.item].fullSizeURL }
+        ImagePrefetcher(urls: urls).stop()
     }
 }

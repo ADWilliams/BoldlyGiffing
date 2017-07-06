@@ -42,6 +42,11 @@ final class ThumbnailCell: UICollectionViewCell {
             imageView.bottomAnchor.constraint(equalTo: bottomAnchor)
             ])
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageView.image = nil
+    }
 
     func configure(with gif: Gif) {
         imageView.kf.setImage(with: gif.thumbnailURL)
