@@ -20,7 +20,7 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         KingfisherManager.shared.cache.pathExtension = "gif"
         
         thubmnailCollectionView.delegate = self
@@ -90,19 +90,34 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
     // MARK: - CollectionViewDelegate
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let conversation = activeConversation else { return }
-
         let gif = dataSource.dataSet[indexPath.item]
-
-        KingfisherManager.shared.retrieveImage(with: gif.fullSizeURL, options: nil, progressBlock: nil) { image, error, cacheType, url in
+        
+        KingfisherManager.shared.retrieveImage(with: gif.fullSizeURL, options: nil, progressBlock: { receivedSize, totalSize in
+            // progress
+            print(totalSize / receivedSize)
+        }) { [weak self] image, error, cacheType, url in
             guard
-                error == nil,
-                cacheType != .none
+                error == nil
                 else { return }
-            let cachePath = ImageCache.default.cachePath(forKey: gif.fullSizeURL.cacheKey)
-            let url = URL(fileURLWithPath: cachePath)
+            
+            self?.insertGif(for: gif.fullSizeURL.cacheKey)
+        }
+    }
 
+    func insertGif(for cacheKey: String) {
+        guard let conversation = activeConversation else { return }
+        
+        let cachePath = ImageCache.default.cachePath(forKey: cacheKey)
+        let url = URL(fileURLWithPath: cachePath)
+        
+        // Only insert the image once it is cached and reachable
+        do {
+           _ = try url.checkResourceIsReachable()
             conversation.insertAttachment(url, withAlternateFilename: nil, completionHandler: nil)
+        }
+        catch {
+            print(error)
+            self.insertGif(for: cacheKey)
         }
     }
 
