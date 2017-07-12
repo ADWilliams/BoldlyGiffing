@@ -93,17 +93,24 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
     // MARK: - CollectionViewDelegate
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as? ThumbnailCell
         let gif = dataSource.dataSet[indexPath.item]
         
         KingfisherManager.shared.retrieveImage(with: gif.fullSizeURL, options: nil, progressBlock: { receivedSize, totalSize in
             // progress
-            print(totalSize / receivedSize)
+            print(totalSize/receivedSize)
+            cell?.set(loading: true)
         }) { [weak self] image, error, cacheType, url in
             guard
-                error == nil
-                else { return }
+                error == nil else {
+                    cell?.set(loading: false)
+                    return
+            }
             
             self?.insertGif(for: gif.fullSizeURL.cacheKey)
+            cell?.set(loading: false)
+        }
+    }
         }
     }
 

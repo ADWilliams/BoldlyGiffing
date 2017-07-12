@@ -20,6 +20,14 @@ final class ThumbnailCell: UICollectionViewCell {
         view.contentMode = .scaleAspectFit
         return view
     }()
+    
+    private(set) var activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        indicator.activityIndicatorViewStyle = .white
+        indicator.isHidden = true
+        return indicator
+    }()
 
     // MARK: - Lifecycle
     override init(frame: CGRect) {
@@ -34,21 +42,35 @@ final class ThumbnailCell: UICollectionViewCell {
 
     private func setup() {
         addSubview(imageView)
+        addSubview(activityIndicator)
         
         NSLayoutConstraint.activate([
             imageView.leftAnchor.constraint(equalTo: leftAnchor),
             imageView.rightAnchor.constraint(equalTo: rightAnchor),
             imageView.topAnchor.constraint(equalTo: topAnchor),
-            imageView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            imageView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            activityIndicator.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: imageView.centerYAnchor)
             ])
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         imageView.image = nil
+        set(loading: false)
     }
 
     func configure(with gif: Gif) {
         imageView.kf.setImage(with: gif.thumbnailURL)
+    }
+    
+    func set(loading: Bool) {
+        imageView.alpha = loading ? 0.3 : 1.0
+        if loading {
+            activityIndicator.startAnimating()
+        } else {
+            activityIndicator.stopAnimating()
+        }
     }
 }
