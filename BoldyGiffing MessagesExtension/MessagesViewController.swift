@@ -12,7 +12,7 @@ import Kingfisher
 
 class MessagesViewController: MSMessagesAppViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
-    @IBOutlet weak var thubmnailCollectionView: UICollectionView!
+    @IBOutlet weak var thumbnailCollectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
 
     private let dataSource = CollectionViewDataSource()
@@ -23,11 +23,11 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
         
         KingfisherManager.shared.cache.pathExtension = "gif"
         
-        thubmnailCollectionView.delegate = self
-        thubmnailCollectionView.dataSource = dataSource
-        thubmnailCollectionView.prefetchDataSource = dataSource
+        thumbnailCollectionView.delegate = self
+        thumbnailCollectionView.dataSource = dataSource
+        thumbnailCollectionView.prefetchDataSource = dataSource
         
-        thubmnailCollectionView.register(ThumbnailCell.self, forCellWithReuseIdentifier: thumbmailCellIdentifier)
+        thumbnailCollectionView.register(ThumbnailCell.self, forCellWithReuseIdentifier: thumbmailCellIdentifier)
         flowLayout.estimatedItemSize = CGSize(width: 100.0, height: 90.0)
         
         NotificationCenter.default.addObserver(self.thubmnailCollectionView, selector: #selector(UICollectionView.reloadData), name: dataSetUpdatedNotification, object: nil)
