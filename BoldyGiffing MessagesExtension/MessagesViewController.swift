@@ -122,8 +122,10 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
         
         // Only insert the image once it is cached and reachable
         do {
-           _ = try url.checkResourceIsReachable()
-            conversation.insertAttachment(url, withAlternateFilename: nil, completionHandler: nil)
+            _ = try url.checkResourceIsReachable()
+            conversation.insertAttachment(url, withAlternateFilename: nil, completionHandler: { [weak self] _ in
+                self?.requestPresentationStyle(.compact)
+            })
         }
         catch {
             print(error)
