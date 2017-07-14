@@ -23,7 +23,11 @@ struct Post {
     }
 }
 
-struct Gif {
+struct Gif: Equatable  {
+    static func ==(lhs: Gif, rhs: Gif) -> Bool {
+        return lhs.fullSizeURL == rhs.fullSizeURL
+    }
+
     let fullSizeURL: URL
     var thumbnailURL: URL?
     let tags: [String]
@@ -60,7 +64,10 @@ final class CollectionViewDataSource: NSObject, UICollectionViewDataSource, UICo
     private let apiKey = "GXeFiXAi3Ho0HXbCX9Arm4dlxMuuPG4dIjhj7TVfCsUMCVCLRT"
     var dataSet: [Gif] = [] {
         didSet {
-            NotificationCenter.default.post(name: dataSetUpdatedNotification, object: nil)
+            let indexPaths = dataSet
+                .flatMap { return oldValue.contains($0) ? nil : dataSet.index(of: $0) }
+                .map { IndexPath(indexes:[0, $0]) }
+            NotificationCenter.default.post(name: dataSetUpdatedNotification, object: nil, userInfo: ["newItems": indexPaths])
         }
     }
 
@@ -85,7 +92,10 @@ final class CollectionViewDataSource: NSObject, UICollectionViewDataSource, UICo
                     else { return }
 
                 let posts = postsJson.flatMap(Post.init)
-                posts.forEach { self?.dataSet.append(contentsOf: $0.gifs) }
+                var newItems: [Gif] = []
+                posts.forEach { newItems.append(contentsOf: $0.gifs) }
+                self?.dataSet.append(contentsOf: newItems)
+                self?.offset += 21
 
             case .failure(let error):
                 print(error)

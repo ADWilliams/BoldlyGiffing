@@ -30,7 +30,18 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
         thumbnailCollectionView.register(ThumbnailCell.self, forCellWithReuseIdentifier: thumbmailCellIdentifier)
         flowLayout.estimatedItemSize = CGSize(width: 100.0, height: 90.0)
         
-        NotificationCenter.default.addObserver(self.thubmnailCollectionView, selector: #selector(UICollectionView.reloadData), name: dataSetUpdatedNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(dataSetUpdated), name: dataSetUpdatedNotification, object: nil)
+    }
+    
+    @objc func dataSetUpdated(with notification: Notification) {
+        guard
+            let userInfo = notification.userInfo,
+            let indexPaths = userInfo["newItems"] as? [IndexPath]
+            else { return }
+        
+        thumbnailCollectionView.performBatchUpdates({
+            self.thumbnailCollectionView.insertItems(at: indexPaths)
+        }, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
