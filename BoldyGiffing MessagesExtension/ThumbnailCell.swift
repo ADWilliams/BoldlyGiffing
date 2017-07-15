@@ -17,7 +17,8 @@ final class ThumbnailCell: UICollectionViewCell {
     private(set) var imageView: UIImageView = {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.contentMode = .scaleAspectFit
+        view.contentMode = .scaleAspectFill
+        view.isHidden = true
         return view
     }()
     

@@ -10,6 +10,12 @@ import UIKit
 import Messages
 import Kingfisher
 
+extension UICollectionViewFlowLayout {
+    open override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+        return false
+    }
+}
+
 class MessagesViewController: MSMessagesAppViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var thumbnailCollectionView: UICollectionView!
@@ -28,7 +34,6 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
         thumbnailCollectionView.prefetchDataSource = dataSource
         
         thumbnailCollectionView.register(ThumbnailCell.self, forCellWithReuseIdentifier: thumbmailCellIdentifier)
-        flowLayout.estimatedItemSize = CGSize(width: 100.0, height: 90.0)
         
         NotificationCenter.default.addObserver(self, selector: #selector(dataSetUpdated), name: dataSetUpdatedNotification, object: nil)
     }
@@ -99,6 +104,7 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
         // Called after the extension transitions to a new presentation style.
     
         // Use this method to finalize any behaviors associated with the change in presentation style.
+        thumbnailCollectionView.reloadSections(IndexSet(integer: 0))
     }
 
     // MARK: - CollectionViewDelegate
@@ -121,6 +127,12 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
             self?.insertGif(for: gif.fullSizeURL.cacheKey)
             cell?.set(loading: false)
         }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard let cell = cell as? ThumbnailCell else { return }
+
+        cell.imageView.isHidden = false
     }
         }
     }
@@ -145,12 +157,11 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
     }
 
     // MARK: - FlowLayoutDelegate
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let numberOfItems: CGFloat = 3.0
-//        let itemSpacing: CGFloat = 10.0
-//        let availableWidth = view.bounds.width - itemSpacing * (numberOfItems + 1)
-//        let width = availableWidth / numberOfItems
-//
-//        return CGSize(width: width, height: 70.0)
-//    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let numberOfItems: CGFloat = 3.0
+        let itemSpacing: CGFloat = 5.0
+        let availableWidth = thumbnailCollectionView.bounds.width - itemSpacing * (numberOfItems + 2)
+        let width = availableWidth / numberOfItems
+        return CGSize(width: width, height: width * 0.8)
+    }
 }
