@@ -62,7 +62,7 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
         
         // Use this method to configure the extension and restore previously stored state.
 
-        dataSource.fetchThumbnails()
+//        dataSource.fetchRandomThumbnails()
     }
     
     override func didResignActive(with conversation: MSConversation) {
@@ -134,6 +134,10 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
 
         cell.imageView.isHidden = false
     }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y >= scrollView.contentSize.height - scrollView.frame.height {
+            dataSource.fetchThumbnails(offset: dataSource.offset)
         }
     }
 

@@ -70,19 +70,54 @@ final class CollectionViewDataSource: NSObject, UICollectionViewDataSource, UICo
             NotificationCenter.default.post(name: dataSetUpdatedNotification, object: nil, userInfo: ["newItems": indexPaths])
         }
     }
+    
+    var offset: Int = 0
+    var postCount: Int = 0
+    private var dataRequest: DataRequest?
 
     // MARK: - Lifecycle
-
     override init() {
         super.init()
-        
+        fetchInfo()
     }
 
-    func fetchThumbnails() {
-        guard let url = URL(string: baseURL + "posts?limit=20&api_key=" + apiKey) else { return }
+    func fetchInfo() {
+        guard let url = URL(string: baseURL + "info?api_key=\(apiKey)") else { return }
 
         Alamofire.request(url).responseJSON { [weak self] response in
 
+            switch response.result {
+            case .success(let data):
+                guard
+                    let data = data as? [String: Any],
+                    let response = data["response"] as? [String: Any],
+                    let blog = response["blog"] as? [String: Any],
+                    let postCount = blog["posts"] as? Int
+                    else { return }
+
+                self?.postCount = postCount
+                self?.fetchRandomThumbnails()
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+
+    func fetchRandomThumbnails() {
+        let postCount = self.postCount - (self.postCount > 21 ? 21 : 0)
+        let randomOffset = Int.random(postCount)
+        offset = randomOffset < 0 ? 0 : randomOffset
+        fetchThumbnails(offset: self.offset)
+    }
+
+    func fetchThumbnails(offset: Int = 0) {
+        guard
+            let url = URL(string: baseURL + "posts?limit=21&offset=\(offset)&api_key=\(apiKey)" ),
+            dataRequest == nil
+            else { return }
+
+        dataRequest = Alamofire.request(url).responseJSON { [weak self] response in
+            self?.dataRequest = nil
             switch response.result {
             case .success(let data):
                 guard
