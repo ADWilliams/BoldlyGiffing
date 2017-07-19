@@ -109,24 +109,40 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
 
     // MARK: - CollectionViewDelegate
 
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        return
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        return
+    }
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as? ThumbnailCell
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ThumbnailCell else { return }
+
         let gif = dataSource.dataSet[indexPath.item]
         
         KingfisherManager.shared.retrieveImage(with: gif.fullSizeURL, options: nil, progressBlock: { receivedSize, totalSize in
             // progress
             print(totalSize/receivedSize)
-            cell?.set(loading: true)
+            cell.set(loading: true)
         }) { [weak self] image, error, cacheType, url in
             guard
                 error == nil else {
-                    cell?.set(loading: false)
+                    cell.set(loading: false)
                     return
             }
-            
+
             self?.insertGif(for: gif.fullSizeURL.cacheKey)
-            cell?.set(loading: false)
+            cell.set(loading: false)
+            cell.set(animating: true)
         }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ThumbnailCell else { return }
+
+        cell.set(animating: true)
     }
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -134,11 +150,36 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
 
         cell.imageView.isHidden = false
     }
+
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        NSObject.cancelPreviousPerformRequests(withTarget: self)
+
+        thumbnailCollectionView.visibleCells.forEach {
+            guard let cell = $0 as? ThumbnailCell else { return }
+
+            cell.set(animating: true)
+        }
+    }
+
+   @objc func pauseThumbnails() {
+        thumbnailCollectionView.visibleCells.forEach {
+            guard let cell = $0 as? ThumbnailCell else { return }
+
+            cell.set(animating: false)
+        }
+    }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y >= scrollView.contentSize.height - scrollView.frame.height {
             dataSource.fetchThumbnails(offset: dataSource.offset)
         }
+    }
+
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        NSObject.cancelPreviousPerformRequests(withTarget: self)
+        perform(#selector(UIScrollViewDelegate.scrollViewDidEndScrollingAnimation), with: nil, afterDelay: 0)
+        perform(#selector(self.pauseThumbnails), with: nil)
     }
 
     func insertGif(for cacheKey: String) {

@@ -58,14 +58,31 @@ final class ThumbnailCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        imageView.kf.cancelDownloadTask()
         imageView.image = nil
         set(loading: false)
     }
 
     func configure(with gif: Gif) {
-        imageView.kf.setImage(with: gif.thumbnailURL)
+        imageView.kf.setImage(with: gif.thumbnailURL, placeholder: nil, options: nil, progressBlock: nil) { [weak self] image, error, cacheType, url in
+            if let image = image {
+                self?.imageView.animationImages = image.images
+                self?.imageView.animationDuration = image.duration
+                self?.imageView.animationRepeatCount = 0
+                self?.imageView.image = image.images?.last
+                self?.imageView.startAnimating()
+            }
+        }
     }
-    
+
+    func set(animating: Bool) {
+        if animating {
+            imageView.startAnimating()
+        } else {
+            imageView.stopAnimating()
+        }
+    }
+
     func set(loading: Bool) {
         imageView.alpha = loading ? 0.3 : 1.0
         if loading {
