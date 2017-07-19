@@ -71,7 +71,11 @@ final class CollectionViewDataSource: NSObject, UICollectionViewDataSource, UICo
         }
     }
     
-    var offset: Int = 0
+    var offset: Int = 0 {
+        didSet {
+            self.offset = offset >= self.postCount ? 0 : self.offset
+        }
+    }
     var postCount: Int = 0
     private var dataRequest: DataRequest?
 
