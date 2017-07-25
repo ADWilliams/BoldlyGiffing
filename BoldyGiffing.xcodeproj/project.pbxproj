@@ -19,6 +19,7 @@
 		C89DE5591F06E636000ABC82 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C89DE5571F06E636000ABC82 /* MainInterface.storyboard */; };
 		C89DE55B1F06E636000ABC82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C89DE55A1F06E636000ABC82 /* Assets.xcassets */; };
 		C89DE5681F06EC93000ABC82 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C89DE5661F06E981000ABC82 /* Alamofire.framework */; };
+		C8ECF76A1F280F370032441E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C89DE5461F06E636000ABC82 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
