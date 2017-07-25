@@ -17,13 +17,16 @@ extension UICollectionViewFlowLayout {
 }
 
 class MessagesViewController: MSMessagesAppViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    
+
+    // MARK: - Outlets
     @IBOutlet weak var thumbnailCollectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
 
+    // MARK: - Private Properties
     private let dataSource = CollectionViewDataSource()
     private let cache = NSCache<NSString, AnyObject>()
-    
+
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -107,6 +110,34 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
         thumbnailCollectionView.reloadSections(IndexSet(integer: 0))
     }
 
+    // MARK: - Actions
+    @objc private func pauseThumbnails() {
+        thumbnailCollectionView.visibleCells.forEach {
+            guard let cell = $0 as? ThumbnailCell else { return }
+
+            cell.set(animating: false)
+        }
+    }
+
+    private func insertGif(for cacheKey: String) {
+        guard let conversation = activeConversation else { return }
+
+        let cachePath = ImageCache.default.cachePath(forKey: cacheKey)
+        let url = URL(fileURLWithPath: cachePath)
+
+        // Only insert the image once it is cached and reachable
+        do {
+            _ = try url.checkResourceIsReachable()
+            conversation.insertAttachment(url, withAlternateFilename: nil, completionHandler: { [weak self] _ in
+                self?.requestPresentationStyle(.compact)
+            })
+        }
+        catch {
+            print(error)
+            self.insertGif(for: cacheKey)
+        }
+    }
+
     // MARK: - CollectionViewDelegate
 
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
@@ -160,14 +191,6 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
             cell.set(animating: true)
         }
     }
-
-   @objc func pauseThumbnails() {
-        thumbnailCollectionView.visibleCells.forEach {
-            guard let cell = $0 as? ThumbnailCell else { return }
-
-            cell.set(animating: false)
-        }
-    }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y >= scrollView.contentSize.height - scrollView.frame.height {
@@ -175,30 +198,10 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
         }
     }
 
-
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         NSObject.cancelPreviousPerformRequests(withTarget: self)
         perform(#selector(UIScrollViewDelegate.scrollViewDidEndScrollingAnimation), with: nil, afterDelay: 0)
         perform(#selector(self.pauseThumbnails), with: nil)
-    }
-
-    func insertGif(for cacheKey: String) {
-        guard let conversation = activeConversation else { return }
-        
-        let cachePath = ImageCache.default.cachePath(forKey: cacheKey)
-        let url = URL(fileURLWithPath: cachePath)
-        
-        // Only insert the image once it is cached and reachable
-        do {
-            _ = try url.checkResourceIsReachable()
-            conversation.insertAttachment(url, withAlternateFilename: nil, completionHandler: { [weak self] _ in
-                self?.requestPresentationStyle(.compact)
-            })
-        }
-        catch {
-            print(error)
-            self.insertGif(for: cacheKey)
-        }
     }
 
     // MARK: - FlowLayoutDelegate
