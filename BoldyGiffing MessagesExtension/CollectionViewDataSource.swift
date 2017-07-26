@@ -96,6 +96,7 @@ final class CollectionViewDataSource: NSObject, UICollectionViewDataSource, UICo
         super.init()
 
         NotificationCenter.default.addObserver(self, selector: #selector(loadCharacter(notification:)), name: loadCharacterNotification, object: nil)
+
         fetchInfo()
     }
 
@@ -106,7 +107,8 @@ final class CollectionViewDataSource: NSObject, UICollectionViewDataSource, UICo
         else { return }
 
         set(character: characterTag)
-        fetchRandomThumbnails()
+        dataSet.removeAll()
+        fetchThumbnails()
     }
 
     func set(character: CharacterTag) {
@@ -163,12 +165,17 @@ final class CollectionViewDataSource: NSObject, UICollectionViewDataSource, UICo
                 var newItems: [Gif] = []
                 posts.forEach { newItems.append(contentsOf: $0.gifs) }
                 self?.dataSet.append(contentsOf: newItems)
+                self?.offset = offset
                 self?.offset += 21
 
             case .failure(let error):
                 print(error)
             }
         }
+    }
+
+    func fetchThumbnailsWithOffset() {
+        fetchThumbnails(offset: offset)
     }
 
     // MARK: - CollectionViewDataSource
@@ -183,6 +190,12 @@ final class CollectionViewDataSource: NSObject, UICollectionViewDataSource, UICo
 
         cell.configure(with: dataSet[indexPath.item])
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: characterPickerViewIdentifier, for: indexPath)
+
+        return headerView
     }
     
     // MARK: - Prefetching

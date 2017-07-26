@@ -37,6 +37,8 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
         thumbnailCollectionView.prefetchDataSource = dataSource
         
         thumbnailCollectionView.register(ThumbnailCell.self, forCellWithReuseIdentifier: thumbmailCellIdentifier)
+        let headerViewNib = UINib(nibName: "CharacterPickerView", bundle: nil)
+        thumbnailCollectionView.register(headerViewNib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: characterPickerViewIdentifier)
         
         NotificationCenter.default.addObserver(self, selector: #selector(dataSetUpdated), name: dataSetUpdatedNotification, object: nil)
     }
@@ -46,10 +48,14 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
             let userInfo = notification.userInfo,
             let indexPaths = userInfo["newItems"] as? [IndexPath]
             else { return }
-        
-        thumbnailCollectionView.performBatchUpdates({
-            self.thumbnailCollectionView.insertItems(at: indexPaths)
-        }, completion: nil)
+
+        if indexPaths.isEmpty {
+            thumbnailCollectionView.reloadData()
+        } else {
+            thumbnailCollectionView.performBatchUpdates({
+                self.thumbnailCollectionView.insertItems(at: indexPaths)
+            }, completion: nil)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -182,6 +188,10 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
         cell.imageView.isHidden = false
     }
 
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.bounds.width, height: 300.0)
+    }
+
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         NSObject.cancelPreviousPerformRequests(withTarget: self)
 
@@ -194,7 +204,7 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y >= scrollView.contentSize.height - scrollView.frame.height {
-            dataSource.fetchThumbnails(offset: dataSource.offset)
+            dataSource.fetchThumbnailsWithOffset()
         }
     }
 

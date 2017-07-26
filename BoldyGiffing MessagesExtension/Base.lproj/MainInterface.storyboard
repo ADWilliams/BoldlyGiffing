@@ -23,6 +23,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CuT-K8-Ww1" userLabel="Thumbnail Collection View">
                                 <rect key="frame" x="5" y="0.0" width="365" height="667"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="xu0-ov-kmd">
                                     <size key="itemSize" width="0.0" height="0.0"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -32,7 +33,6 @@
                                 <cells/>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="CuT-K8-Ww1" firstAttribute="centerY" secondItem="zMn-AG-sqS" secondAttribute="centerY" id="247-tb-YSv"/>
                             <constraint firstItem="CuT-K8-Ww1" firstAttribute="height" secondItem="zMn-AG-sqS" secondAttribute="height" id="Ae6-Of-62F"/>
@@ -48,7 +48,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X47-rx-isc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32.799999999999997" y="36.431784107946029"/>
+            <point key="canvasLocation" x="-221.59999999999999" y="37.331334332833585"/>
         </scene>
     </scenes>
 </document>
