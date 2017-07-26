@@ -8,9 +8,10 @@
 
 import UIKit
 
- let loadCharacterNotification = Notification.Name("notification.loadCharacter")
+let loadCharacterNotification = Notification.Name("notification.loadCharacter")
+let characterPickerViewIdentifier = "characterPickerViewIdentifier"
 
-final class CharacterPickerView: UIView {
+final class CharacterPickerView: UICollectionReusableView {
 
     @IBOutlet weak var picardButton: UIButton!
     @IBOutlet weak var worfButton: UIButton!

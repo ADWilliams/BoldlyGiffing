@@ -11,127 +11,144 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CharacterPickerView" customModule="BoldyGiffing_MessagesExtension" customModuleProvider="target">
-            <connections>
-                <outlet property="allCharactersButton" destination="HWR-1y-gsO" id="5CC-qf-cSx"/>
-                <outlet property="crusherButton" destination="9FN-OG-WVA" id="d9T-Pt-Y4o"/>
-                <outlet property="dataButton" destination="vqQ-hr-rLS" id="fmK-XJ-3fK"/>
-                <outlet property="laForgeButton" destination="C4K-eV-DbL" id="Q0L-La-piN"/>
-                <outlet property="picardButton" destination="SAU-JZ-6uQ" id="Tqw-Fs-7qf"/>
-                <outlet property="rikerButton" destination="qXP-00-Lz3" id="zyt-hG-4x3"/>
-                <outlet property="troiButton" destination="1s1-BU-1ek" id="ti5-LB-1mh"/>
-                <outlet property="worfButton" destination="9hS-Eo-dVO" id="Vua-CF-5t2"/>
-                <outlet property="yarButton" destination="io2-9N-Drs" id="ppO-wp-Tb7"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CharacterPickerView" customModule="BoldyGiffing_MessagesExtension" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="361" height="172"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="YES" id="u6b-KQ-TUm" customClass="CharacterPickerView" customModule="BoldyGiffing_MessagesExtension" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="441" height="232"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" axis="vertical" distribution="equalCentering" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="JWI-3M-adE">
-                    <rect key="frame" x="0.0" y="0.0" width="115" height="172"/>
+                <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iN0-l3-epB">
+                    <rect key="frame" x="0.0" y="0.0" width="441" height="232"/>
                     <subviews>
-                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SAU-JZ-6uQ">
-                            <rect key="frame" x="0.0" y="0.0" width="115" height="90"/>
-                            <state key="normal" title="Picard" backgroundImage="picard"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="10"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="characterButtonPressed:" destination="-1" eventType="touchUpInside" id="fmN-yj-KxV"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9hS-Eo-dVO">
-                            <rect key="frame" x="0.0" y="98" width="115" height="30"/>
-                            <state key="normal" title="Worf"/>
-                            <connections>
-                                <action selector="characterButtonPressed:" destination="-1" eventType="touchUpInside" id="lP7-50-mck"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9FN-OG-WVA">
-                            <rect key="frame" x="0.0" y="142" width="115" height="30"/>
-                            <state key="normal" title="Crusher"/>
-                            <connections>
-                                <action selector="characterButtonPressed:" destination="-1" eventType="touchUpInside" id="0u1-aS-Miq"/>
-                            </connections>
-                        </button>
+                        <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="JWI-3M-adE">
+                            <rect key="frame" x="0.0" y="0.0" width="141.5" height="232"/>
+                            <subviews>
+                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SAU-JZ-6uQ">
+                                    <rect key="frame" x="0.0" y="0.0" width="141.5" height="72"/>
+                                    <state key="normal" title="Picard" backgroundImage="picard">
+                                        <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="35"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="characterButtonPressed:" destination="u6b-KQ-TUm" eventType="touchUpInside" id="nlK-Fj-Zd4"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9hS-Eo-dVO">
+                                    <rect key="frame" x="0.0" y="80" width="141.5" height="72"/>
+                                    <state key="normal" title="Worf"/>
+                                    <connections>
+                                        <action selector="characterButtonPressed:" destination="u6b-KQ-TUm" eventType="touchUpInside" id="RNO-dA-Ve0"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9FN-OG-WVA">
+                                    <rect key="frame" x="0.0" y="160" width="141.5" height="72"/>
+                                    <state key="normal" title="Crusher"/>
+                                    <connections>
+                                        <action selector="characterButtonPressed:" destination="u6b-KQ-TUm" eventType="touchUpInside" id="tby-D7-xVK"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GBA-2H-sPD">
+                            <rect key="frame" x="149.5" y="0.0" width="142" height="232"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qXP-00-Lz3">
+                                    <rect key="frame" x="0.0" y="0.0" width="142" height="77.5"/>
+                                    <state key="normal" title="Riker"/>
+                                    <connections>
+                                        <action selector="characterButtonPressed:" destination="u6b-KQ-TUm" eventType="touchUpInside" id="l5U-ZS-u0R"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1s1-BU-1ek">
+                                    <rect key="frame" x="0.0" y="77.5" width="142" height="77"/>
+                                    <state key="normal" title="Troi"/>
+                                    <connections>
+                                        <action selector="characterButtonPressed:" destination="u6b-KQ-TUm" eventType="touchUpInside" id="4WD-7d-VbQ"/>
+                                        <action selector="characterButtonPressed:" destination="-1" eventType="touchUpInside" id="kQl-T9-ZHP"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="io2-9N-Drs">
+                                    <rect key="frame" x="0.0" y="154.5" width="142" height="77.5"/>
+                                    <state key="normal" title="Yar"/>
+                                    <connections>
+                                        <action selector="characterButtonPressed:" destination="-1" eventType="touchUpInside" id="8cZ-eO-aKT"/>
+                                        <action selector="characterButtonPressed:" destination="u6b-KQ-TUm" eventType="touchUpInside" id="u0V-DZ-pQP"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="fUE-a5-2eH">
+                            <rect key="frame" x="299.5" y="0.0" width="141.5" height="232"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vqQ-hr-rLS">
+                                    <rect key="frame" x="0.0" y="0.0" width="141.5" height="77.5"/>
+                                    <state key="normal" title="Data"/>
+                                    <connections>
+                                        <action selector="characterButtonPressed:" destination="u6b-KQ-TUm" eventType="touchUpInside" id="0d7-8l-1DO"/>
+                                        <action selector="characterButtonPressed:" destination="-1" eventType="touchUpInside" id="ukG-BG-vC5"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C4K-eV-DbL">
+                                    <rect key="frame" x="0.0" y="77.5" width="141.5" height="77"/>
+                                    <state key="normal" title="La Forge"/>
+                                    <connections>
+                                        <action selector="characterButtonPressed:" destination="-1" eventType="touchUpInside" id="L5p-c4-R4Q"/>
+                                        <action selector="characterButtonPressed:" destination="u6b-KQ-TUm" eventType="touchUpInside" id="olK-Aj-htA"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HWR-1y-gsO">
+                                    <rect key="frame" x="0.0" y="154.5" width="141.5" height="77.5"/>
+                                    <state key="normal" title="All"/>
+                                    <connections>
+                                        <action selector="characterButtonPressed:" destination="u6b-KQ-TUm" eventType="touchUpInside" id="Laj-Xg-Vlo"/>
+                                        <action selector="characterButtonPressed:" destination="-1" eventType="touchUpInside" id="XJI-qM-TTk"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
                     </subviews>
-                </stackView>
-                <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GBA-2H-sPD">
-                    <rect key="frame" x="123" y="0.0" width="115" height="172"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qXP-00-Lz3">
-                            <rect key="frame" x="0.0" y="0.0" width="115" height="57.5"/>
-                            <state key="normal" title="Riker"/>
-                            <connections>
-                                <action selector="characterButtonPressed:" destination="-1" eventType="touchUpInside" id="a2h-bA-qRI"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1s1-BU-1ek">
-                            <rect key="frame" x="0.0" y="57.5" width="115" height="57"/>
-                            <state key="normal" title="Troi"/>
-                            <connections>
-                                <action selector="characterButtonPressed:" destination="-1" eventType="touchUpInside" id="kQl-T9-ZHP"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="io2-9N-Drs">
-                            <rect key="frame" x="0.0" y="114.5" width="115" height="57.5"/>
-                            <state key="normal" title="Yar"/>
-                            <connections>
-                                <action selector="characterButtonPressed:" destination="-1" eventType="touchUpInside" id="8cZ-eO-aKT"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                </stackView>
-                <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="fUE-a5-2eH">
-                    <rect key="frame" x="246" y="0.0" width="115" height="172"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vqQ-hr-rLS">
-                            <rect key="frame" x="0.0" y="0.0" width="115" height="57.5"/>
-                            <state key="normal" title="Data"/>
-                            <connections>
-                                <action selector="characterButtonPressed:" destination="-1" eventType="touchUpInside" id="ukG-BG-vC5"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C4K-eV-DbL">
-                            <rect key="frame" x="0.0" y="57.5" width="115" height="57"/>
-                            <state key="normal" title="La Forge"/>
-                            <connections>
-                                <action selector="characterButtonPressed:" destination="-1" eventType="touchUpInside" id="L5p-c4-R4Q"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HWR-1y-gsO">
-                            <rect key="frame" x="0.0" y="114.5" width="115" height="57.5"/>
-                            <state key="normal" title="All"/>
-                            <connections>
-                                <action selector="characterButtonPressed:" destination="-1" eventType="touchUpInside" id="XJI-qM-TTk"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                </stackView>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="JWI-3M-adE" firstAttribute="top" secondItem="GBA-2H-sPD" secondAttribute="top" id="0Ze-qU-4At"/>
+                        <constraint firstItem="GBA-2H-sPD" firstAttribute="leading" secondItem="JWI-3M-adE" secondAttribute="trailing" constant="8" symbolic="YES" id="1F7-s6-3sj"/>
+                        <constraint firstItem="fUE-a5-2eH" firstAttribute="width" secondItem="GBA-2H-sPD" secondAttribute="width" id="BM9-sB-B65"/>
+                        <constraint firstItem="JWI-3M-adE" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="OE3-AX-jEb"/>
+                        <constraint firstItem="GBA-2H-sPD" firstAttribute="width" secondItem="JWI-3M-adE" secondAttribute="width" id="R3F-ex-yDJ"/>
+                        <constraint firstItem="fUE-a5-2eH" firstAttribute="leading" secondItem="GBA-2H-sPD" secondAttribute="trailing" constant="8" symbolic="YES" id="aQm-xn-QuF"/>
+                        <constraint firstItem="JWI-3M-adE" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="fqw-3j-Q2R"/>
+                        <constraint firstItem="JWI-3M-adE" firstAttribute="bottom" secondItem="GBA-2H-sPD" secondAttribute="bottom" id="gGI-km-Wlj"/>
+                        <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="fUE-a5-2eH" secondAttribute="trailing" id="haB-xc-BxK"/>
+                        <constraint firstItem="GBA-2H-sPD" firstAttribute="top" secondItem="fUE-a5-2eH" secondAttribute="top" id="oKA-pf-OC4"/>
+                        <constraint firstItem="GBA-2H-sPD" firstAttribute="bottom" secondItem="fUE-a5-2eH" secondAttribute="bottom" id="qLI-Ca-Hig"/>
+                        <constraint firstItem="JWI-3M-adE" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="qdf-jl-F6s"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+                </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="JWI-3M-adE" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="6pN-8x-Wff"/>
-                <constraint firstItem="fUE-a5-2eH" firstAttribute="width" secondItem="GBA-2H-sPD" secondAttribute="width" id="Gi6-yQ-In6"/>
-                <constraint firstItem="JWI-3M-adE" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Lwa-Of-CnA"/>
-                <constraint firstItem="fUE-a5-2eH" firstAttribute="leading" secondItem="GBA-2H-sPD" secondAttribute="trailing" constant="8" id="Nfe-Q1-Zq6"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="fUE-a5-2eH" secondAttribute="bottom" id="Oio-38-jQw"/>
-                <constraint firstItem="GBA-2H-sPD" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="RAK-hh-0rO"/>
-                <constraint firstItem="fUE-a5-2eH" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Yh2-Gk-jSS"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="GBA-2H-sPD" secondAttribute="bottom" id="awa-m2-7IS"/>
-                <constraint firstItem="GBA-2H-sPD" firstAttribute="leading" secondItem="JWI-3M-adE" secondAttribute="trailing" constant="8" id="bzE-MT-B0b"/>
-                <constraint firstItem="fUE-a5-2eH" firstAttribute="width" secondItem="JWI-3M-adE" secondAttribute="width" id="edx-hx-N2Q"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="JWI-3M-adE" secondAttribute="bottom" id="qFr-ke-JDR"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="fUE-a5-2eH" secondAttribute="trailing" id="slR-td-8qW"/>
+                <constraint firstItem="iN0-l3-epB" firstAttribute="top" secondItem="coE-7F-YDH" secondAttribute="top" id="DwS-3c-gyJ"/>
+                <constraint firstItem="coE-7F-YDH" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="Mum-OU-73c"/>
+                <constraint firstItem="iN0-l3-epB" firstAttribute="leading" secondItem="coE-7F-YDH" secondAttribute="leading" id="OYv-HT-8BE"/>
+                <constraint firstItem="coE-7F-YDH" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="eq8-pT-vWF"/>
             </constraints>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="11.5" y="-133"/>
-        </view>
+            <viewLayoutGuide key="safeArea" id="coE-7F-YDH"/>
+            <connections>
+                <outlet property="allCharactersButton" destination="HWR-1y-gsO" id="JwE-8C-tb2"/>
+                <outlet property="crusherButton" destination="9FN-OG-WVA" id="qdw-cY-fEr"/>
+                <outlet property="dataButton" destination="vqQ-hr-rLS" id="0Sw-sw-jL3"/>
+                <outlet property="laForgeButton" destination="C4K-eV-DbL" id="87a-V8-bAd"/>
+                <outlet property="picardButton" destination="SAU-JZ-6uQ" id="e9Q-KJ-OtW"/>
+                <outlet property="rikerButton" destination="qXP-00-Lz3" id="qO9-hm-6Xe"/>
+                <outlet property="troiButton" destination="1s1-BU-1ek" id="19p-KT-qAK"/>
+                <outlet property="worfButton" destination="9hS-Eo-dVO" id="gkY-Lz-8jI"/>
+                <outlet property="yarButton" destination="io2-9N-Drs" id="GOO-qF-HO1"/>
+            </connections>
+            <point key="canvasLocation" x="180.5" y="-322"/>
+        </collectionReusableView>
     </objects>
     <resources>
         <image name="picard" width="90" height="90"/>
