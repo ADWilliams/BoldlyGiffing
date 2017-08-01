@@ -11,8 +11,9 @@ import UIKit
 let loadCharacterNotification = Notification.Name("notification.loadCharacter")
 let characterPickerViewIdentifier = "characterPickerViewIdentifier"
 
-final class CharacterPickerView: UICollectionReusableView {
+final class CharacterPickerView: UIView {
 
+    @IBOutlet var view: UIView!
     @IBOutlet weak var picardButton: UIButton!
     @IBOutlet weak var worfButton: UIButton!
     @IBOutlet weak var crusherButton: UIButton!
@@ -46,6 +47,36 @@ final class CharacterPickerView: UICollectionReusableView {
         default:
             return
         }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        setup()
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        setup()
+    }
+    
+    func setup() {
+        view = loadViewFromNib()
+        view.frame = bounds
+        view.autoresizingMask = [
+            .flexibleWidth,
+            .flexibleHeight
+        ]
+        
+        addSubview(view)
+    }
+    
+    private func loadViewFromNib() -> UIView {
+        let nib = UINib(nibName: "CharacterPickerView", bundle: nil)
+        let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
+        
+        return view
     }
 
     func load(character: CharacterTag) {
