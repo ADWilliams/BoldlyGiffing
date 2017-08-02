@@ -100,6 +100,10 @@ final class CollectionViewDataSource: NSObject, UICollectionViewDataSource, UICo
         fetchInfo()
     }
 
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
     @objc func loadCharacter(notification: Notification) {
         guard
         let userInfo = notification.userInfo,
@@ -192,12 +196,6 @@ final class CollectionViewDataSource: NSObject, UICollectionViewDataSource, UICo
         return cell
     }
 
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: characterPickerViewIdentifier, for: indexPath)
-
-        return headerView
-    }
-    
     // MARK: - Prefetching
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         let urls = indexPaths.flatMap { return dataSet[$0.item].fullSizeURL }
@@ -205,6 +203,8 @@ final class CollectionViewDataSource: NSObject, UICollectionViewDataSource, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
+        guard !dataSet.isEmpty else { return }
+        
         let urls = indexPaths.flatMap { return dataSet[$0.item].fullSizeURL }
         ImagePrefetcher(urls: urls).stop()
     }

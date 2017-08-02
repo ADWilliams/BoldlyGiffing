@@ -20,11 +20,14 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
 
     // MARK: - Outlets
     @IBOutlet weak var thumbnailCollectionView: UICollectionView!
+    @IBOutlet weak var characterPickerView: CharacterPickerView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
-
+    @IBOutlet weak var characterPickerBottomConstraint: NSLayoutConstraint!
+    
     // MARK: - Private Properties
     private let dataSource = CollectionViewDataSource()
     private let cache = NSCache<NSString, AnyObject>()
+    private var pickerVisible: Bool = false
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -37,10 +40,17 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
         thumbnailCollectionView.prefetchDataSource = dataSource
         
         thumbnailCollectionView.register(ThumbnailCell.self, forCellWithReuseIdentifier: thumbmailCellIdentifier)
-        let headerViewNib = UINib(nibName: "CharacterPickerView", bundle: nil)
-        thumbnailCollectionView.register(headerViewNib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: characterPickerViewIdentifier)
         
         NotificationCenter.default.addObserver(self, selector: #selector(dataSetUpdated), name: dataSetUpdatedNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(characterSelected), name: loadCharacterNotification, object: nil)
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func characterSelected() {
+        toggleCharacterPicker()
     }
     
     @objc func dataSetUpdated(with notification: Notification) {
@@ -188,10 +198,6 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
         cell.imageView.isHidden = false
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 300.0)
-    }
-
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         NSObject.cancelPreviousPerformRequests(withTarget: self)
 
@@ -199,6 +205,12 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
             guard let cell = $0 as? ThumbnailCell else { return }
 
             cell.set(animating: true)
+        }
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        if scrollView.contentOffset.y < 0 {
+            toggleCharacterPicker()
         }
     }
     
@@ -212,6 +224,52 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
         NSObject.cancelPreviousPerformRequests(withTarget: self)
         perform(#selector(UIScrollViewDelegate.scrollViewDidEndScrollingAnimation), with: nil, afterDelay: 0)
         perform(#selector(self.pauseThumbnails), with: nil)
+
+        if scrollView.contentOffset.y > 0 && pickerVisible {
+            toggleCharacterPicker()
+            return
+        }
+
+        let contentOffset = scrollView.contentOffset.y
+
+        if contentOffset < 0 {
+            let constant = contentOffset
+            print(scrollView.contentOffset.y)
+            print(characterPickerBottomConstraint.constant)
+
+            if !pickerVisible {
+                UIView.animate(
+                    withDuration: 0.2,
+                    delay: 0.0,
+                    usingSpringWithDamping: 0.2,
+                    initialSpringVelocity: 6.0,
+                    options: .curveLinear,
+                    animations: {
+                        self.characterPickerBottomConstraint.constant = constant
+                        self.view.layoutIfNeeded()
+
+                },
+                    completion: nil
+                )
+            }
+        }
+    }
+    
+    func toggleCharacterPicker() {
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0,
+            usingSpringWithDamping: 0.8,
+            initialSpringVelocity: 0.5,
+            options: .curveEaseOut,
+            animations: {
+                let constant = self.pickerVisible ? 0 : -self.characterPickerView.frame.height
+                self.characterPickerBottomConstraint.constant = constant
+                self.view.layoutIfNeeded()
+        },
+            completion: nil
+        )
+        pickerVisible = !pickerVisible
     }
 
     // MARK: - FlowLayoutDelegate
@@ -219,7 +277,7 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
         let numberOfItems: CGFloat = 3.0
         let itemSpacing: CGFloat = 5.0
         let availableWidth = thumbnailCollectionView.bounds.width - itemSpacing * (numberOfItems + 2)
-        let width = availableWidth / numberOfItems
+        let width = min(availableWidth / numberOfItems, 150)
         return CGSize(width: width, height: width * 0.8)
     }
 }
