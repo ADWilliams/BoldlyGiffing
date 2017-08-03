@@ -52,7 +52,18 @@ struct Gif: Equatable  {
         self.fullSizeURL = fullSizeURL
         self.tags = tags
     }
+}
 
+enum CharacterTag: String {
+    case Crusher = "beverly crusher"
+    case Data = "data"
+    case LaForge = "geordi la forge"
+    case Picard = "jean luc picard"
+    case Riker = "william riker"
+    case Troi = "deanna troi"
+    case Yar = "tasha yar"
+    case Worf = "worf"
+    case All = ""
 }
 
 let dataSetUpdatedNotification = Notification.Name("notification.dataSetUpdated")
@@ -77,12 +88,35 @@ final class CollectionViewDataSource: NSObject, UICollectionViewDataSource, UICo
         }
     }
     var postCount: Int = 0
+    private var character: CharacterTag = .All
     private var dataRequest: DataRequest?
 
     // MARK: - Lifecycle
     override init() {
         super.init()
+
+        NotificationCenter.default.addObserver(self, selector: #selector(loadCharacter(notification:)), name: loadCharacterNotification, object: nil)
+
         fetchInfo()
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    @objc func loadCharacter(notification: Notification) {
+        guard
+        let userInfo = notification.userInfo,
+        let characterTag = userInfo["characterTag"] as? CharacterTag
+        else { return }
+
+        set(character: characterTag)
+        dataSet.removeAll()
+        fetchThumbnails()
+    }
+
+    func set(character: CharacterTag) {
+        self.character = character
     }
 
     func fetchInfo() {
@@ -114,9 +148,10 @@ final class CollectionViewDataSource: NSObject, UICollectionViewDataSource, UICo
         fetchThumbnails(offset: self.offset)
     }
 
-    func fetchThumbnails(offset: Int = 0) {
+    func fetchThumbnails(limit: Int = 21, offset: Int = 0) {
         guard
-            let url = URL(string: baseURL + "posts?limit=21&offset=\(offset)&api_key=\(apiKey)" ),
+            let characterTag = character.rawValue.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
+            let url = URL(string: baseURL + "posts/photo?limit=21&offset=\(offset)&tag=\(characterTag)&api_key=\(apiKey)" ),
             dataRequest == nil
             else { return }
 
@@ -134,12 +169,17 @@ final class CollectionViewDataSource: NSObject, UICollectionViewDataSource, UICo
                 var newItems: [Gif] = []
                 posts.forEach { newItems.append(contentsOf: $0.gifs) }
                 self?.dataSet.append(contentsOf: newItems)
+                self?.offset = offset
                 self?.offset += 21
 
             case .failure(let error):
                 print(error)
             }
         }
+    }
+
+    func fetchThumbnailsWithOffset() {
+        fetchThumbnails(offset: offset)
     }
 
     // MARK: - CollectionViewDataSource
@@ -155,7 +195,7 @@ final class CollectionViewDataSource: NSObject, UICollectionViewDataSource, UICo
         cell.configure(with: dataSet[indexPath.item])
         return cell
     }
-    
+
     // MARK: - Prefetching
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         let urls = indexPaths.flatMap { return dataSet[$0.item].fullSizeURL }
@@ -163,6 +203,8 @@ final class CollectionViewDataSource: NSObject, UICollectionViewDataSource, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
+        guard !dataSet.isEmpty else { return }
+        
         let urls = indexPaths.flatMap { return dataSet[$0.item].fullSizeURL }
         ImagePrefetcher(urls: urls).stop()
     }

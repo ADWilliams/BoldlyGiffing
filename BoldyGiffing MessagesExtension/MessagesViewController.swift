@@ -17,13 +17,19 @@ extension UICollectionViewFlowLayout {
 }
 
 class MessagesViewController: MSMessagesAppViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    
-    @IBOutlet weak var thumbnailCollectionView: UICollectionView!
-    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
 
+    // MARK: - Outlets
+    @IBOutlet weak var thumbnailCollectionView: UICollectionView!
+    @IBOutlet weak var characterPickerView: CharacterPickerView!
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    @IBOutlet weak var characterPickerBottomConstraint: NSLayoutConstraint!
+    
+    // MARK: - Private Properties
     private let dataSource = CollectionViewDataSource()
     private let cache = NSCache<NSString, AnyObject>()
-    
+    private var pickerVisible: Bool = false
+
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,6 +42,16 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
         thumbnailCollectionView.register(ThumbnailCell.self, forCellWithReuseIdentifier: thumbmailCellIdentifier)
         
         NotificationCenter.default.addObserver(self, selector: #selector(dataSetUpdated), name: dataSetUpdatedNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(closeCharacterPicker), name: loadCharacterNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(closeCharacterPicker), name: closePickerNotification, object: nil)
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    @objc func closeCharacterPicker() {
+        toggleCharacterPicker()
     }
     
     @objc func dataSetUpdated(with notification: Notification) {
@@ -43,10 +59,14 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
             let userInfo = notification.userInfo,
             let indexPaths = userInfo["newItems"] as? [IndexPath]
             else { return }
-        
-        thumbnailCollectionView.performBatchUpdates({
-            self.thumbnailCollectionView.insertItems(at: indexPaths)
-        }, completion: nil)
+
+        if indexPaths.isEmpty {
+            thumbnailCollectionView.reloadData()
+        } else {
+            thumbnailCollectionView.performBatchUpdates({
+                self.thumbnailCollectionView.insertItems(at: indexPaths)
+            }, completion: nil)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -107,6 +127,34 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
         thumbnailCollectionView.reloadSections(IndexSet(integer: 0))
     }
 
+    // MARK: - Actions
+    @objc private func pauseThumbnails() {
+        thumbnailCollectionView.visibleCells.forEach {
+            guard let cell = $0 as? ThumbnailCell else { return }
+
+            cell.set(animating: false)
+        }
+    }
+
+    private func insertGif(for cacheKey: String) {
+        guard let conversation = activeConversation else { return }
+
+        let cachePath = ImageCache.default.cachePath(forKey: cacheKey)
+        let url = URL(fileURLWithPath: cachePath)
+
+        // Only insert the image once it is cached and reachable
+        do {
+            _ = try url.checkResourceIsReachable()
+            conversation.insertAttachment(url, withAlternateFilename: nil, completionHandler: { [weak self] _ in
+                self?.requestPresentationStyle(.compact)
+            })
+        }
+        catch {
+            print(error)
+            self.insertGif(for: cacheKey)
+        }
+    }
+
     // MARK: - CollectionViewDelegate
 
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
@@ -160,45 +208,69 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
             cell.set(animating: true)
         }
     }
-
-   @objc func pauseThumbnails() {
-        thumbnailCollectionView.visibleCells.forEach {
-            guard let cell = $0 as? ThumbnailCell else { return }
-
-            cell.set(animating: false)
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        if scrollView.contentOffset.y < 0 {
+            toggleCharacterPicker()
         }
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y >= scrollView.contentSize.height - scrollView.frame.height {
-            dataSource.fetchThumbnails(offset: dataSource.offset)
+            dataSource.fetchThumbnailsWithOffset()
         }
     }
-
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         NSObject.cancelPreviousPerformRequests(withTarget: self)
         perform(#selector(UIScrollViewDelegate.scrollViewDidEndScrollingAnimation), with: nil, afterDelay: 0)
         perform(#selector(self.pauseThumbnails), with: nil)
-    }
 
-    func insertGif(for cacheKey: String) {
-        guard let conversation = activeConversation else { return }
-        
-        let cachePath = ImageCache.default.cachePath(forKey: cacheKey)
-        let url = URL(fileURLWithPath: cachePath)
-        
-        // Only insert the image once it is cached and reachable
-        do {
-            _ = try url.checkResourceIsReachable()
-            conversation.insertAttachment(url, withAlternateFilename: nil, completionHandler: { [weak self] _ in
-                self?.requestPresentationStyle(.compact)
-            })
+        if scrollView.contentOffset.y > 0 && pickerVisible {
+            toggleCharacterPicker()
+            return
         }
-        catch {
-            print(error)
-            self.insertGif(for: cacheKey)
+
+        let contentOffset = scrollView.contentOffset.y
+
+        if contentOffset < 0 {
+            let constant = contentOffset
+            print(scrollView.contentOffset.y)
+            print(characterPickerBottomConstraint.constant)
+
+            if !pickerVisible {
+                UIView.animate(
+                    withDuration: 0.2,
+                    delay: 0.0,
+                    usingSpringWithDamping: 0.2,
+                    initialSpringVelocity: 6.0,
+                    options: .curveLinear,
+                    animations: {
+                        self.characterPickerBottomConstraint.constant = constant
+                        self.view.layoutIfNeeded()
+
+                },
+                    completion: nil
+                )
+            }
         }
+    }
+    
+    func toggleCharacterPicker() {
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0,
+            usingSpringWithDamping: 0.8,
+            initialSpringVelocity: 0.5,
+            options: .curveEaseOut,
+            animations: {
+                let constant = self.pickerVisible ? 0 : -self.characterPickerView.frame.height
+                self.characterPickerBottomConstraint.constant = constant
+                self.view.layoutIfNeeded()
+        },
+            completion: nil
+        )
+        pickerVisible = !pickerVisible
     }
 
     // MARK: - FlowLayoutDelegate
@@ -206,7 +278,7 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
         let numberOfItems: CGFloat = 3.0
         let itemSpacing: CGFloat = 5.0
         let availableWidth = thumbnailCollectionView.bounds.width - itemSpacing * (numberOfItems + 2)
-        let width = availableWidth / numberOfItems
+        let width = min(availableWidth / numberOfItems, 150)
         return CGSize(width: width, height: width * 0.8)
     }
 }

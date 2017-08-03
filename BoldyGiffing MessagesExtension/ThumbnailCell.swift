@@ -19,6 +19,8 @@ final class ThumbnailCell: UICollectionViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleAspectFill
         view.isHidden = true
+        view.clipsToBounds = true
+        view.backgroundColor = UIColor(red: 0.26, green: 0.53, blue: 0.96, alpha: 0.8)
         return view
     }()
     
@@ -59,13 +61,14 @@ final class ThumbnailCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         imageView.kf.cancelDownloadTask()
-        imageView.image = nil
+        imageView.animationImages = nil
         set(loading: false)
     }
 
     func configure(with gif: Gif) {
         imageView.kf.setImage(with: gif.thumbnailURL, placeholder: nil, options: nil, progressBlock: nil) { [weak self] image, error, cacheType, url in
             if let image = image {
+                self?.imageView.layer.cornerRadius = 4.0
                 self?.imageView.animationImages = image.images
                 self?.imageView.animationDuration = image.duration
                 self?.imageView.animationRepeatCount = 0
@@ -80,6 +83,7 @@ final class ThumbnailCell: UICollectionViewCell {
             imageView.startAnimating()
         } else {
             imageView.stopAnimating()
+            imageView.image = imageView.animationImages?.last
         }
     }
 
