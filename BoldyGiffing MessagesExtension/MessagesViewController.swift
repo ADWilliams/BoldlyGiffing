@@ -42,14 +42,15 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
         thumbnailCollectionView.register(ThumbnailCell.self, forCellWithReuseIdentifier: thumbmailCellIdentifier)
         
         NotificationCenter.default.addObserver(self, selector: #selector(dataSetUpdated), name: dataSetUpdatedNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(characterSelected), name: loadCharacterNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(closeCharacterPicker), name: loadCharacterNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(closeCharacterPicker), name: closePickerNotification, object: nil)
     }
 
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-    
-    @objc func characterSelected() {
+
+    @objc func closeCharacterPicker() {
         toggleCharacterPicker()
     }
     

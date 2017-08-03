@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13156.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13168.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13137.5"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13147.4"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CharacterPickerView" customModule="BoldyGiffing_MessagesExtension" customModuleProvider="target">
             <connections>
                 <outlet property="allCharactersButton" destination="HWR-1y-gsO" id="rMU-z5-1pN"/>
+                <outlet property="closeButton" destination="Bf3-e8-Oel" id="L1g-B3-8et"/>
                 <outlet property="crusherButton" destination="9FN-OG-WVA" id="BIx-kC-hnl"/>
                 <outlet property="dataButton" destination="vqQ-hr-rLS" id="ko0-bE-kFy"/>
                 <outlet property="laForgeButton" destination="C4K-eV-DbL" id="JZX-x4-nZF"/>
@@ -25,109 +26,184 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="375" height="201"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" axis="vertical" distribution="equalSpacing" alignment="center" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="JWI-3M-adE">
-                    <rect key="frame" x="0.0" y="8" width="119.5" height="185"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JWI-3M-adE">
+                    <rect key="frame" x="0.0" y="8" width="119.5" height="160"/>
                     <subviews>
-                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SAU-JZ-6uQ">
-                            <rect key="frame" x="15" y="0.0" width="90" height="90"/>
-                            <state key="normal" title="Picard" backgroundImage="picard">
-                                <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SAU-JZ-6uQ">
+                            <rect key="frame" x="0.0" y="0.0" width="119.5" height="48"/>
+                            <color key="backgroundColor" red="0.80000000000000004" green="0.60392156862745094" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <inset key="contentEdgeInsets" minX="12" minY="5" maxX="12" maxY="6"/>
+                            <state key="normal" title="Picard">
+                                <color key="titleColor" red="0.017280046987792407" green="0.018180248013720927" blue="0.019615188472629219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="35"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="characterButtonPressed:" destination="-1" eventType="touchUpInside" id="BMv-Wi-d9a"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9hS-Eo-dVO">
-                            <rect key="frame" x="43" y="107.5" width="34" height="30"/>
-                            <state key="normal" title="Worf"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9hS-Eo-dVO">
+                            <rect key="frame" x="0.0" y="56" width="119.5" height="48"/>
+                            <color key="backgroundColor" red="1" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <inset key="contentEdgeInsets" minX="12" minY="6" maxX="12" maxY="6"/>
+                            <state key="normal" title="Worf">
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
                             <connections>
                                 <action selector="characterButtonPressed:" destination="-1" eventType="touchUpInside" id="jzA-oF-FzT"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9FN-OG-WVA">
-                            <rect key="frame" x="32.5" y="155" width="55" height="30"/>
-                            <state key="normal" title="Crusher"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9FN-OG-WVA">
+                            <rect key="frame" x="0.0" y="112" width="119.5" height="48"/>
+                            <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <inset key="contentEdgeInsets" minX="12" minY="6" maxX="12" maxY="6"/>
+                            <state key="normal" title="Crusher">
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
                             <connections>
                                 <action selector="characterButtonPressed:" destination="-1" eventType="touchUpInside" id="yfy-su-uYQ"/>
                             </connections>
                         </button>
                     </subviews>
                 </stackView>
-                <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" axis="vertical" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="GBA-2H-sPD">
-                    <rect key="frame" x="127.5" y="8" width="120" height="185"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="GBA-2H-sPD">
+                    <rect key="frame" x="127.5" y="8" width="120" height="160"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qXP-00-Lz3">
-                            <rect key="frame" x="42.5" y="0.0" width="35" height="30"/>
-                            <state key="normal" title="Riker"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qXP-00-Lz3">
+                            <rect key="frame" x="0.0" y="0.0" width="120" height="48"/>
+                            <color key="backgroundColor" red="0.40000000000000002" green="0.53333333333333333" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <inset key="contentEdgeInsets" minX="12" minY="6" maxX="12" maxY="6"/>
+                            <state key="normal" title="Riker">
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
                             <connections>
                                 <action selector="characterButtonPressed:" destination="-1" eventType="touchUpInside" id="j4X-GV-9tH"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1s1-BU-1ek">
-                            <rect key="frame" x="45" y="77.5" width="30" height="30"/>
-                            <state key="normal" title="Troi"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1s1-BU-1ek">
+                            <rect key="frame" x="0.0" y="56" width="120" height="48"/>
+                            <color key="backgroundColor" red="0.8666666666666667" green="0.40000000000000002" blue="0.30196078431372547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <inset key="contentEdgeInsets" minX="12" minY="6" maxX="12" maxY="6"/>
+                            <state key="normal" title="Troi">
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
                             <connections>
                                 <action selector="characterButtonPressed:" destination="-1" eventType="touchUpInside" id="kQl-T9-ZHP"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="io2-9N-Drs">
-                            <rect key="frame" x="45" y="155" width="30" height="30"/>
-                            <state key="normal" title="Yar"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="io2-9N-Drs">
+                            <rect key="frame" x="0.0" y="112" width="120" height="48"/>
+                            <color key="backgroundColor" red="0.80000000000000004" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <inset key="contentEdgeInsets" minX="12" minY="6" maxX="12" maxY="6"/>
+                            <state key="normal" title="Yar">
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
                             <connections>
                                 <action selector="characterButtonPressed:" destination="-1" eventType="touchUpInside" id="8cZ-eO-aKT"/>
                             </connections>
                         </button>
                     </subviews>
                 </stackView>
-                <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" axis="vertical" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="fUE-a5-2eH">
-                    <rect key="frame" x="255.5" y="8" width="119.5" height="185"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fUE-a5-2eH">
+                    <rect key="frame" x="255.5" y="8" width="119.5" height="160"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vqQ-hr-rLS">
-                            <rect key="frame" x="0.0" y="0.0" width="119.5" height="30"/>
-                            <state key="normal" title="Data"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vqQ-hr-rLS">
+                            <rect key="frame" x="0.0" y="0.0" width="119.5" height="48"/>
+                            <color key="backgroundColor" red="1" green="0.59999999999999998" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <inset key="contentEdgeInsets" minX="12" minY="6" maxX="12" maxY="6"/>
+                            <state key="normal" title="Data">
+                                <color key="titleColor" red="0.017280046989999999" green="0.01818024801" blue="0.019615188469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
                             <connections>
                                 <action selector="characterButtonPressed:" destination="-1" eventType="touchUpInside" id="ukG-BG-vC5"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C4K-eV-DbL">
-                            <rect key="frame" x="0.0" y="77.5" width="119.5" height="30"/>
-                            <state key="normal" title="La Forge"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C4K-eV-DbL">
+                            <rect key="frame" x="0.0" y="56" width="119.5" height="48"/>
+                            <color key="backgroundColor" red="0.80000000000000004" green="0.8666666666666667" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <inset key="contentEdgeInsets" minX="12" minY="6" maxX="12" maxY="6"/>
+                            <state key="normal" title="La Forge">
+                                <color key="titleColor" red="0.017280046989999999" green="0.01818024801" blue="0.019615188469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
                             <connections>
                                 <action selector="characterButtonPressed:" destination="-1" eventType="touchUpInside" id="L5p-c4-R4Q"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HWR-1y-gsO">
-                            <rect key="frame" x="0.0" y="155" width="119.5" height="30"/>
-                            <state key="normal" title="All"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HWR-1y-gsO">
+                            <rect key="frame" x="0.0" y="112" width="119.5" height="48"/>
+                            <color key="backgroundColor" red="0.0" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <inset key="contentEdgeInsets" minX="12" minY="6" maxX="12" maxY="6"/>
+                            <state key="normal" title="All">
+                                <color key="titleColor" red="0.017280046989999999" green="0.01818024801" blue="0.019615188469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
                             <connections>
                                 <action selector="characterButtonPressed:" destination="-1" eventType="touchUpInside" id="XJI-qM-TTk"/>
                             </connections>
                         </button>
                     </subviews>
                 </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6KS-xd-RCt">
+                    <rect key="frame" x="42" y="176" width="291" height="20"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bf3-e8-Oel">
+                            <rect key="frame" x="126" y="-5" width="39" height="30"/>
+                            <state key="normal" title="Close">
+                                <color key="titleColor" red="0.017280046989999999" green="0.01818024801" blue="0.019615188469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="closeButtonPressed:" destination="-1" eventType="touchUpInside" id="VWg-IF-b2M"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.53333333333333333" green="0.13333333333333333" blue="0.066666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="Bf3-e8-Oel" firstAttribute="centerX" secondItem="6KS-xd-RCt" secondAttribute="centerX" id="cOY-jM-UQc"/>
+                        <constraint firstAttribute="height" constant="20" id="dn9-zY-8T0"/>
+                        <constraint firstItem="Bf3-e8-Oel" firstAttribute="centerY" secondItem="6KS-xd-RCt" secondAttribute="centerY" id="eKe-eJ-YZg"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="bpo-tf-Yo9"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6jx-8v-gmq">
+                    <rect key="frame" x="0.0" y="176" width="40" height="20"/>
+                    <color key="backgroundColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="Bhp-0r-zcX"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="uQ4-Mc-Its"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gEX-HQ-8ga">
+                    <rect key="frame" x="335" y="176" width="40" height="20"/>
+                    <color key="backgroundColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="PRX-G7-7pn"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="6Iu-To-7y2"/>
+                </view>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="6KS-xd-RCt" firstAttribute="top" secondItem="GBA-2H-sPD" secondAttribute="bottom" constant="8" id="03U-bv-CyW"/>
+                <constraint firstItem="6jx-8v-gmq" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" constant="-5" id="0UE-yE-X4n"/>
                 <constraint firstItem="JWI-3M-adE" firstAttribute="top" secondItem="GBA-2H-sPD" secondAttribute="top" id="0Ze-qU-4At"/>
                 <constraint firstItem="GBA-2H-sPD" firstAttribute="leading" secondItem="JWI-3M-adE" secondAttribute="trailing" constant="8" symbolic="YES" id="1F7-s6-3sj"/>
+                <constraint firstItem="6jx-8v-gmq" firstAttribute="height" secondItem="6KS-xd-RCt" secondAttribute="height" id="5ne-O6-eGM"/>
+                <constraint firstItem="6KS-xd-RCt" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" constant="-5" id="AtY-g3-a7n"/>
                 <constraint firstItem="fUE-a5-2eH" firstAttribute="width" secondItem="GBA-2H-sPD" secondAttribute="width" id="BM9-sB-B65"/>
-                <constraint firstItem="JWI-3M-adE" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" constant="-8" id="OE3-AX-jEb"/>
+                <constraint firstItem="gEX-HQ-8ga" firstAttribute="height" secondItem="6KS-xd-RCt" secondAttribute="height" id="IGt-Yv-Qag"/>
+                <constraint firstItem="6KS-xd-RCt" firstAttribute="top" secondItem="fUE-a5-2eH" secondAttribute="bottom" constant="8" id="Li0-0x-oUg"/>
+                <constraint firstItem="gEX-HQ-8ga" firstAttribute="leading" secondItem="6KS-xd-RCt" secondAttribute="trailing" constant="2" id="OKl-6X-UnC"/>
+                <constraint firstItem="6KS-xd-RCt" firstAttribute="leading" secondItem="6jx-8v-gmq" secondAttribute="trailing" constant="2" id="Oxn-65-Cqc"/>
                 <constraint firstItem="GBA-2H-sPD" firstAttribute="width" secondItem="JWI-3M-adE" secondAttribute="width" id="R3F-ex-yDJ"/>
+                <constraint firstItem="6KS-xd-RCt" firstAttribute="top" secondItem="JWI-3M-adE" secondAttribute="bottom" constant="8" id="Rs0-Bi-IbC"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="gEX-HQ-8ga" secondAttribute="bottom" constant="5" id="WVq-Fs-7BJ"/>
                 <constraint firstItem="fUE-a5-2eH" firstAttribute="leading" secondItem="GBA-2H-sPD" secondAttribute="trailing" constant="8" symbolic="YES" id="aQm-xn-QuF"/>
+                <constraint firstItem="gEX-HQ-8ga" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="bxZ-Uo-34V"/>
                 <constraint firstItem="JWI-3M-adE" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="fqw-3j-Q2R"/>
-                <constraint firstItem="JWI-3M-adE" firstAttribute="bottom" secondItem="GBA-2H-sPD" secondAttribute="bottom" id="gGI-km-Wlj"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="fUE-a5-2eH" secondAttribute="trailing" id="haB-xc-BxK"/>
+                <constraint firstItem="6jx-8v-gmq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="key-se-CVS"/>
                 <constraint firstItem="GBA-2H-sPD" firstAttribute="top" secondItem="fUE-a5-2eH" secondAttribute="top" id="oKA-pf-OC4"/>
-                <constraint firstItem="GBA-2H-sPD" firstAttribute="bottom" secondItem="fUE-a5-2eH" secondAttribute="bottom" id="qLI-Ca-Hig"/>
                 <constraint firstItem="JWI-3M-adE" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="qdf-jl-F6s"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -135,7 +211,4 @@
             <point key="canvasLocation" x="100.5" y="-1189.5"/>
         </view>
     </objects>
-    <resources>
-        <image name="picard" width="90" height="90"/>
-    </resources>
 </document>

@@ -9,6 +9,7 @@
 import UIKit
 
 let loadCharacterNotification = Notification.Name("notification.loadCharacter")
+let closePickerNotification = Notification.Name("notification.closePicker")
 let characterPickerViewIdentifier = "characterPickerViewIdentifier"
 
 final class CharacterPickerView: UIView {
@@ -23,7 +24,12 @@ final class CharacterPickerView: UIView {
     @IBOutlet weak var dataButton: UIButton!
     @IBOutlet weak var troiButton: UIButton!
     @IBOutlet weak var allCharactersButton: UIButton!
+    @IBOutlet weak var closeButton: UIButton!
 
+    @IBAction func closeButtonPressed(_ sender: Any) {
+        close()
+    }
+    
     @IBAction func characterButtonPressed(_ sender: UIButton) {
         switch sender {
         case picardButton:
@@ -71,15 +77,18 @@ final class CharacterPickerView: UIView {
         
         addSubview(view)
     }
-    
+
     private func loadViewFromNib() -> UIView {
         let nib = UINib(nibName: "CharacterPickerView", bundle: nil)
         let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
         
         return view
     }
+    private func close() {
+        NotificationCenter.default.post(name: closePickerNotification, object: nil)
+    }
 
-    func load(character: CharacterTag) {
+    private func load(character: CharacterTag) {
         NotificationCenter.default.post(name: loadCharacterNotification, object: nil, userInfo: ["characterTag": character])
     }
 }
