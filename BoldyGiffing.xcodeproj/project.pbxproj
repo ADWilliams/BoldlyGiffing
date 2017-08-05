@@ -12,6 +12,8 @@
 		C8013B441F09F65D00F6B507 /* ThumbnailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8013B431F09F65D00F6B507 /* ThumbnailCell.swift */; };
 		C81CCA8A1F142B7400548B79 /* Int + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81CCA891F142B7400548B79 /* Int + Extensions.swift */; };
 		C85010F91F214A8B00F703A4 /* CharacterPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85010F81F214A8B00F703A4 /* CharacterPickerView.swift */; };
+		C85BA4CC1F3660310055BA63 /* UIFont + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85BA4CB1F3660310055BA63 /* UIFont + Extensions.swift */; };
+		C85BA4CD1F3662CC0055BA63 /* Swiss911BT-UltraCompressed.otf in Resources */ = {isa = PBXBuildFile; fileRef = C85BA4CA1F365FF90055BA63 /* Swiss911BT-UltraCompressed.otf */; };
 		C87530F71F2136D700197CEC /* CharacterPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C87530F61F2136D700197CEC /* CharacterPickerView.xib */; };
 		C87C80AE1F071C4D00704E19 /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C89DE5661F06E981000ABC82 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C89DE5471F06E636000ABC82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C89DE5461F06E636000ABC82 /* Assets.xcassets */; };
@@ -65,6 +67,8 @@
 		C8013B431F09F65D00F6B507 /* ThumbnailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailCell.swift; sourceTree = "<group>"; };
 		C81CCA891F142B7400548B79 /* Int + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int + Extensions.swift"; sourceTree = "<group>"; };
 		C85010F81F214A8B00F703A4 /* CharacterPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterPickerView.swift; sourceTree = "<group>"; };
+		C85BA4CA1F365FF90055BA63 /* Swiss911BT-UltraCompressed.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Swiss911BT-UltraCompressed.otf"; sourceTree = "<group>"; };
+		C85BA4CB1F3660310055BA63 /* UIFont + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extensions.swift"; sourceTree = "<group>"; };
 		C87530F61F2136D700197CEC /* CharacterPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterPickerView.xib; sourceTree = "<group>"; };
 		C89DE5431F06E636000ABC82 /* BoldyGiffing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoldyGiffing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C89DE5461F06E636000ABC82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -141,6 +145,8 @@
 				C89DE55A1F06E636000ABC82 /* Assets.xcassets */,
 				C89DE55C1F06E636000ABC82 /* Info.plist */,
 				C81CCA891F142B7400548B79 /* Int + Extensions.swift */,
+				C85BA4CA1F365FF90055BA63 /* Swiss911BT-UltraCompressed.otf */,
+				C85BA4CB1F3660310055BA63 /* UIFont + Extensions.swift */,
 			);
 			path = "BoldyGiffing MessagesExtension";
 			sourceTree = "<group>";
@@ -233,6 +239,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C85BA4CD1F3662CC0055BA63 /* Swiss911BT-UltraCompressed.otf in Resources */,
 				C89DE55B1F06E636000ABC82 /* Assets.xcassets in Resources */,
 				C87530F71F2136D700197CEC /* CharacterPickerView.xib in Resources */,
 				C89DE5591F06E636000ABC82 /* MainInterface.storyboard in Resources */,
@@ -247,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8013B441F09F65D00F6B507 /* ThumbnailCell.swift in Sources */,
+				C85BA4CC1F3660310055BA63 /* UIFont + Extensions.swift in Sources */,
 				C89DE5561F06E636000ABC82 /* MessagesViewController.swift in Sources */,
 				C85010F91F214A8B00F703A4 /* CharacterPickerView.swift in Sources */,
 				C8013B3D1F09ED4700F6B507 /* CollectionViewDataSource.swift in Sources */,
