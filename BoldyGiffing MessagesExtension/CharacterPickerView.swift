@@ -6,6 +6,7 @@
 //  Copyright © 2017 SweetieApps. All rights reserved.
 //
 
+
 import UIKit
 
 let loadCharacterNotification = Notification.Name("notification.loadCharacter")
@@ -15,15 +16,15 @@ let characterPickerViewIdentifier = "characterPickerViewIdentifier"
 final class CharacterPickerView: UIView {
 
     @IBOutlet var view: UIView!
-    @IBOutlet weak var picardButton: UIButton!
-    @IBOutlet weak var worfButton: UIButton!
-    @IBOutlet weak var crusherButton: UIButton!
+    @IBOutlet weak var picardButton: LcarsButton!
+    @IBOutlet weak var worfButton: LcarsButton!
+    @IBOutlet weak var crusherButton: LcarsButton!
     @IBOutlet weak var rikerButton: UIButton!
     @IBOutlet weak var yarButton: UIButton!
-    @IBOutlet weak var laForgeButton: UIButton!
-    @IBOutlet weak var dataButton: UIButton!
     @IBOutlet weak var troiButton: UIButton!
-    @IBOutlet weak var allCharactersButton: UIButton!
+    @IBOutlet weak var laForgeButton: LcarsButton!
+    @IBOutlet weak var dataButton: LcarsButton!
+    @IBOutlet weak var allCharactersButton: LcarsButton!
     @IBOutlet weak var closeButton: UIButton!
 
     @IBAction func closeButtonPressed(_ sender: Any) {
@@ -74,6 +75,11 @@ final class CharacterPickerView: UIView {
             .flexibleWidth,
             .flexibleHeight
         ]
+        
+        let leftButtons = [picardButton, worfButton, crusherButton]
+        leftButtons.forEach{ $0!.setRounded(corners: [.topLeft, .bottomLeft])}
+        let rightButtons = [dataButton, laForgeButton, allCharactersButton]
+        rightButtons.forEach { $0!.setRounded(corners: [.topRight, .bottomRight])}
         
         addSubview(view)
     }

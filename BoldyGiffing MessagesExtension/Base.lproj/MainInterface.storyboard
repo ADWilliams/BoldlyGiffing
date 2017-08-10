@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13168.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ObA-dk-sSI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13168.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ObA-dk-sSI">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13147.4"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,10 +14,6 @@
         <scene sceneID="7MM-of-jgj">
             <objects>
                 <viewController id="ObA-dk-sSI" customClass="MessagesViewController" customModule="BoldyGiffing_MessagesExtension" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="qkL-Od-lgU"/>
-                        <viewControllerLayoutGuide type="bottom" id="n38-gi-rB5"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="zMn-AG-sqS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -33,20 +30,22 @@
                                 <cells/>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IDr-Cq-EAu" customClass="CharacterPickerView" customModule="BoldyGiffing_MessagesExtension" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="-667" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
                                 <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
                         <constraints>
                             <constraint firstItem="CuT-K8-Ww1" firstAttribute="centerY" secondItem="zMn-AG-sqS" secondAttribute="centerY" id="7Xe-RO-Fbs"/>
                             <constraint firstItem="CuT-K8-Ww1" firstAttribute="height" secondItem="zMn-AG-sqS" secondAttribute="height" id="7p6-kw-eMT"/>
-                            <constraint firstAttribute="trailing" secondItem="IDr-Cq-EAu" secondAttribute="trailing" id="CgR-wB-fQh"/>
-                            <constraint firstItem="IDr-Cq-EAu" firstAttribute="leading" secondItem="zMn-AG-sqS" secondAttribute="leading" id="HbM-rM-qZK"/>
-                            <constraint firstItem="IDr-Cq-EAu" firstAttribute="height" secondItem="zMn-AG-sqS" secondAttribute="height" id="Xwu-sQ-gVp"/>
-                            <constraint firstAttribute="trailing" secondItem="CuT-K8-Ww1" secondAttribute="trailing" id="bf1-XM-5fP"/>
-                            <constraint firstItem="CuT-K8-Ww1" firstAttribute="leading" secondItem="zMn-AG-sqS" secondAttribute="leading" id="mBC-4Z-f1K"/>
+                            <constraint firstItem="DkS-JO-jnW" firstAttribute="trailing" secondItem="IDr-Cq-EAu" secondAttribute="trailing" id="CgR-wB-fQh"/>
+                            <constraint firstItem="IDr-Cq-EAu" firstAttribute="leading" secondItem="DkS-JO-jnW" secondAttribute="leading" id="HbM-rM-qZK"/>
+                            <constraint firstItem="DkS-JO-jnW" firstAttribute="top" secondItem="IDr-Cq-EAu" secondAttribute="top" priority="750" id="Rgd-Ve-r8o"/>
+                            <constraint firstItem="IDr-Cq-EAu" firstAttribute="height" relation="lessThanOrEqual" secondItem="zMn-AG-sqS" secondAttribute="height" id="Xwu-sQ-gVp"/>
+                            <constraint firstItem="DkS-JO-jnW" firstAttribute="trailing" secondItem="CuT-K8-Ww1" secondAttribute="trailing" id="bf1-XM-5fP"/>
+                            <constraint firstItem="CuT-K8-Ww1" firstAttribute="leading" secondItem="DkS-JO-jnW" secondAttribute="leading" id="mBC-4Z-f1K"/>
                             <constraint firstAttribute="top" secondItem="IDr-Cq-EAu" secondAttribute="bottom" id="ppj-Kh-OVh"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="DkS-JO-jnW"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
