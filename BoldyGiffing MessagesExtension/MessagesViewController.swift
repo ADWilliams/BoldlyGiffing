@@ -264,7 +264,12 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
             initialSpringVelocity: 0.5,
             options: .curveEaseOut,
             animations: {
-                let constant = self.pickerVisible ? 0 : -self.characterPickerView.frame.height
+                let constant: CGFloat
+                if #available(iOS 11, *) {
+                    constant = self.pickerVisible ? 0 : -(self.view.bounds.height - self.view.safeAreaInsets.bottom)
+                }else {
+                    constant = self.pickerVisible ? 0 : -(self.view.bounds.height - self.bottomLayoutGuide.length)
+                }
                 self.characterPickerBottomConstraint.constant = constant
                 self.view.layoutIfNeeded()
         },
