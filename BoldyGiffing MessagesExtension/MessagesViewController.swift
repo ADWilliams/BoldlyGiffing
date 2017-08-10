@@ -282,7 +282,7 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let numberOfItems: CGFloat = 3.0
         let itemSpacing: CGFloat = 5.0
-        let availableWidth = thumbnailCollectionView.bounds.width - itemSpacing * (numberOfItems + 2)
+        let availableWidth = thumbnailCollectionView.bounds.width - itemSpacing * (numberOfItems - 1)
         let width = min(availableWidth / numberOfItems, 150)
         return CGSize(width: width, height: width * 0.8)
     }
