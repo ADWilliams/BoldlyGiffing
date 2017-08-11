@@ -1,4 +1,6 @@
 # BoldlyGiffing
 A BoldyGiffing Messages Extension 
 
-![demo](http://i.imgur.com/HXiPJAS.gif)
+Star Trek The Next Generation Gifs right at your fingertips!
+
+![demo](http://imgur.com/fXDUIWh)
