@@ -21,9 +21,9 @@
 		C89DE54E1F06E636000ABC82 /* BoldyGiffing MessagesExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C89DE54D1F06E636000ABC82 /* BoldyGiffing MessagesExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C89DE5531F06E636000ABC82 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C89DE5521F06E636000ABC82 /* Messages.framework */; };
 		C89DE5561F06E636000ABC82 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89DE5551F06E636000ABC82 /* MessagesViewController.swift */; };
-		C89DE5591F06E636000ABC82 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C89DE5571F06E636000ABC82 /* MainInterface.storyboard */; };
 		C89DE55B1F06E636000ABC82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C89DE55A1F06E636000ABC82 /* Assets.xcassets */; };
 		C89DE5681F06EC93000ABC82 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C89DE5661F06E981000ABC82 /* Alamofire.framework */; };
+		C8FF84681F3E778200412148 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C89DE5571F06E636000ABC82 /* MainInterface.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -265,10 +265,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8FF84681F3E778200412148 /* MainInterface.storyboard in Resources */,
 				C85BA4CD1F3662CC0055BA63 /* Swiss911BT-UltraCompressed.otf in Resources */,
 				C89DE55B1F06E636000ABC82 /* Assets.xcassets in Resources */,
 				C87530F71F2136D700197CEC /* CharacterPickerView.xib in Resources */,
-				C89DE5591F06E636000ABC82 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,7 +427,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "BoldyGiffing MessagesExtension/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/BoldyGiffing MessagesExtension/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aaronwilliams.BoldyGiffing.MessagesExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -446,7 +446,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "BoldyGiffing MessagesExtension/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/BoldyGiffing MessagesExtension/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aaronwilliams.BoldyGiffing.MessagesExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
