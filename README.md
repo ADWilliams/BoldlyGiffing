@@ -3,4 +3,4 @@ A BoldyGiffing Messages Extension
 
 Star Trek The Next Generation Gifs right at your fingertips!
 
-![demo](http://imgur.com/fXDUIWh)
+![demo](http://i.imgur.com/fXDUIWh.gif)
