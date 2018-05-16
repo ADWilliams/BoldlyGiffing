@@ -19,7 +19,7 @@ struct Post {
         let photos = json["photos"] as? [[String: Any]]
         else { return nil}
 
-        gifs = photos.flatMap { Gif(json: $0, tags: tags) }
+        gifs = photos.compactMap { Gif(json: $0, tags: tags) }
     }
 }
 
@@ -76,7 +76,7 @@ final class CollectionViewDataSource: NSObject, UICollectionViewDataSource, UICo
     var dataSet: [Gif] = [] {
         didSet {
             let indexPaths = dataSet
-                .flatMap { return oldValue.contains($0) ? nil : dataSet.index(of: $0) }
+                .compactMap { return oldValue.contains($0) ? nil : dataSet.index(of: $0) }
                 .map { IndexPath(indexes:[0, $0]) }
             NotificationCenter.default.post(name: dataSetUpdatedNotification, object: nil, userInfo: ["newItems": indexPaths])
         }
@@ -165,7 +165,7 @@ final class CollectionViewDataSource: NSObject, UICollectionViewDataSource, UICo
                     let postsJson = response["posts"] as? [[String: Any]]
                     else { return }
 
-                let posts = postsJson.flatMap(Post.init)
+                let posts = postsJson.compactMap(Post.init)
                 var newItems: [Gif] = []
                 posts.forEach { newItems.append(contentsOf: $0.gifs) }
                 self?.dataSet.append(contentsOf: newItems)
@@ -198,14 +198,14 @@ final class CollectionViewDataSource: NSObject, UICollectionViewDataSource, UICo
 
     // MARK: - Prefetching
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        let urls = indexPaths.flatMap { return dataSet[$0.item].fullSizeURL }
+        let urls = indexPaths.compactMap { return dataSet[$0.item].fullSizeURL }
         ImagePrefetcher(urls: urls).start()
     }
     
     func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
         guard !dataSet.isEmpty else { return }
         
-        let urls = indexPaths.flatMap { return dataSet[$0.item].fullSizeURL }
+        let urls = indexPaths.compactMap { return dataSet[$0.item].fullSizeURL }
         ImagePrefetcher(urls: urls).stop()
     }
 }
