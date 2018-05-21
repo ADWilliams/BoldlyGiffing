@@ -197,6 +197,10 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
         guard let cell = cell as? ThumbnailCell else { return }
 
         cell.imageView.isHidden = false
+
+        if indexPath.row == dataSource.dataSet.count - 1 {
+            dataSource.fetchThumbnailsWithOffset()
+        }
     }
 
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
@@ -212,12 +216,6 @@ class MessagesViewController: MSMessagesAppViewController, UICollectionViewDeleg
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         if scrollView.contentOffset.y < 0 {
             toggleCharacterPicker()
-        }
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y >= scrollView.contentSize.height - scrollView.frame.height {
-            dataSource.fetchThumbnailsWithOffset()
         }
     }
 
