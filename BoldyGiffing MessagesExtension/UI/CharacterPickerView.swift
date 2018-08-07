@@ -13,7 +13,11 @@ let loadCharacterNotification = Notification.Name("notification.loadCharacter")
 let closePickerNotification = Notification.Name("notification.closePicker")
 let characterPickerViewIdentifier = "characterPickerViewIdentifier"
 
-final class CharacterPickerView: UIView {
+final class CharacterPickerView: UICollectionReusableView {
+
+    override var reuseIdentifier: String? {
+        return characterPickerViewIdentifier
+    }
 
     @IBOutlet var view: UIView!
     @IBOutlet weak var picardButton: LcarsButton!
