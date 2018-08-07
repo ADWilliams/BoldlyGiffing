@@ -196,6 +196,16 @@ final class CollectionViewDataSource: NSObject, UICollectionViewDataSource, UICo
         return cell
     }
 
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        var reusableView = UICollectionReusableView()
+        if kind == UICollectionView.elementKindSectionHeader {
+            guard let characterView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: characterPickerViewIdentifier, for: indexPath) as? CharacterPickerView else { return reusableView}
+
+            reusableView = characterView
+        }
+        return reusableView
+    }
+
     // MARK: - Prefetching
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         let urls = indexPaths.compactMap { return dataSet[$0.item].fullSizeURL }
