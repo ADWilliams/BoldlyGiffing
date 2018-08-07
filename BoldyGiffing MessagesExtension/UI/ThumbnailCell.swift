@@ -27,7 +27,7 @@ final class ThumbnailCell: UICollectionViewCell {
     private(set) var activityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView()
         indicator.translatesAutoresizingMaskIntoConstraints = false
-        indicator.activityIndicatorViewStyle = .white
+        indicator.style = .white
         indicator.isHidden = true
         return indicator
     }()
