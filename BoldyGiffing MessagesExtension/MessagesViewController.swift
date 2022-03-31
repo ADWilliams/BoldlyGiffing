@@ -148,17 +148,22 @@ class MessagesViewController: MSMessagesAppViewController {
 
         let cachePath = ImageCache.default.cachePath(forKey: cacheKey)
         let url = URL(fileURLWithPath: cachePath)
-
+        
+        let filename = UUID().uuidString + ".gif"
+        var tempUrl = URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true)
+        tempUrl.appendPathComponent(filename)
         // Only insert the image once it is cached and reachable
         do {
-            _ = try url.checkResourceIsReachable()
-            conversation.insertAttachment(url, withAlternateFilename: nil, completionHandler: { [weak self] _ in
+            try FileManager.default.copyItem(at: url, to: tempUrl)
+            
+            _ = try tempUrl.checkResourceIsReachable()
+            conversation.insertAttachment(tempUrl, withAlternateFilename: nil, completionHandler: { [weak self] _ in
                 self?.requestPresentationStyle(.compact)
             })
         }
         catch {
             print(error)
-            self.insertGif(for: cacheKey)
+//            self.insertGif(for: cacheKey)
         }
     }
     
