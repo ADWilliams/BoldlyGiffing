@@ -66,17 +66,20 @@ final class ThumbnailCell: UICollectionViewCell {
     }
 
     func configure(with gif: Gif) {
-        imageView.kf.setImage(with: gif.thumbnailURL, placeholder: nil, options: nil, progressBlock: nil) { [weak self] image, error, cacheType, url in
-            if let image = image {
+        imageView.kf.setImage(with: gif.thumbnailURL) {[weak self] result in
+            switch result {
+            case .success(let result):
                 self?.imageView.layer.cornerRadius = 4.0
-                self?.imageView.animationImages = image.images
-                self?.imageView.animationDuration = image.duration
+                self?.imageView.animationImages = result.image.images
+                self?.imageView.animationDuration = result.image.duration
                 self?.imageView.animationRepeatCount = 0
-                self?.imageView.image = image.images?.last
+                self?.imageView.image = result.image.images?.last
                 self?.imageView.startAnimating()
+            case .failure(let error):
+                print(error)
             }
         }
-    }
+}
 
     func set(animating: Bool) {
         if animating {

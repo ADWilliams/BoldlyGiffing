@@ -35,9 +35,7 @@ class MessagesViewController: MSMessagesAppViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        KingfisherManager.shared.cache.pathExtension = "gif"
-        
+                
         thumbnailCollectionView.delegate = self
         thumbnailCollectionView.dataSource = dataSource
         thumbnailCollectionView.prefetchDataSource = dataSource
@@ -224,21 +222,19 @@ extension MessagesViewController: UICollectionViewDelegate {
 
         let gif = dataSource.dataSet[indexPath.item]
 
-        KingfisherManager.shared.retrieveImage(with: gif.fullSizeURL, options: nil, progressBlock: { receivedSize, totalSize in
-            // progress
-            print(totalSize/receivedSize)
-            cell.set(loading: true)
-        }) { [weak self] image, error, cacheType, url in
-            guard
-                error == nil else {
+        KingfisherManager.shared.retrieveImage(
+            with: gif.fullSizeURL) { receivedSize, totalSize in
+                print(totalSize/receivedSize)
+            } completionHandler: { [weak self] result in
+                switch result {
+                case let .success(result):
+                    self?.insertGif(for: result.source.cacheKey)
                     cell.set(loading: false)
-                    return
+                    cell.set(animating: true)
+                case .failure:
+                    cell.set(loading: false)
+                }
             }
-
-            self?.insertGif(for: gif.fullSizeURL.cacheKey)
-            cell.set(loading: false)
-            cell.set(animating: true)
-        }
     }
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
