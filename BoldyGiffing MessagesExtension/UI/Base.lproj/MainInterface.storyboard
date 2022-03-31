@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ObA-dk-sSI">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ObA-dk-sSI">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,7 +18,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CuT-K8-Ww1" userLabel="Thumbnail Collection View">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="xu0-ov-kmd">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="4" id="xu0-ov-kmd">
                                     <size key="itemSize" width="0.0" height="0.0"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -30,13 +27,13 @@
                                 <cells/>
                             </collectionView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="DkS-JO-jnW"/>
                         <constraints>
                             <constraint firstItem="CuT-K8-Ww1" firstAttribute="centerY" secondItem="zMn-AG-sqS" secondAttribute="centerY" id="7Xe-RO-Fbs"/>
                             <constraint firstItem="CuT-K8-Ww1" firstAttribute="height" secondItem="zMn-AG-sqS" secondAttribute="height" id="7p6-kw-eMT"/>
                             <constraint firstItem="DkS-JO-jnW" firstAttribute="trailing" secondItem="CuT-K8-Ww1" secondAttribute="trailing" id="bf1-XM-5fP"/>
                             <constraint firstItem="CuT-K8-Ww1" firstAttribute="leading" secondItem="DkS-JO-jnW" secondAttribute="leading" id="mBC-4Z-f1K"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="DkS-JO-jnW"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
