@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 import Kingfisher
 
 struct Post {
@@ -78,7 +77,9 @@ final class CollectionViewDataSource: NSObject, UICollectionViewDataSource, UICo
             let indexPaths = dataSet
                 .compactMap { return oldValue.contains($0) ? nil : dataSet.index(of: $0) }
                 .map { IndexPath(indexes:[0, $0]) }
-            NotificationCenter.default.post(name: dataSetUpdatedNotification, object: nil, userInfo: ["newItems": indexPaths])
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: dataSetUpdatedNotification, object: nil, userInfo: ["newItems": indexPaths])
+            }
         }
     }
     
@@ -89,7 +90,7 @@ final class CollectionViewDataSource: NSObject, UICollectionViewDataSource, UICo
     }
     var postCount: Int = 0
     private var character: CharacterTag = .All
-    private var dataRequest: DataRequest?
+    private var dataRequest: URLSessionDataTask?
 
     // MARK: - Lifecycle
     override init() {
@@ -122,23 +123,23 @@ final class CollectionViewDataSource: NSObject, UICollectionViewDataSource, UICo
     func fetchInfo() {
         guard let url = URL(string: baseURL + "info?api_key=\(apiKey)") else { return }
 
-        Alamofire.request(url).responseJSON { [weak self] response in
-
-            switch response.result {
-            case .success(let data):
-                guard
-                    let data = data as? [String: Any],
-                    let response = data["response"] as? [String: Any],
-                    let blog = response["blog"] as? [String: Any],
-                    let postCount = blog["posts"] as? Int
-                    else { return }
-
-                self?.postCount = postCount
-                self?.fetchRandomThumbnails()
-            case .failure(let error):
+        dataRequest = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            self?.dataRequest = nil
+            guard
+                let data = data,
+                let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+                let response = json?["response"] as? [String: Any],
+                let blog = response["blog"] as? [String: Any],
+                let postCount = blog["posts"] as? Int
+            else {
                 print(error)
+                return
             }
+            
+            self?.postCount = postCount
+            self?.fetchRandomThumbnails()
         }
+        dataRequest?.resume()
     }
 
     func fetchRandomThumbnails() {
@@ -149,33 +150,37 @@ final class CollectionViewDataSource: NSObject, UICollectionViewDataSource, UICo
     }
 
     func fetchThumbnails(limit: Int = 21, offset: Int = 0) {
+        var tagPath: String = ""
+        if let characterTag = character.rawValue.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) {
+            tagPath = characterTag.isEmpty ? characterTag : "&tag=\(characterTag)"
+        }
+        
         guard
-            let characterTag = character.rawValue.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
-            let url = URL(string: baseURL + "posts/photo?limit=21&offset=\(offset)&tag=\(characterTag)&api_key=\(apiKey)" ),
+            let url = URL(string: baseURL + "posts/photo?limit=21&offset=\(offset)\(tagPath)&api_key=\(apiKey)"),
             dataRequest == nil
             else { return }
-
-        dataRequest = Alamofire.request(url).responseJSON { [weak self] response in
+        
+        dataRequest = URLSession.shared.dataTask(with: url, completionHandler: { [weak self] data, response, error in
             self?.dataRequest = nil
-            switch response.result {
-            case .success(let data):
-                guard
-                    let data = data as? [String: Any],
-                    let response = data["response"] as? [String: Any],
-                    let postsJson = response["posts"] as? [[String: Any]]
-                    else { return }
-
-                let posts = postsJson.compactMap(Post.init)
-                var newItems: [Gif] = []
-                posts.forEach { newItems.append(contentsOf: $0.gifs) }
-                self?.dataSet.append(contentsOf: newItems)
-                self?.offset = offset
-                self?.offset += 21
-
-            case .failure(let error):
+            
+            guard
+                let data = data,
+                let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+                let response = json?["response"] as? [String: Any],
+                let postsJson = response["posts"] as? [[String: Any]]
+            else {
                 print(error)
+                return
             }
-        }
+            
+            let posts = postsJson.compactMap(Post.init)
+            var newItems: [Gif] = []
+            posts.forEach { newItems.append(contentsOf: $0.gifs) }
+            self?.dataSet.append(contentsOf: newItems)
+            self?.offset = offset
+            self?.offset += 21
+        })
+        dataRequest?.resume()
     }
 
     func fetchThumbnailsWithOffset() {
