@@ -1,26 +1,23 @@
 //
-//  ContentView.swift
-//  BoldlyGiffingMac
+//  MainView.swift
+//  BoldyGiffing
 //
-//  Created by Aaron Williams on 2022-03-31.
+//  Created by Aaron Williams on 2022-04-01.
 //  Copyright © 2022 SweetieApps. All rights reserved.
 //
 
 import SwiftUI
 
-struct ContentView: View {
+struct MainView: View {
+    
     @ObservedObject var viewModel = MainViewModel()
+    
     var body: some View {
         ThumbnailView(gifs: viewModel.dataSet)
+            .background(.black)
             .onAppear {
                 viewModel.fetchInfo()
             }
             .environmentObject(viewModel)
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }
