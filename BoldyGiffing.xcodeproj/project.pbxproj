@@ -32,6 +32,7 @@
 		C89DE55B1F06E636000ABC82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C89DE55A1F06E636000ABC82 /* Assets.xcassets */; };
 		C8ABCE432804D0520001CD71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8ABCE422804D0520001CD71 /* AppDelegate.swift */; };
 		C8ABCE4728062EBD0001CD71 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8ABCE4628062EBD0001CD71 /* Post.swift */; };
+		C8ABCE48280631130001CD71 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8ABCE4628062EBD0001CD71 /* Post.swift */; };
 		C8D753A327F79A4D004B4699 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = C8D753A227F79A4D004B4699 /* SDWebImageSwiftUI */; };
 		C8D753A527F7AAB4004B4699 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D753A427F7AAB4004B4699 /* MainView.swift */; };
 		C8D753A827F7AB66004B4699 /* MainViewStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8D753A727F7AB66004B4699 /* MainViewStoryboard.storyboard */; };
@@ -213,6 +214,13 @@
 		C816506B27F660A200281A8A /* UI */ = {
 			isa = PBXGroup;
 			children = (
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		C86717FD280639110065F17C /* UI */ = {
+			isa = PBXGroup;
+			children = (
 				C816506827F6609B00281A8A /* GifView.swift */,
 				C816506327F65D4700281A8A /* ThumbnailView.swift */,
 			);
@@ -247,12 +255,9 @@
 		C89DE5451F06E636000ABC82 /* BoldyGiffing */ = {
 			isa = PBXGroup;
 			children = (
+				C8ABCE49280638F10001CD71 /* Shared */,
 				C89DE5461F06E636000ABC82 /* Assets.xcassets */,
 				C89DE5481F06E636000ABC82 /* Info.plist */,
-				C8ABCE4628062EBD0001CD71 /* Post.swift */,
-				C816506D27F6614A00281A8A /* Gif.swift */,
-				C8D753B427FCEABE004B4699 /* InfoResponse.swift */,
-				C8D753B627FCF221004B4699 /* ModelLoader.swift */,
 			);
 			path = BoldyGiffing;
 			sourceTree = "<group>";
@@ -275,6 +280,18 @@
 				C8D753AE27F7B12F004B4699 /* MainHostingController.swift */,
 			);
 			path = "BoldyGiffing MessagesExtension";
+			sourceTree = "<group>";
+		};
+		C8ABCE49280638F10001CD71 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				C86717FD280639110065F17C /* UI */,
+				C8ABCE4628062EBD0001CD71 /* Post.swift */,
+				C816506D27F6614A00281A8A /* Gif.swift */,
+				C8D753B427FCEABE004B4699 /* InfoResponse.swift */,
+				C8D753B627FCF221004B4699 /* ModelLoader.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		C8FF84641F3E551400412148 /* Extensions */ = {
@@ -556,6 +573,7 @@
 				C816506927F6609B00281A8A /* GifView.swift in Sources */,
 				C8D753B127F7BFB0004B4699 /* MainViewModel.swift in Sources */,
 				C85BA4CC1F3660310055BA63 /* UIFont + Extensions.swift in Sources */,
+				C8ABCE48280631130001CD71 /* Post.swift in Sources */,
 				C816506C27F660B900281A8A /* ThumbnailView.swift in Sources */,
 				C816506E27F6614F00281A8A /* Gif.swift in Sources */,
 				C85010F91F214A8B00F703A4 /* CharacterPickerView.swift in Sources */,
