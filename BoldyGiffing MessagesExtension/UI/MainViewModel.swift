@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SDWebImage
 
 enum CharacterTag: String {
     case Crusher = "beverly crusher"
@@ -52,26 +53,27 @@ class MainViewModel: ObservableObject {
         NotificationCenter.default.post(name: Notification.Name("insertGif"), object: nil, userInfo: userInfo)
     }
     
+    func pathFor(gif: Gif) -> URL {
+        let path = SDImageCache.shared.cachePath(forKey: gif.fullSizeURL.absoluteString)
+        return URL(fileURLWithPath: path ?? "")
+    }
+    
     func fetchInfo() {
         guard let url = URL(string: baseURL + "info?api_key=\(apiKey)") else { return }
         
-        dataRequest = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-            self?.dataRequest = nil
-            guard
-                let data = data,
-                let json = try? JSONSerialization.jsonObject(with: data) as! [String: Any],
-                let response = json["response"] as? [String: Any],
-                let blog = response["blog"] as? [String: Any],
-                let postCount = blog["posts"] as? Int
-            else {
+        let loader = ModelLoader<InfoResponse>()
+        
+        Task {
+            let result = await loader.loadModel(url: url)
+            switch result {
+            case let .success(response):
+                postCount = response.postCount
+                fetchRandomThumbnails()
+                
+            case let .failure(error):
                 print(error)
-                return
             }
-            
-            self?.postCount = postCount
-            self?.fetchRandomThumbnails()
         }
-        dataRequest?.resume()
     }
     
     func fetchRandomThumbnails() {
@@ -96,29 +98,26 @@ class MainViewModel: ObservableObject {
             dataRequest == nil
         else { return }
         
-        dataRequest = URLSession.shared.dataTask(with: url, completionHandler: { [weak self] data, response, error in
-            self?.dataRequest = nil
-            
-            guard
-                let data = data,
-                let json = try? JSONSerialization.jsonObject(with: data) as! [String: Any],
-                let response = json["response"] as? [String: Any],
-                let postsJson = response["posts"] as? [[String: Any]]
-            else {
+        let loader = ModelLoader<PostResponse>()
+        
+        Task {
+            let result = await loader.loadModel(url: url)
+            switch result {
+            case let .success(response):
+                DispatchQueue.main.async {
+                    var newItems: [Gif] = []
+                    response.posts.forEach { newItems.append(contentsOf: $0.gifs) }
+                    
+                    self.dataSet.append(contentsOf: newItems)
+                    self.offset = offset
+                    self.offset += 21
+                }
+                
+            case let .failure(error):
                 print(error)
-                return
             }
             
-            let posts = postsJson.compactMap(Post.init)
-            var newItems: [Gif] = []
-            posts.forEach { newItems.append(contentsOf: $0.gifs) }
-            DispatchQueue.main.async {
-                self?.dataSet.append(contentsOf: newItems)
-                self?.offset = offset
-                self?.offset += 21
-            }
-        })
-        dataRequest?.resume()
+        }
     }
     
     func fetchThumbnailsWithOffset() {

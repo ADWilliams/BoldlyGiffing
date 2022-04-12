@@ -30,6 +30,7 @@
 		C89DE54E1F06E636000ABC82 /* BoldyGiffing MessagesExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C89DE54D1F06E636000ABC82 /* BoldyGiffing MessagesExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C89DE5531F06E636000ABC82 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C89DE5521F06E636000ABC82 /* Messages.framework */; };
 		C89DE55B1F06E636000ABC82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C89DE55A1F06E636000ABC82 /* Assets.xcassets */; };
+		C8ABCE432804D0520001CD71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8ABCE422804D0520001CD71 /* AppDelegate.swift */; };
 		C8ABCE4728062EBD0001CD71 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8ABCE4628062EBD0001CD71 /* Post.swift */; };
 		C8D753A327F79A4D004B4699 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = C8D753A227F79A4D004B4699 /* SDWebImageSwiftUI */; };
 		C8D753A527F7AAB4004B4699 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D753A427F7AAB4004B4699 /* MainView.swift */; };
@@ -122,6 +123,8 @@
 		C89DE5581F06E636000ABC82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		C89DE55A1F06E636000ABC82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C89DE55C1F06E636000ABC82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C8ABCE422804D0520001CD71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C8ABCE452804D7AB0001CD71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C8ABCE4628062EBD0001CD71 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		C8D753A427F7AAB4004B4699 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		C8D753A727F7AB66004B4699 /* MainViewStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainViewStoryboard.storyboard; sourceTree = "<group>"; };
@@ -170,7 +173,9 @@
 		C816503827F65D1700281A8A /* BoldlyGiffingMac */ = {
 			isa = PBXGroup;
 			children = (
+				C8ABCE452804D7AB0001CD71 /* Info.plist */,
 				C816506B27F660A200281A8A /* UI */,
+				C8ABCE422804D0520001CD71 /* AppDelegate.swift */,
 				C816503927F65D1700281A8A /* BoldlyGiffingMacApp.swift */,
 				C816503B27F65D1700281A8A /* ContentView.swift */,
 				C816503D27F65D1700281A8A /* Assets.xcassets */,
@@ -519,6 +524,7 @@
 				C816506A27F6609B00281A8A /* GifView.swift in Sources */,
 				C816503C27F65D1700281A8A /* ContentView.swift in Sources */,
 				C816503A27F65D1700281A8A /* BoldlyGiffingMacApp.swift in Sources */,
+				C8ABCE432804D0520001CD71 /* AppDelegate.swift in Sources */,
 				C816506F27F6615000281A8A /* Gif.swift in Sources */,
 				C8ABCE4728062EBD0001CD71 /* Post.swift in Sources */,
 			);
@@ -610,6 +616,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BoldlyGiffingMac/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 SweetieApps. All rights reserved.";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -644,6 +651,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BoldlyGiffingMac/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 SweetieApps. All rights reserved.";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

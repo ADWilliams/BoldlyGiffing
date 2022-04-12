@@ -19,5 +19,6 @@ struct MainView: View {
                 viewModel.fetchInfo()
             }
             .environmentObject(viewModel)
+            .animation(.easeIn, value: viewModel.dataSet)
     }
 }

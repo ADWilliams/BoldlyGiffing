@@ -16,12 +16,19 @@ struct ThumbnailView: View {
     private let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
 
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             LazyVGrid(columns: columns) {
                 ForEach(gifs) { gif in
                     GifView(gif: gif)
+                        .onDrag({
+                            if let provider = NSItemProvider(contentsOf: viewModel.pathFor(gif: gif)) {
+                                return provider
+                            } else {
+                                return NSItemProvider(item: nil, typeIdentifier: "com.compuserve.gif")
+                            }
+                        })
                         .onAppear {
-                            if gif == gifs.last {
+                            if gif == gifs[gifs.count - 6] {
                                 viewModel.fetchThumbnailsWithOffset()
                             }
                         }
