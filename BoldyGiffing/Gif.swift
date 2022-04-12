@@ -8,7 +8,11 @@
 
 import Foundation
 
-struct Gif: Equatable, Identifiable {
+enum GifError: Error {
+    case decoding
+}
+
+struct Gif: Decodable, Equatable, Identifiable {
     static func ==(lhs: Gif, rhs: Gif) -> Bool {
         return lhs.fullSizeURL == rhs.fullSizeURL
     }
@@ -16,10 +20,46 @@ struct Gif: Equatable, Identifiable {
     var id: String?
     let fullSizeURL: URL
     var thumbnailURL: URL?
-    let tags: [String]
+    var tags: [String] = []
+    
+    mutating func set(tags: [String]) {
+        self.tags = tags
+    }
+    
+    enum OuterContainer: String, CodingKey {
+        case altSizes = "alt_sizes"
+        case originalSize = "original_size"
+    }
+    
+    enum OriginalSizeContainer: String, CodingKey {
+        case url
+    }
+    
+    init(from decoder: Decoder) throws {
+        let outerContainer = try decoder.container(keyedBy: OuterContainer.self)
+        let originalSizeContainer = try outerContainer.nestedContainer(
+            keyedBy: OriginalSizeContainer.self,
+            forKey: .originalSize
+        )
+        let fullSizeString = try originalSizeContainer.decode(String.self, forKey: .url)
+        
+        guard let fullSizeURL = URL(string: fullSizeString) else {
+            throw GifError.decoding
+        }
+        
+        self.fullSizeURL = fullSizeURL
+        self.id = fullSizeURL.lastPathComponent
+    }
 }
 
 extension Gif {
+    init (id: String, fullSizeURL: URL, thumbnailURL: URL, tags: [String] = []) {
+        self.id = id
+        self.fullSizeURL = fullSizeURL
+        self.thumbnailURL = thumbnailURL
+        self.tags = tags
+    }
+    
     init? (json: [String: Any], tags: [String]) {
         guard
             let altSizes = json["alt_sizes"] as? [[String: Any]],
@@ -77,17 +117,4 @@ extension Gif {
             tags: ["picard"]
         )
     ]
-}
-
-struct Post {
-    let gifs: [Gif]
-
-    init? (json: [String: Any]) {
-        guard
-        let tags = json["tags"] as? [String],
-        let photos = json["photos"] as? [[String: Any]]
-        else { return nil}
-
-        gifs = photos.compactMap { Gif(json: $0, tags: tags) }
-    }
 }
