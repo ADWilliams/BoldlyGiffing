@@ -10,15 +10,15 @@ import Foundation
 import SDWebImage
 
 enum CharacterTag: String {
-    case Crusher = "beverly crusher"
-    case Data = "data"
-    case LaForge = "geordi la forge"
-    case Picard = "jean luc picard"
-    case Riker = "william riker"
-    case Troi = "deanna troi"
-    case Yar = "tasha yar"
-    case Worf = "worf"
-    case All = ""
+    case crusher = "beverly crusher"
+    case data = "data"
+    case laForge = "geordi la forge"
+    case picard = "jean luc picard"
+    case riker = "william riker"
+    case troi = "deanna troi"
+    case yar = "tasha yar"
+    case worf = "worf"
+    case all = ""
 }
 
 class MainViewModel: ObservableObject {
@@ -35,15 +35,13 @@ class MainViewModel: ObservableObject {
     }
     
     @Published private(set) var dataSet: [Gif] = []
-    @Published private(set) var character: CharacterTag = .All
+    @Published var character: CharacterTag = .all {
+        didSet {
+            loadCharacter()
+        }
+    }
     
-    @objc func loadCharacter(notification: Notification) {
-        guard
-        let userInfo = notification.userInfo,
-        let characterTag = userInfo["characterTag"] as? CharacterTag
-        else { return }
-
-        character = characterTag
+    func loadCharacter() {
         dataSet.removeAll()
         fetchThumbnails()
     }
@@ -89,9 +87,9 @@ class MainViewModel: ObservableObject {
     
     func fetchThumbnails(limit: Int = 21, offset: Int = 0) {
         var tagPath: String = ""
-        //        if let characterTag = character.rawValue.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) {
-        //            tagPath = characterTag.isEmpty ? characterTag : "&tag=\(characterTag)"
-        //        }
+        if let characterTag = character.rawValue.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) {
+            tagPath = characterTag.isEmpty ? characterTag : "&tag=\(characterTag)"
+        }
         
         guard
             let url = URL(string: baseURL + "posts/photo?limit=21&offset=\(offset)\(tagPath)&api_key=\(apiKey)"),

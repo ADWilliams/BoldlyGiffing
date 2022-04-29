@@ -21,6 +21,9 @@ struct ContentView: View {
             .onAppear {
                 setupNotificationHandling()
             }
+            .background(
+                Color.black
+            )
     }
     
     private func setupNotificationHandling() {

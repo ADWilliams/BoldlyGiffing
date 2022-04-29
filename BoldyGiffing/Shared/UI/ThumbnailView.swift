@@ -12,40 +12,56 @@ struct ThumbnailView: View {
     @EnvironmentObject var viewModel: MainViewModel
     
     var gifs: [Gif]
-
+    
     private let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
-
+    
     var body: some View {
         ScrollView(showsIndicators: false) {
             LazyVGrid(columns: columns) {
-                ForEach(gifs) { gif in
-                    GifView(gif: gif)
-                        .onDrag({
-                            if let provider = NSItemProvider(contentsOf: viewModel.pathFor(gif: gif)) {
-                                return provider
-                            } else {
-                                return NSItemProvider(item: nil, typeIdentifier: "com.compuserve.gif")
+                Section {
+                    ForEach(gifs) { gif in
+                        GifView(gif: gif)
+                            .onDrag({
+                                if let provider = NSItemProvider(contentsOf: viewModel.pathFor(gif: gif)) {
+                                    return provider
+                                } else {
+                                    return NSItemProvider(item: nil, typeIdentifier: "com.compuserve.gif")
+                                }
+                            })
+                            .onAppear {
+                                if gif == gifs[gifs.count - 6] {
+                                    viewModel.fetchThumbnailsWithOffset()
+                                }
+                                
                             }
-                        })
-                        .onAppear {
-                            if gif == gifs[gifs.count - 6] {
-                                viewModel.fetchThumbnailsWithOffset()
+                            .onTapGesture {
+                                viewModel.gifTapped(key: gif.fullSizeURL.absoluteString)
                             }
-                        }
-                        .onTapGesture {
-                            viewModel.gifTapped(key: gif.fullSizeURL.absoluteString)
-                        }
+
+                    }
+                } header: {
+                    CharacterView(character: $viewModel.character)
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill(Color.black)
+                        )
+                        .padding(.bottom, 8)
                 }
+//                .animation(.easeIn, value: gifs)
             }
-            .animation(.easeIn, value: gifs)
         }
         .frame(maxWidth: .infinity)
+        .background(
+            RoundedRectangle(cornerRadius: 8)
+                .fill(.black)
+            
+        )
     }
 }
 
 struct ThumbnailView_Previews: PreviewProvider {
     static var previews: some View {
         ThumbnailView(gifs: Gif.mockArray)
-            
+        
     }
 }

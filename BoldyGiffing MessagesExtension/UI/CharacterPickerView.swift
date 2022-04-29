@@ -36,28 +36,28 @@ final class CharacterPickerView: UICollectionReusableView {
     }
     
     @IBAction func characterButtonPressed(_ sender: UIButton) {
-        switch sender {
-        case picardButton:
-            load(character: .Picard)
-        case worfButton:
-            load(character: .Worf)
-        case crusherButton:
-            load(character: .Crusher)
-        case rikerButton:
-            load(character: .Riker)
-        case yarButton:
-            load(character: .Yar)
-        case laForgeButton:
-            load(character: .LaForge)
-        case dataButton:
-            load(character: .Data)
-        case troiButton:
-            load(character: .Troi)
-        case allCharactersButton:
-            load(character: .All)
-        default:
-            return
-        }
+//        switch sender {
+//        case picardButton:
+//            load(character: .Picard)
+//        case worfButton:
+//            load(character: .Worf)
+//        case crusherButton:
+//            load(character: .Crusher)
+//        case rikerButton:
+//            load(character: .Riker)
+//        case yarButton:
+//            load(character: .Yar)
+//        case laForgeButton:
+//            load(character: .LaForge)
+//        case dataButton:
+//            load(character: .Data)
+//        case troiButton:
+//            load(character: .Troi)
+//        case allCharactersButton:
+//            load(character: .All)
+//        default:
+//            return
+//        }
     }
     
     required init?(coder aDecoder: NSCoder) {
