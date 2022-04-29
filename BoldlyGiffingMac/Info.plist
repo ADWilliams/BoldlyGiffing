@@ -4,5 +4,9 @@
 <dict>
 	<key>LSUIElement</key>
 	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Helvetica-UltraCompressed.otf</string>
+	</array>
 </dict>
 </plist>

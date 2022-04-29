@@ -11,6 +11,6 @@ import UIKit
 extension UIFont {
 
     class func lcarsFontOfSize(size: CGFloat) -> UIFont {
-        return UIFont(name: "Swiss911BT-UltraCompressed", size: size)!
+        return UIFont(name: "Helvetica-UltraCompressed", size: size)!
     }
 }

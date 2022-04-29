@@ -23,13 +23,17 @@
 		C81CCA8A1F142B7400548B79 /* Int + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81CCA891F142B7400548B79 /* Int + Extensions.swift */; };
 		C8377ADA1F352BDD00936729 /* LcarsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8377AD91F352BDD00936729 /* LcarsButton.swift */; };
 		C85010F91F214A8B00F703A4 /* CharacterPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85010F81F214A8B00F703A4 /* CharacterPickerView.swift */; };
+		C851B01B280F675500AC8B52 /* Helvetica-UltraCompressed.otf in Resources */ = {isa = PBXBuildFile; fileRef = C851B019280F675500AC8B52 /* Helvetica-UltraCompressed.otf */; };
+		C851B02128120F9900AC8B52 /* Helvetica-UltraCompressed.otf in Resources */ = {isa = PBXBuildFile; fileRef = C851B019280F675500AC8B52 /* Helvetica-UltraCompressed.otf */; };
+		C851B02628136D1A00AC8B52 /* Helvetica-UltraCompressed.otf in Resources */ = {isa = PBXBuildFile; fileRef = C851B019280F675500AC8B52 /* Helvetica-UltraCompressed.otf */; };
 		C85BA4CC1F3660310055BA63 /* UIFont + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85BA4CB1F3660310055BA63 /* UIFont + Extensions.swift */; };
-		C85BA4CD1F3662CC0055BA63 /* Swiss911BT-UltraCompressed.otf in Resources */ = {isa = PBXBuildFile; fileRef = C85BA4CA1F365FF90055BA63 /* Swiss911BT-UltraCompressed.otf */; };
 		C87530F71F2136D700197CEC /* CharacterPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C87530F61F2136D700197CEC /* CharacterPickerView.xib */; };
 		C89DE5471F06E636000ABC82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C89DE5461F06E636000ABC82 /* Assets.xcassets */; };
 		C89DE54E1F06E636000ABC82 /* BoldyGiffing MessagesExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C89DE54D1F06E636000ABC82 /* BoldyGiffing MessagesExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C89DE5531F06E636000ABC82 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C89DE5521F06E636000ABC82 /* Messages.framework */; };
 		C89DE55B1F06E636000ABC82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C89DE55A1F06E636000ABC82 /* Assets.xcassets */; };
+		C8A4516328078EA000B8CC2E /* Font+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A4516228078EA000B8CC2E /* Font+Extensions.swift */; };
+		C8A4516428078EA000B8CC2E /* Font+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A4516228078EA000B8CC2E /* Font+Extensions.swift */; };
 		C8ABCE432804D0520001CD71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8ABCE422804D0520001CD71 /* AppDelegate.swift */; };
 		C8ABCE4728062EBD0001CD71 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8ABCE4628062EBD0001CD71 /* Post.swift */; };
 		C8ABCE48280631130001CD71 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8ABCE4628062EBD0001CD71 /* Post.swift */; };
@@ -113,7 +117,7 @@
 		C81CCA891F142B7400548B79 /* Int + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int + Extensions.swift"; sourceTree = "<group>"; };
 		C8377AD91F352BDD00936729 /* LcarsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LcarsButton.swift; sourceTree = "<group>"; };
 		C85010F81F214A8B00F703A4 /* CharacterPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterPickerView.swift; sourceTree = "<group>"; };
-		C85BA4CA1F365FF90055BA63 /* Swiss911BT-UltraCompressed.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Swiss911BT-UltraCompressed.otf"; sourceTree = "<group>"; };
+		C851B019280F675500AC8B52 /* Helvetica-UltraCompressed.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica-UltraCompressed.otf"; sourceTree = "<group>"; };
 		C85BA4CB1F3660310055BA63 /* UIFont + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extensions.swift"; sourceTree = "<group>"; };
 		C87530F61F2136D700197CEC /* CharacterPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterPickerView.xib; sourceTree = "<group>"; };
 		C89DE5431F06E636000ABC82 /* BoldyGiffing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoldyGiffing.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +128,7 @@
 		C89DE5581F06E636000ABC82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		C89DE55A1F06E636000ABC82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C89DE55C1F06E636000ABC82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C8A4516228078EA000B8CC2E /* Font+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extensions.swift"; sourceTree = "<group>"; };
 		C8ABCE422804D0520001CD71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C8ABCE452804D7AB0001CD71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C8ABCE4628062EBD0001CD71 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -257,6 +262,7 @@
 			children = (
 				C8ABCE49280638F10001CD71 /* Shared */,
 				C89DE5461F06E636000ABC82 /* Assets.xcassets */,
+				C851B019280F675500AC8B52 /* Helvetica-UltraCompressed.otf */,
 				C89DE5481F06E636000ABC82 /* Info.plist */,
 			);
 			path = BoldyGiffing;
@@ -285,11 +291,13 @@
 		C8ABCE49280638F10001CD71 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				C851B022281362EB00AC8B52 /* Extensions */,
 				C86717FD280639110065F17C /* UI */,
 				C8ABCE4628062EBD0001CD71 /* Post.swift */,
 				C816506D27F6614A00281A8A /* Gif.swift */,
 				C8D753B427FCEABE004B4699 /* InfoResponse.swift */,
 				C8D753B627FCF221004B4699 /* ModelLoader.swift */,
+				C8A4516228078EA000B8CC2E /* Font+Extensions.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -490,6 +498,7 @@
 			files = (
 				C816504127F65D1700281A8A /* Preview Assets.xcassets in Resources */,
 				C816503E27F65D1700281A8A /* Assets.xcassets in Resources */,
+				C851B01B280F675500AC8B52 /* Helvetica-UltraCompressed.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,6 +521,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C89DE5471F06E636000ABC82 /* Assets.xcassets in Resources */,
+				C851B02128120F9900AC8B52 /* Helvetica-UltraCompressed.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,8 +529,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C851B02628136D1A00AC8B52 /* Helvetica-UltraCompressed.otf in Resources */,
 				C8FF84681F3E778200412148 /* MainInterface.storyboard in Resources */,
-				C85BA4CD1F3662CC0055BA63 /* Swiss911BT-UltraCompressed.otf in Resources */,
 				C8D753A827F7AB66004B4699 /* MainViewStoryboard.storyboard in Resources */,
 				C89DE55B1F06E636000ABC82 /* Assets.xcassets in Resources */,
 				C87530F71F2136D700197CEC /* CharacterPickerView.xib in Resources */,
@@ -542,6 +552,7 @@
 				C816503C27F65D1700281A8A /* ContentView.swift in Sources */,
 				C816503A27F65D1700281A8A /* BoldlyGiffingMacApp.swift in Sources */,
 				C8ABCE432804D0520001CD71 /* AppDelegate.swift in Sources */,
+				C8A4516428078EA000B8CC2E /* Font+Extensions.swift in Sources */,
 				C816506F27F6615000281A8A /* Gif.swift in Sources */,
 				C8ABCE4728062EBD0001CD71 /* Post.swift in Sources */,
 			);
@@ -568,6 +579,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8A4516328078EA000B8CC2E /* Font+Extensions.swift in Sources */,
 				C8D753AF27F7B12F004B4699 /* MainHostingController.swift in Sources */,
 				C8D753A527F7AAB4004B4699 /* MainView.swift in Sources */,
 				C816506927F6609B00281A8A /* GifView.swift in Sources */,
