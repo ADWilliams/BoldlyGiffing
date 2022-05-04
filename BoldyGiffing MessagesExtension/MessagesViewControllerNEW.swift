@@ -31,11 +31,13 @@ class MessagesViewControllerNEW: MSMessagesAppViewController {
         let cachePath =  SDImageCache.shared.cachePath(forKey: cacheKey)
         let url = URL(fileURLWithPath: cachePath ?? "")
         
-        let filename = UUID().uuidString + ".gif"
+        let filename = url.lastPathComponent
         var tempUrl = URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true)
         tempUrl.appendPathComponent(filename)
         // Only insert the image once it is cached and reachable
         do {
+            let exists = try url.checkResourceIsReachable()
+            print("exists: \(exists)")
             try FileManager.default.copyItem(at: url, to: tempUrl)
             
             _ = try tempUrl.checkResourceIsReachable()

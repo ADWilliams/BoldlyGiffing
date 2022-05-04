@@ -12,6 +12,12 @@ enum GifError: Error {
     case decoding
 }
 
+struct GifAltSize: Decodable, Equatable {
+    let url: String
+    let width: Int
+    let height: Int
+}
+
 struct Gif: Decodable, Equatable, Identifiable {
     static func ==(lhs: Gif, rhs: Gif) -> Bool {
         return lhs.fullSizeURL == rhs.fullSizeURL
@@ -42,13 +48,14 @@ struct Gif: Decodable, Equatable, Identifiable {
             forKey: .originalSize
         )
         let fullSizeString = try originalSizeContainer.decode(String.self, forKey: .url)
-        
+        let altSizes = try outerContainer.decode([GifAltSize].self, forKey: .altSizes)
         guard let fullSizeURL = URL(string: fullSizeString) else {
             throw GifError.decoding
         }
         
         self.fullSizeURL = fullSizeURL
         self.id = fullSizeURL.lastPathComponent
+        self.thumbnailURL = URL(string: altSizes.first(where: { $0.width == 250 })?.url ?? "")
     }
 }
 
