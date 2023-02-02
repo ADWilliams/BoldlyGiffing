@@ -18,6 +18,11 @@ enum CharacterTag: String {
     case troi = "deanna troi"
     case yar = "tasha yar"
     case worf = "worf"
+    case wesley = "wesley crusher"
+    case obrien = "miles o'brien"
+    case enterprise = "enterprise d"
+    case q = "q"
+    case barclay = "reginald barclay"
     case all = ""
 }
 
@@ -43,7 +48,11 @@ class MainViewModel: ObservableObject {
     
     func loadCharacter() {
         dataSet.removeAll()
-        fetchThumbnails()
+        if character == .all {
+            fetchRandomThumbnails()
+        } else {
+            fetchThumbnails()
+        }
     }
     
     func gifTapped(key: String) {
