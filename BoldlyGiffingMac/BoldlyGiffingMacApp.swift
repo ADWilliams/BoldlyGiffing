@@ -15,7 +15,7 @@ struct BoldlyGiffingMacApp: App {
     private var appDelegate
     
     var body: some Scene {
-        WindowGroup {
+        Settings {
             EmptyView()
                 .frame(width: .zero)
         }
