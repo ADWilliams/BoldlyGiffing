@@ -8,6 +8,27 @@
 
 import SwiftUI
 
+struct ResultsHeader: View {
+    var body: some View {
+        HStack(spacing: 4) {
+            LCARSCapsule(.leftEndCap)
+                .fill(LCARSColor.lightBlue)
+                .frame(width: 35)
+            Rectangle()
+                .fill(LCARSColor.gold)
+            
+            Text("Query Results")
+                .font(.LCARS(size: 22))
+                .foregroundColor(LCARSColor.orange)
+                .textCase(.uppercase)
+            
+            LCARSCapsule(.rightEndCap)
+                .fill(LCARSColor.lightBlue)
+                .frame(width: 35)
+        }
+    }
+}
+
 struct CharacterView: View {
     @State private var isAnimating: Bool = false
     @Binding var character: CharacterTag
@@ -41,15 +62,29 @@ struct CharacterView: View {
             HStack(spacing: 4) {
                 Button("Deanna Troi", action: { character = .troi })
                     .buttonStyle(CharacterButton(capsuleType: .leftEndCap, color: LCARSColor.almond))
-                Button("Tasha Yar", action: { character = .yar })
+                Button("Miles O'Brien", action: { character = .obrien })
                     .buttonStyle(CharacterButton(capsuleType: .none, color: LCARSColor.gold))
-                Button("Random", action: { character = .all })
+                Button("Wesley Crusher", action: { character = .wesley })
                     .buttonStyle(CharacterButton(capsuleType: .rightEndCap, color: LCARSColor.tomato))
             }
             .frame(maxHeight: 65)
+            
+            HStack(spacing: 4) {
+                Button("Tasha Yar", action: { character = .yar })
+                    .buttonStyle(CharacterButton(capsuleType: .leftEndCap, color: LCARSColor.almond))
+                Button("Enterprise", action: { character = .enterprise})
+                    .buttonStyle(CharacterButton(capsuleType: .none, color: LCARSColor.lightBlue))
+                Button("Q", action: { character = .q})
+                    .buttonStyle(CharacterButton(capsuleType: .none, color: LCARSColor.lightBlue))
+//                Button("Reginald Barclay", action: { character = .barclay})
+//                    .buttonStyle(CharacterButton(capsuleType: .none, color: LCARSColor.lightBlue))
+                Button("Random", action: { character = .all })
+                    .buttonStyle(CharacterButton(capsuleType: .rightEndCap, color: LCARSColor.tomato))
+            }
+            .frame(maxHeight: 35)
             //                    .animation(.linear(duration: 0.1).delay(0.8).repeatForever(autoreverses: true), value: isAnimating)
         }
-        .padding(.vertical, 30)
+        .padding(.top, 30)
         .padding(.leading, 40)
         .overlay {
             VStack(alignment: .leading) {
@@ -60,23 +95,6 @@ struct CharacterView: View {
                 Rectangle()
                     .fill(LCARSColor.lightBlue)
                     .frame(width: 35)
-                HStack(spacing: 4) {
-                    LCARSCapsule(.leftEndCap)
-                        .fill(LCARSColor.lightBlue)
-                        .frame(width: 35)
-                    Rectangle()
-                        .fill(LCARSColor.gold)
-                    
-                    Text("Query Results")
-                        .font(.LCARS(size: 22))
-                        .foregroundColor(LCARSColor.orange)
-                        .textCase(.uppercase)
-                    
-                    LCARSCapsule(.rightEndCap)
-                        .fill(LCARSColor.lightBlue)
-                        .frame(width: 35)
-                }
-                .frame(height: 20)
             }
         }
         

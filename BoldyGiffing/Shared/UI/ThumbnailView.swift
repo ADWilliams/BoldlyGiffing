@@ -17,37 +17,50 @@ struct ThumbnailView: View {
     
     var body: some View {
         ScrollView(showsIndicators: false) {
-            LazyVGrid(columns: columns) {
-                Section {
-                    ForEach(gifs) { gif in
-                        GifView(gif: gif)
-                            .onDrag({
-                                if let provider = NSItemProvider(contentsOf: viewModel.pathFor(gif: gif)) {
-                                    return provider
-                                } else {
-                                    return NSItemProvider(item: nil, typeIdentifier: "com.compuserve.gif")
-                                }
-                            })
-                            .onAppear {
-                                if gif == gifs[gifs.count - 6] {
-                                    viewModel.fetchThumbnailsWithOffset()
-                                }
-                                
-                            }
-                            .onTapGesture {
-                                viewModel.gifTapped(key: gif.fullSizeURL.absoluteString)
-                            }
-
+            ScrollViewReader { proxy in
+                LazyVGrid(columns: columns, pinnedViews: .sectionHeaders) {
+                    Section {
+                        // Intentionally left blank
+                    } footer: {
+                        CharacterView(character: $viewModel.character)
+                            .id("CharacterPicker")
                     }
-                } header: {
-                    CharacterView(character: $viewModel.character)
-                        .background(
-                            RoundedRectangle(cornerRadius: 8)
-                                .fill(Color.black)
-                        )
-                        .padding(.bottom, 8)
+                    Section {
+                        ForEach(gifs) { gif in
+                            GifView(gif: gif)
+                                .onDrag({
+                                    if let provider = NSItemProvider(contentsOf: viewModel.pathFor(gif: gif)) {
+                                        return provider
+                                    } else {
+                                        return NSItemProvider(item: nil, typeIdentifier: "com.compuserve.gif")
+                                    }
+                                })
+                                .onAppear {
+                                    if gif == gifs[gifs.count - 6] {
+                                        viewModel.fetchThumbnailsWithOffset()
+                                    }
+                                    
+                                }
+                                .onTapGesture {
+                                    viewModel.gifTapped(key: gif.fullSizeURL.absoluteString)
+                                }
+                            
+                        }
+                    } header: {
+                        ResultsHeader()
+                            .onTapGesture {
+                                withAnimation {
+                                    proxy.scrollTo("CharacterPicker")
+                                }
+                            }
+                            .frame(height: 20)
+                            .background(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .fill(Color.black)
+                            )
+                            .padding(.bottom, 8)
+                    }
                 }
-//                .animation(.easeIn, value: gifs)
             }
         }
         .frame(maxWidth: .infinity)
