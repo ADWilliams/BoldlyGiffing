@@ -10,14 +10,12 @@ import SwiftUI
 
 @main
 struct BoldlyGiffingMacApp: App {
-
-    @NSApplicationDelegateAdaptor(AppDelegate.self)
-    private var appDelegate
     
     var body: some Scene {
-        Settings {
-            EmptyView()
-                .frame(width: .zero)
+        MenuBarExtra("Trek", image: "badge") {
+            ContentView()
+                .frame(width: 450, height: 600)
         }
+        .menuBarExtraStyle(.window)
     }
 }
