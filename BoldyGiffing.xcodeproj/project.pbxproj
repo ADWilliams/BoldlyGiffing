@@ -46,7 +46,6 @@
 		C8A4516428078EA000B8CC2E /* Font+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A4516228078EA000B8CC2E /* Font+Extensions.swift */; };
 		C8A4516528078FF900B8CC2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C89DE5461F06E636000ABC82 /* Assets.xcassets */; };
 		C8A4516628078FFA00B8CC2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C89DE5461F06E636000ABC82 /* Assets.xcassets */; };
-		C8ABCE432804D0520001CD71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8ABCE422804D0520001CD71 /* AppDelegate.swift */; };
 		C8ABCE4728062EBD0001CD71 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8ABCE4628062EBD0001CD71 /* Post.swift */; };
 		C8ABCE48280631130001CD71 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8ABCE4628062EBD0001CD71 /* Post.swift */; };
 		C8D753A327F79A4D004B4699 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = C8D753A227F79A4D004B4699 /* SDWebImageSwiftUI */; };
@@ -145,7 +144,6 @@
 		C8A45159280643DC00B8CC2E /* LCARSCapsule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCARSCapsule.swift; sourceTree = "<group>"; };
 		C8A4515E28078D2000B8CC2E /* CharacterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterView.swift; sourceTree = "<group>"; };
 		C8A4516228078EA000B8CC2E /* Font+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extensions.swift"; sourceTree = "<group>"; };
-		C8ABCE422804D0520001CD71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C8ABCE452804D7AB0001CD71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C8ABCE4628062EBD0001CD71 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		C8D753A427F7AAB4004B4699 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -199,7 +197,6 @@
 			children = (
 				C8ABCE452804D7AB0001CD71 /* Info.plist */,
 				C816506B27F660A200281A8A /* UI */,
-				C8ABCE422804D0520001CD71 /* AppDelegate.swift */,
 				C816503927F65D1700281A8A /* BoldlyGiffingMacApp.swift */,
 				C816503B27F65D1700281A8A /* ContentView.swift */,
 				C816503D27F65D1700281A8A /* Assets.xcassets */,
@@ -587,7 +584,6 @@
 				C8A4516028078D2000B8CC2E /* CharacterView.swift in Sources */,
 				C816503C27F65D1700281A8A /* ContentView.swift in Sources */,
 				C816503A27F65D1700281A8A /* BoldlyGiffingMacApp.swift in Sources */,
-				C8ABCE432804D0520001CD71 /* AppDelegate.swift in Sources */,
 				C8A4516428078EA000B8CC2E /* Font+Extensions.swift in Sources */,
 				C851B0252813646200AC8B52 /* Color+LCARS.swift in Sources */,
 				C816506F27F6615000281A8A /* Gif.swift in Sources */,
@@ -694,7 +690,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.2;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -729,7 +725,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.2;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SweetSoftware.BoldlyGiffingMac;
