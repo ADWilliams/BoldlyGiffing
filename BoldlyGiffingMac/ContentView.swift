@@ -24,6 +24,21 @@ struct ContentView: View {
             .background(
                 Color.black
             )
+            .overlay(alignment: .bottom) {
+                BottomBar()
+                    .background(
+                        LinearGradient(
+                            stops: [
+                                Gradient.Stop(color: .black.opacity(0.01), location: 0),
+                                Gradient.Stop(color: .black, location: 0.3)
+                            ],
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                        .frame(height: 30)
+                    )
+                    .padding(.horizontal, 8)
+            }
     }
     
     private func setupNotificationHandling() {

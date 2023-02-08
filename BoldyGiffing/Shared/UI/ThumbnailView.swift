@@ -55,12 +55,20 @@ struct ThumbnailView: View {
                             }
                             .frame(height: 20)
                             .background(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .fill(Color.black)
+                                   LinearGradient(
+                                    stops: [
+                                        Gradient.Stop(color: .clear, location: 0),
+                                        Gradient.Stop(color: .black, location: 0.3)
+                                    ],
+                                    startPoint: .bottom,
+                                    endPoint: .top
+                                   )
+                                   .frame(height: 30)
                             )
                             .padding(.bottom, 8)
                     }
                 }
+                .padding(.bottom, 30)
             }
         }
         .frame(maxWidth: .infinity)
