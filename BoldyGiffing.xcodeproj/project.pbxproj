@@ -33,7 +33,7 @@
 		C851B02628136D1A00AC8B52 /* Helvetica-UltraCompressed.otf in Resources */ = {isa = PBXBuildFile; fileRef = C851B019280F675500AC8B52 /* Helvetica-UltraCompressed.otf */; };
 		C85BA4CC1F3660310055BA63 /* UIFont + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85BA4CB1F3660310055BA63 /* UIFont + Extensions.swift */; };
 		C87530F71F2136D700197CEC /* CharacterPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C87530F61F2136D700197CEC /* CharacterPickerView.xib */; };
-		C881698929930BC700813F7C /* BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C881698829930BC700813F7C /* BottomBar.swift */; };
+		C881698929930BC700813F7C /* ExitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C881698829930BC700813F7C /* ExitButton.swift */; };
 		C89DE5471F06E636000ABC82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C89DE5461F06E636000ABC82 /* Assets.xcassets */; };
 		C89DE54E1F06E636000ABC82 /* BoldyGiffing MessagesExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C89DE54D1F06E636000ABC82 /* BoldyGiffing MessagesExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C89DE5531F06E636000ABC82 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C89DE5521F06E636000ABC82 /* Messages.framework */; };
@@ -134,7 +134,7 @@
 		C851B023281362F900AC8B52 /* Color+LCARS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+LCARS.swift"; sourceTree = "<group>"; };
 		C85BA4CB1F3660310055BA63 /* UIFont + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extensions.swift"; sourceTree = "<group>"; };
 		C87530F61F2136D700197CEC /* CharacterPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterPickerView.xib; sourceTree = "<group>"; };
-		C881698829930BC700813F7C /* BottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBar.swift; sourceTree = "<group>"; };
+		C881698829930BC700813F7C /* ExitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitButton.swift; sourceTree = "<group>"; };
 		C89DE5431F06E636000ABC82 /* BoldyGiffing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoldyGiffing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C89DE5461F06E636000ABC82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C89DE5481F06E636000ABC82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -236,7 +236,7 @@
 		C816506B27F660A200281A8A /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				C881698829930BC700813F7C /* BottomBar.swift */,
+				C881698829930BC700813F7C /* ExitButton.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -589,7 +589,7 @@
 				C816503A27F65D1700281A8A /* BoldlyGiffingMacApp.swift in Sources */,
 				C8A4516428078EA000B8CC2E /* Font+Extensions.swift in Sources */,
 				C851B0252813646200AC8B52 /* Color+LCARS.swift in Sources */,
-				C881698929930BC700813F7C /* BottomBar.swift in Sources */,
+				C881698929930BC700813F7C /* ExitButton.swift in Sources */,
 				C816506F27F6615000281A8A /* Gif.swift in Sources */,
 				C8ABCE4728062EBD0001CD71 /* Post.swift in Sources */,
 				C851B01E280F723000AC8B52 /* LCARSCurve.swift in Sources */,
