@@ -10,8 +10,19 @@ import SwiftUI
 
 
 struct ExitButton: View {
+    @Binding var activated: Bool
+    
     @State private var isExpanded = false
     @State private var iconVisible = true
+    
+    init(activated: Binding<Bool>,
+         timer: Timer? = nil,
+         iconAnimationDuration: Double = 0.2
+    ) {
+        self._activated = activated
+        self.timer = timer
+        self.iconAnimationDuration = iconAnimationDuration
+    }
     
     private var timer: Timer?
     private var iconAnimationDuration = 0.2
@@ -23,6 +34,7 @@ struct ExitButton: View {
             } else {
                 withAnimation(.linear(duration: iconAnimationDuration)) {
                     iconVisible = false
+                    activated = true
                 }
                 
                 withAnimation(.easeOut.delay(iconAnimationDuration)) {
@@ -37,6 +49,7 @@ struct ExitButton: View {
                         }
                         withAnimation(.default.delay(0.2)) {
                             iconVisible = true
+                            activated = false
                         }
                         timer.invalidate()
                     }
@@ -57,23 +70,20 @@ struct ExitButton: View {
                         .padding(.horizontal, 4)
                         .transition(.move(edge: .leading))
                         .zIndex(-1)
-                        .clipped()
                 }
- 
-                LCARSCapsule(.rightEndCap)
-                    .fill(isExpanded ? LCARSColor.red : LCARSColor.lightBlue)
-                    .frame(width: 35)
             }
-            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .clipShape(LCARSCapsule(.leftEndCap))
             .overlay {
                 if iconVisible {
                     Image(systemName: "xmark")
                         .foregroundStyle(.black)
                         .imageScale(.large)
                         .fontWeight(.semibold)
+                        .offset(x: 2)
                 }
             }
         }
+        .fixedSize(horizontal: true, vertical: false)
         .buttonStyle(.plain)
         .frame(height: 20)
         .background {
@@ -83,8 +93,15 @@ struct ExitButton: View {
     }
 }
 
-struct BottomBar_Previews: PreviewProvider {
+struct BindingExitButton_Previews: View {
+    @State var activated = false
+    var body: some View {
+            ExitButton(activated: $activated)
+    }
+}
+
+struct ExitButton_Previews: PreviewProvider {
     static var previews: some View {
-        ExitButton()
+        BindingExitButton_Previews()
     }
 }

@@ -24,11 +24,6 @@ struct ContentView: View {
             .background(
                 Color.black
             )
-            .overlay(alignment: .bottomLeading) {
-                ExitButton()
-                    .padding(.horizontal, 4)
-                    .padding(.bottom, 4)
-            }
     }
     
     private func setupNotificationHandling() {

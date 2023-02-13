@@ -9,21 +9,34 @@
 import SwiftUI
 
 struct ResultsHeader: View {
+    @State private var isExiting = false
+
     var body: some View {
         HStack(spacing: 4) {
+
+#if os(macOS)
+            
+            ExitButton(activated: $isExiting)
+#else
+    
             LCARSCapsule(.leftEndCap)
                 .fill(LCARSColor.lightBlue)
                 .frame(width: 35)
-            Rectangle()
-                .fill(LCARSColor.gold)
+#endif
             
-            Text("Query Results")
-                .font(.LCARS(size: 22))
-                .foregroundColor(LCARSColor.orange)
-                .textCase(.uppercase)
+            Rectangle()
+                .fill( isExiting ? LCARSColor.red : LCARSColor.gold)
+            
+            if !isExiting {
+                Text("Query Results")
+                    .font(.LCARS(size: 22))
+                    .foregroundColor(LCARSColor.orange)
+                    .textCase(.uppercase)
+                    .offset(y: 1)
+            }
             
             LCARSCapsule(.rightEndCap)
-                .fill(LCARSColor.lightBlue)
+                .fill( isExiting ? LCARSColor.red : LCARSColor.gold)
                 .frame(width: 35)
         }
     }
