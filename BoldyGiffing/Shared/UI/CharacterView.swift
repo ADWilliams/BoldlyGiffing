@@ -89,13 +89,13 @@ struct CharacterView: View {
                     .buttonStyle(CharacterButton(capsuleType: .none, color: LCARSColor.lightBlue))
                 Button("Q", action: { character = .q})
                     .buttonStyle(CharacterButton(capsuleType: .none, color: LCARSColor.lightBlue))
+                // Uncomment for 🥦
 //                Button("Reginald Barclay", action: { character = .barclay})
 //                    .buttonStyle(CharacterButton(capsuleType: .none, color: LCARSColor.lightBlue))
                 Button("Random", action: { character = .all })
                     .buttonStyle(CharacterButton(capsuleType: .rightEndCap, color: LCARSColor.tomato))
             }
             .frame(maxHeight: 35)
-            //                    .animation(.linear(duration: 0.1).delay(0.8).repeatForever(autoreverses: true), value: isAnimating)
         }
         .padding(.top, 30)
         .padding(.leading, 40)
@@ -110,8 +110,6 @@ struct CharacterView: View {
                     .frame(width: 35)
             }
         }
-        
-        .padding(4)
         .onAppear {
             withAnimation {
                 isAnimating = true
@@ -126,6 +124,7 @@ struct CharacterButton: ButtonStyle {
     
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
+            .contentShape(Rectangle())
             .multilineTextAlignment(.trailing)
             .font(.LCARS(size: 22))
             .minimumScaleFactor(0.8)
@@ -138,7 +137,6 @@ struct CharacterButton: ButtonStyle {
                 LCARSCapsule(capsuleType)
                     .fill(color)
             )
-            .contentShape(Rectangle())
             .opacity(configuration.isPressed ? 0.4 : 1)
     }
 }
