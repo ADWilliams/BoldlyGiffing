@@ -33,18 +33,25 @@ struct Post: Decodable {
     enum CodingKeys: String, CodingKey {
         case tags
         case gifs = "photos"
+        case newFormat = "should_open_in_legacy"
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        let tags = try container.decode([String].self, forKey: .tags)
-        let gifs = try container.decode([Gif].self, forKey: .gifs)
+        let newFormat = try !container.decode(Bool.self, forKey: .newFormat)
         
+        let tags = try container.decode([String].self, forKey: .tags)
         self.tags = tags
-        self.gifs = gifs.map { gif -> Gif in
-            var returnValue = gif
-            returnValue.set(tags: tags)
-            return returnValue
+        
+        if newFormat {
+                gifs = []
+        } else {
+            let gifs = try container.decode([Gif].self, forKey: .gifs)
+            self.gifs = gifs.map { gif -> Gif in
+                var returnValue = gif
+                returnValue.set(tags: tags)
+                return returnValue
+            }
         }
     }
 }
