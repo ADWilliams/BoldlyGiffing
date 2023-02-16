@@ -18,34 +18,9 @@ struct ContentView: View {
                 viewModel.fetchInfo()
             }
             .environmentObject(viewModel)
-            .onAppear {
-                setupNotificationHandling()
-            }
             .background(
                 Color.black
             )
-    }
-    
-    private func setupNotificationHandling() {
-        NotificationCenter.default.addObserver(forName: Notification.Name("insertGif"), object: nil, queue: nil) { notification in
-            if let key = notification.userInfo?["key"] as? String,
-               let path = SDImageCache.shared.cachePath(forKey: key) {
-                let url = URL(fileURLWithPath: path)
-                copyGif(url: url)
-            }
-        }
-    }
-    
-    private func copyGif(url: URL) {
-        let pasteboard = NSPasteboard.general
-        pasteboard.declareTypes([.fileContents], owner: nil)
-        do {
-            let data = try Data(contentsOf: url)
-            pasteboard.setData(data, forType: NSPasteboard.PasteboardType(rawValue: "com.compuserve.gif"))
-        }
-        catch {
-            print(error)
-        }
     }
 }
 

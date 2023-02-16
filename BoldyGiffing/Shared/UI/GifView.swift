@@ -24,28 +24,9 @@ struct GifView: View {
                 .opacity(progress)
                 .cornerRadius(4)
                 .scaledToFill()
-                .onTapGesture {
-                    loadFullSize()
-                }
     }
     
-    private func loadFullSize() {
-        SDWebImageManager.shared.loadImage(with: gif.fullSizeURL,
-                                           options: .waitStoreCache) { recieved, size, _ in
-            withAnimation {
-                progress = 1.0 - Double(recieved / size)
-                print(progress)
-            }
-        } completed: { _, _, error, _, _, _ in
-            if let error = error {
-                print(error)
-            } else {
-                let userInfo = ["key" : gif.fullSizeURL.absoluteString]
-                NotificationCenter.default.post(name: Notification.Name("insertGif"), object: nil, userInfo: userInfo)
-            }
-            progress = 1
-        }
-    }
+
 }
 
 struct GifView_Previews: PreviewProvider {
