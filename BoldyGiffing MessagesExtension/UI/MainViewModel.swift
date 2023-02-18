@@ -8,6 +8,7 @@
 
 import Foundation
 import SDWebImage
+import SwiftUI
 
 enum CharacterTag: String {
     case crusher = "beverly crusher"
@@ -46,7 +47,8 @@ class MainViewModel: ObservableObject {
         }
     }
     
-    @Published var gifCopied: Gif?
+    @Published var selectedGif: Gif?
+    @Published var downloadProgress: Int = 0
     
     func loadCharacter() {
         dataSet.removeAll()
@@ -58,6 +60,7 @@ class MainViewModel: ObservableObject {
     }
     
     func gifTapped(_ gif: Gif) {
+        selectedGif = gif
         loadFullSize(gif: gif)
     }
     
@@ -87,11 +90,18 @@ class MainViewModel: ObservableObject {
     private func loadFullSize(gif: Gif) {
         SDWebImageManager.shared.loadImage(with: gif.fullSizeURL,
                                            options: .waitStoreCache) { recieved, size, _ in
+            let progress = (Double(recieved) / Double(size) * 100)
+            print(progress)
+            DispatchQueue.main.async {
+                self.downloadProgress = Int(progress)
+                
+            }
         } completed: { _, _, error, _, _, _ in
             if let error = error {
                 print(error)
             } else {
 #if os(macOS)
+                self.downloadProgress = 100
                 self.copyGif(gif: gif)
 #else
                 let userInfo = ["key" : gif.fullSizeURL.absoluteString]
@@ -110,8 +120,12 @@ class MainViewModel: ObservableObject {
                 
                 let data = try Data(contentsOf: url)
                 if  pasteboard.setData(data, forType: NSPasteboard.PasteboardType(rawValue: "com.compuserve.gif")) {
-                    gifCopied = gif
                     print("✅ gif copied")
+                    
+                    withAnimation(.default.delay(1)) {
+                        selectedGif = nil
+                        downloadProgress = 0
+                    }
                 }
             }
         }

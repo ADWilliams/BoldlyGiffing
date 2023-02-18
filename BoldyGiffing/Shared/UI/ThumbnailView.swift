@@ -27,24 +27,34 @@ struct ThumbnailView: View {
                     }
                     Section {
                         ForEach(gifs) { gif in
-                            GifView(gif: gif)
-                                .onDrag({
-                                    if let provider = NSItemProvider(contentsOf: viewModel.pathFor(gif: gif)) {
-                                        return provider
-                                    } else {
-                                        return NSItemProvider(item: nil, typeIdentifier: "com.compuserve.gif")
-                                    }
-                                })
-                                .onAppear {
-                                    if gif == gifs[gifs.count - 6] {
-                                        viewModel.fetchThumbnailsWithOffset()
-                                    }
-                                    
+                            Button {
+                                viewModel.gifTapped(gif)
+                            } label: {
+                                GifView(gif: gif)
+                                    .onDrag({
+                                        if let provider = NSItemProvider(contentsOf: viewModel.pathFor(gif: gif)) {
+                                            return provider
+                                        } else {
+                                            return NSItemProvider(item: nil, typeIdentifier: "com.compuserve.gif")
+                                        }
+                                    })
+                                
+                            }
+                            .buttonStyle(.plain)
+                            .overlay {
+                                if viewModel.selectedGif == gif {
+                                    let text = viewModel.downloadProgress < 100 ? "\(viewModel.downloadProgress)" : "Copied"
+                                    Text(text)
+                                        .font(.LCARS(size: 22))
+                                        .shadow(radius: 1)
                                 }
-                                .onTapGesture {
-                                    viewModel.gifTapped(key: gif.fullSizeURL.absoluteString)
+                            }
+                            .onAppear {
+                                if gif == gifs[gifs.count - 6] {
+                                    viewModel.fetchThumbnailsWithOffset()
                                 }
-                            
+                                
+                            }
                         }
                     } header: {
                         ResultsHeader()
@@ -55,15 +65,15 @@ struct ThumbnailView: View {
                             }
                             .frame(height: 20)
                             .background(
-                                   LinearGradient(
+                                LinearGradient(
                                     stops: [
                                         Gradient.Stop(color: .clear, location: 0),
                                         Gradient.Stop(color: .black, location: 0.3)
                                     ],
                                     startPoint: .bottom,
                                     endPoint: .top
-                                   )
-                                   .frame(height: 30)
+                                )
+                                .frame(height: 30)
                             )
                             .padding(.bottom, 8)
                     }
