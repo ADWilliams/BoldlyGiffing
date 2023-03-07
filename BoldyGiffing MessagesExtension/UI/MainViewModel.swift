@@ -61,7 +61,14 @@ class MainViewModel: ObservableObject {
     
     func gifTapped(_ gif: Gif) {
         selectedGif = gif
-        loadFullSize(gif: gif)
+        loadFullSize(gif: gif) { completed in
+#if os(macOS)
+            self.copyGif(gif: gif)
+#else
+            let userInfo = ["key" : gif.fullSizeURL.absoluteString]
+            NotificationCenter.default.post(name: Notification.Name("insertGif"), object: nil, userInfo: userInfo)
+#endif
+        }
     }
     
     func pathFor(gif: Gif) -> URL {
@@ -87,7 +94,7 @@ class MainViewModel: ObservableObject {
         }
     }
     
-    private func loadFullSize(gif: Gif) {
+    func loadFullSize(gif: Gif, completion: @escaping ((Bool) -> Void)) {
         SDWebImageManager.shared.loadImage(with: gif.fullSizeURL,
                                            options: .waitStoreCache) { recieved, size, _ in
             let progress = (Double(recieved) / Double(size) * 100)
@@ -99,17 +106,14 @@ class MainViewModel: ObservableObject {
         } completed: { _, _, error, _, _, _ in
             if let error = error {
                 print(error)
+                completion(false)
             } else {
-#if os(macOS)
                 self.downloadProgress = 100
-                self.copyGif(gif: gif)
-#else
-                let userInfo = ["key" : gif.fullSizeURL.absoluteString]
-                NotificationCenter.default.post(name: Notification.Name("insertGif"), object: nil, userInfo: userInfo)
-#endif
+                completion(true)
             }
         }
     }
+    
 #if os(macOS)
     private func copyGif(gif: Gif) {
         let pasteboard = NSPasteboard.general
