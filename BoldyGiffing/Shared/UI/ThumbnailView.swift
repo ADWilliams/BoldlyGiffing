@@ -31,14 +31,7 @@ struct ThumbnailView: View {
                                 viewModel.gifTapped(gif)
                             } label: {
                                 GifView(gif: gif)
-                                    .onDrag({
-                                        if let provider = NSItemProvider(contentsOf: viewModel.pathFor(gif: gif)) {
-                                            return provider
-                                        } else {
-                                            return NSItemProvider(item: nil, typeIdentifier: "com.compuserve.gif")
-                                        }
-                                    })
-                                
+                                    .draggable(gif)
                             }
                             .buttonStyle(.plain)
                             .overlay {

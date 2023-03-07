@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum GifError: Error {
     case decoding
@@ -87,6 +88,12 @@ extension Gif {
         self.id = fullSizeURL.pathComponents.last
         self.fullSizeURL = fullSizeURL
         self.tags = tags
+    }
+}
+
+extension Gif: Transferable {
+    static var transferRepresentation: some TransferRepresentation {
+        ProxyRepresentation(exporting: \.fullSizeURL)
     }
 }
 
