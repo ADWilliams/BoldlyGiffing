@@ -12,7 +12,7 @@ public extension Int {
     /**
      * Returns a random integer between 0 and n-1.
      */
-    public static func random(_ n: Int) -> Int {
+    static func random(_ n: Int) -> Int {
         return Int(arc4random_uniform(UInt32(n)))
     }
 }

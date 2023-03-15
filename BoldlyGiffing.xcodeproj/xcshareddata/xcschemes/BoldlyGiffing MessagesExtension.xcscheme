@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C89DE54C1F06E636000ABC82"
-               BuildableName = "BoldyGiffing MessagesExtension.appex"
-               BlueprintName = "BoldyGiffing MessagesExtension"
-               ReferencedContainer = "container:BoldyGiffing.xcodeproj">
+               BuildableName = "BoldlyGiffing MessagesExtension.appex"
+               BlueprintName = "BoldlyGiffing MessagesExtension"
+               ReferencedContainer = "container:BoldlyGiffing.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -30,9 +30,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C89DE5421F06E636000ABC82"
-               BuildableName = "BoldyGiffing.app"
-               BlueprintName = "BoldyGiffing"
-               ReferencedContainer = "container:BoldyGiffing.xcodeproj">
+               BuildableName = "BoldlyGiffing.app"
+               BlueprintName = "BoldlyGiffing"
+               ReferencedContainer = "container:BoldlyGiffing.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C89DE5421F06E636000ABC82"
-            BuildableName = "BoldyGiffing.app"
-            BlueprintName = "BoldyGiffing"
-            ReferencedContainer = "container:BoldyGiffing.xcodeproj">
+            BuildableName = "BoldlyGiffing.app"
+            BlueprintName = "BoldlyGiffing"
+            ReferencedContainer = "container:BoldlyGiffing.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -81,9 +81,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C89DE5421F06E636000ABC82"
-            BuildableName = "BoldyGiffing.app"
-            BlueprintName = "BoldyGiffing"
-            ReferencedContainer = "container:BoldyGiffing.xcodeproj">
+            BuildableName = "BoldlyGiffing.app"
+            BlueprintName = "BoldlyGiffing"
+            ReferencedContainer = "container:BoldlyGiffing.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

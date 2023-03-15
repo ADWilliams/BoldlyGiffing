@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C89DE5421F06E636000ABC82"
-               BuildableName = "BoldyGiffing.app"
-               BlueprintName = "BoldyGiffing"
-               ReferencedContainer = "container:BoldyGiffing.xcodeproj">
+               BlueprintIdentifier = "C85321A029B810D7000D43FF"
+               BuildableName = "BoldlyGiffingiOS.app"
+               BlueprintName = "BoldlyGiffingiOS"
+               ReferencedContainer = "container:BoldlyGiffing.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,6 +28,28 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C85321AF29B810D8000D43FF"
+               BuildableName = "BoldlyGiffingiOSTests.xctest"
+               BlueprintName = "BoldlyGiffingiOSTests"
+               ReferencedContainer = "container:BoldlyGiffing.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C85321B929B810D8000D43FF"
+               BuildableName = "BoldlyGiffingiOSUITests.xctest"
+               BlueprintName = "BoldlyGiffingiOSUITests"
+               ReferencedContainer = "container:BoldlyGiffing.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -44,10 +66,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C89DE5421F06E636000ABC82"
-            BuildableName = "BoldyGiffing.app"
-            BlueprintName = "BoldyGiffing"
-            ReferencedContainer = "container:BoldyGiffing.xcodeproj">
+            BlueprintIdentifier = "C85321A029B810D7000D43FF"
+            BuildableName = "BoldlyGiffingiOS.app"
+            BlueprintName = "BoldlyGiffingiOS"
+            ReferencedContainer = "container:BoldlyGiffing.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -61,10 +83,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C89DE5421F06E636000ABC82"
-            BuildableName = "BoldyGiffing.app"
-            BlueprintName = "BoldyGiffing"
-            ReferencedContainer = "container:BoldyGiffing.xcodeproj">
+            BlueprintIdentifier = "C85321A029B810D7000D43FF"
+            BuildableName = "BoldlyGiffingiOS.app"
+            BlueprintName = "BoldlyGiffingiOS"
+            ReferencedContainer = "container:BoldlyGiffing.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

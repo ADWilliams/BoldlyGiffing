@@ -74,6 +74,7 @@ struct ThumbnailView: View {
                 .padding(.bottom, 30)
             }
         }
+        .clipped()
         .frame(maxWidth: .infinity)
         .background(
             RoundedRectangle(cornerRadius: 8)
