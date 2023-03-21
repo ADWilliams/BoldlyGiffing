@@ -46,53 +46,59 @@ struct CharacterView: View {
     @State private var isAnimating: Bool = false
     @Binding var character: CharacterTag
     
+    private func buttonTapped(selected: CharacterTag) {
+        character = selected
+#if os(iOS)
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
+#endif
+    }
+    
     var body: some View {
         VStack{
             HStack(spacing: 4) {
-                Button("Jean-Luc Picard", action: { character = .picard })
+                Button("Jean-Luc Picard", action: { buttonTapped(selected: .picard) })
                     .buttonStyle(CharacterButton(capsuleType: .leftEndCap, color: LCARSColor.orange))
                 
-                
-                Button("William Riker", action: { character = .riker})
+                Button("William Riker", action: { buttonTapped(selected: .riker) })
                     .buttonStyle(CharacterButton(capsuleType: .none, color: LCARSColor.lightBlue))
                 
-                Button("Data", action: { character = .data })
+                Button("Data", action: { buttonTapped(selected: .data) })
                     .buttonStyle(CharacterButton(capsuleType: .rightEndCap, color: LCARSColor.gold))
             }
             .frame(maxHeight: 65)
             
-            
             HStack(spacing: 4) {
-                Button("Geordi La Forge", action: { character = .laForge })
+                Button("Geordi La Forge", action: { buttonTapped(selected: .laForge) })
                     .buttonStyle(CharacterButton(capsuleType: .leftEndCap, color: LCARSColor.yellow))
-                Button("Worf", action: { character = .worf })
+                Button("Worf", action: { buttonTapped(selected: .worf) })
                     .buttonStyle(CharacterButton(capsuleType: .none, color: LCARSColor.almond))
-                Button("Beverly Crusher", action: { character = .crusher})
+                Button("Beverly Crusher", action: { buttonTapped(selected: .crusher) })
                     .buttonStyle(CharacterButton(capsuleType: .rightEndCap, color: LCARSColor.lightBlue))
             }
             .frame(maxHeight: 65)
             
             HStack(spacing: 4) {
-                Button("Deanna Troi", action: { character = .troi })
+                Button("Deanna Troi", action: { buttonTapped(selected: .troi) })
                     .buttonStyle(CharacterButton(capsuleType: .leftEndCap, color: LCARSColor.almond))
-                Button("Miles O'Brien", action: { character = .obrien })
+                Button("Miles O'Brien", action: { buttonTapped(selected: .obrien) })
                     .buttonStyle(CharacterButton(capsuleType: .none, color: LCARSColor.gold))
-                Button("Wesley Crusher", action: { character = .wesley })
+                Button("Wesley Crusher", action: { buttonTapped(selected: .wesley) })
                     .buttonStyle(CharacterButton(capsuleType: .rightEndCap, color: LCARSColor.tomato))
             }
             .frame(maxHeight: 65)
             
             HStack(spacing: 4) {
-                Button("Tasha Yar", action: { character = .yar })
+                Button("Tasha Yar", action: { buttonTapped(selected: .yar) })
                     .buttonStyle(CharacterButton(capsuleType: .leftEndCap, color: LCARSColor.almond))
-                Button("Enterprise", action: { character = .enterprise})
+                Button("Enterprise", action: { buttonTapped(selected: .enterprise) })
                     .buttonStyle(CharacterButton(capsuleType: .none, color: LCARSColor.lightBlue))
-                Button("Q", action: { character = .q})
+                Button("Q", action: { buttonTapped(selected: .q) })
                     .buttonStyle(CharacterButton(capsuleType: .none, color: LCARSColor.lightBlue))
                 // Uncomment for 🥦
 //                Button("Reginald Barclay", action: { character = .barclay})
 //                    .buttonStyle(CharacterButton(capsuleType: .none, color: LCARSColor.lightBlue))
-                Button("Random", action: { character = .all })
+                Button("Random", action: { buttonTapped(selected: .all) })
                     .buttonStyle(CharacterButton(capsuleType: .rightEndCap, color: LCARSColor.tomato))
             }
             .frame(maxHeight: 35)
