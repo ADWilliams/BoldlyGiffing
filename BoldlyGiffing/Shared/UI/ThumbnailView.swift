@@ -25,6 +25,10 @@ struct ThumbnailView: View {
                         CharacterView(character: $viewModel.character)
                             .id("CharacterPicker")
                     }
+                    .background {
+                        CreatorBar()
+                            .offset(y: -110)
+                    }
                     Section {
                         ForEach(gifs) { gif in
                             Button {
@@ -86,7 +90,9 @@ struct ThumbnailView: View {
 
 struct ThumbnailView_Previews: PreviewProvider {
     static var previews: some View {
-        ThumbnailView(gifs: Gif.mockArray)
+        let viewModel = MainViewModel()
+        ThumbnailView(gifs: viewModel.dataSet)
+            .environmentObject(viewModel)
         
     }
 }

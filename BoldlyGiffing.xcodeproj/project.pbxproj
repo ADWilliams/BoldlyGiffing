@@ -46,6 +46,9 @@
 		C855573729B960A00091DE24 /* ThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C816506327F65D4700281A8A /* ThumbnailView.swift */; };
 		C85BA4CC1F3660310055BA63 /* UIFont + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85BA4CB1F3660310055BA63 /* UIFont + Extensions.swift */; };
 		C87530F71F2136D700197CEC /* CharacterPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C87530F61F2136D700197CEC /* CharacterPickerView.xib */; };
+		C875AFB629C3CE7C00692326 /* CreatorBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C875AFB529C3CE7C00692326 /* CreatorBar.swift */; };
+		C875AFB729C3CE7C00692326 /* CreatorBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C875AFB529C3CE7C00692326 /* CreatorBar.swift */; };
+		C875AFB829C3CE7C00692326 /* CreatorBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C875AFB529C3CE7C00692326 /* CreatorBar.swift */; };
 		C881698929930BC700813F7C /* ExitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C881698829930BC700813F7C /* ExitButton.swift */; };
 		C89DE54E1F06E636000ABC82 /* BoldlyGiffing MessagesExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C89DE54D1F06E636000ABC82 /* BoldlyGiffing MessagesExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C89DE5531F06E636000ABC82 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C89DE5521F06E636000ABC82 /* Messages.framework */; };
@@ -184,6 +187,7 @@
 		C85321CB29B81133000D43FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C85BA4CB1F3660310055BA63 /* UIFont + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extensions.swift"; sourceTree = "<group>"; };
 		C87530F61F2136D700197CEC /* CharacterPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterPickerView.xib; sourceTree = "<group>"; };
+		C875AFB529C3CE7C00692326 /* CreatorBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatorBar.swift; sourceTree = "<group>"; };
 		C881698829930BC700813F7C /* ExitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitButton.swift; sourceTree = "<group>"; };
 		C89DE5431F06E636000ABC82 /* BoldlyGiffing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoldlyGiffing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C89DE5461F06E636000ABC82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -367,6 +371,7 @@
 				C8A45159280643DC00B8CC2E /* LCARSCapsule.swift */,
 				C8A4515E28078D2000B8CC2E /* CharacterView.swift */,
 				C851B01C280F723000AC8B52 /* LCARSCurve.swift */,
+				C875AFB529C3CE7C00692326 /* CreatorBar.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -791,6 +796,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C875AFB729C3CE7C00692326 /* CreatorBar.swift in Sources */,
 				C8D753B927FCFB93004B4699 /* InfoResponse.swift in Sources */,
 				C8D753B227F7CB1C004B4699 /* MainViewModel.swift in Sources */,
 				C8A4515B280643DC00B8CC2E /* LCARSCapsule.swift in Sources */,
@@ -830,6 +836,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C875AFB829C3CE7C00692326 /* CreatorBar.swift in Sources */,
 				C8D80FE329B81A1200B36CB8 /* LCARSCapsule.swift in Sources */,
 				C8D80FE529B81A1200B36CB8 /* GifView.swift in Sources */,
 				C8D80FE229B819EC00B36CB8 /* CharacterView.swift in Sources */,
@@ -873,6 +880,7 @@
 				C851B01D280F723000AC8B52 /* LCARSCurve.swift in Sources */,
 				C8D753AF27F7B12F004B4699 /* MainHostingController.swift in Sources */,
 				C8D753A527F7AAB4004B4699 /* MainView.swift in Sources */,
+				C875AFB629C3CE7C00692326 /* CreatorBar.swift in Sources */,
 				C816506927F6609B00281A8A /* GifView.swift in Sources */,
 				C8D753B127F7BFB0004B4699 /* MainViewModel.swift in Sources */,
 				C85BA4CC1F3660310055BA63 /* UIFont + Extensions.swift in Sources */,
