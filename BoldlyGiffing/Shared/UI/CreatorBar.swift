@@ -9,6 +9,9 @@
 import SwiftUI
 
 struct CreatorBar: View {
+    private var version: String {
+        Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
+    }
     var body: some View {
         HStack(spacing: 4) {
             LCARSCapsule(.leftEndCap)
@@ -17,7 +20,7 @@ struct CreatorBar: View {
             Rectangle()
                 .fill(LCARSColor.gold)
             
-            Text("Created by Sweet Software")
+            Text("V\(version) Sweet Software")
                 .font(.LCARS(size: 22))
                 .foregroundColor(LCARSColor.orange)
             LCARSCapsule(.rightEndCap)
