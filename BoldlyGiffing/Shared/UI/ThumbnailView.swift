@@ -10,10 +10,51 @@ import SwiftUI
 
 struct ThumbnailView: View {
     @EnvironmentObject var viewModel: MainViewModel
-    
+    @State private var pressedGif: Gif?
+    @GestureState private var longPressActive = false
+    @State private var completedHold = false
     var gifs: [Gif]
     
     private let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
+    
+    private func holdGesture(_ gif: Gif) -> some Gesture {
+        LongPressGesture(minimumDuration: 0.2).sequenced(before: DragGesture(minimumDistance: 0))
+            .updating($longPressActive) { currentState, gestureState, transaction in
+                switch currentState {
+                case .second(true, nil):
+                    print("no drag")
+                    gestureState = true
+                case .second(true, _):
+                    print("drag")
+                    gestureState = false
+                    
+                default:
+                    break
+                }
+            }
+            .onChanged({ value in
+                switch value {
+                case .first(_):
+                    completedHold = false
+                case .second(true, _):
+                    print("long changed")
+                    completedHold = false
+                    withAnimation {
+                        if longPressActive {
+                            pressedGif = gif
+                        }
+                    }
+                default:
+                    break
+                }
+            })
+            .onEnded({ value in
+                withAnimation {
+                    completedHold = true
+                    pressedGif = nil
+                }
+            })
+    }
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -32,11 +73,15 @@ struct ThumbnailView: View {
                     Section {
                         ForEach(gifs) { gif in
                             Button {
-                                viewModel.gifTapped(gif)
+                                if !completedHold {
+                                    viewModel.gifTapped(gif)
+                                }
                             } label: {
                                 GifView(gif: gif)
-                                    .draggable(gif)
                             }
+                            .scaleEffect(pressedGif == gif ? 2 : 1)
+                            .zIndex(pressedGif == gif ? 2 : 1)
+                            .animation(.default, value: pressedGif)
                             .buttonStyle(.plain)
                             .overlay {
                                 if viewModel.selectedGif == gif {
@@ -50,8 +95,8 @@ struct ThumbnailView: View {
                                 if gif == gifs[gifs.count - 6] {
                                     viewModel.fetchThumbnailsWithOffset()
                                 }
-                                
                             }
+                            .simultaneousGesture(holdGesture(gif))
                         }
                     } header: {
                         ResultsHeader()
