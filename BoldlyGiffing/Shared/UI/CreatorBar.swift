@@ -23,6 +23,7 @@ struct CreatorBar: View {
             Text("V\(version) Sweet Software")
                 .font(.LCARS(size: 22))
                 .foregroundColor(LCARSColor.orange)
+                .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
             LCARSCapsule(.rightEndCap)
                 .fill(LCARSColor.gold)
                 .frame(width: 35)

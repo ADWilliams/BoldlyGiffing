@@ -33,6 +33,7 @@ struct ResultsHeader: View {
                     .foregroundColor(LCARSColor.orange)
                     .textCase(.uppercase)
                     .offset(y: 1)
+                    .dynamicTypeSize(...DynamicTypeSize.accessibility1)
             }
             
             LCARSCapsule(.rightEndCap)
@@ -66,7 +67,7 @@ struct CharacterView: View {
                 Button("Data", action: { buttonTapped(selected: .data) })
                     .buttonStyle(CharacterButton(capsuleType: .rightEndCap, color: LCARSColor.gold))
             }
-            .frame(maxHeight: 65)
+            .frame(maxHeight: 40)
             
             HStack(spacing: 4) {
                 Button("Geordi La Forge", action: { buttonTapped(selected: .laForge) })
@@ -76,7 +77,7 @@ struct CharacterView: View {
                 Button("Beverly Crusher", action: { buttonTapped(selected: .crusher) })
                     .buttonStyle(CharacterButton(capsuleType: .rightEndCap, color: LCARSColor.lightBlue))
             }
-            .frame(maxHeight: 65)
+            .frame(maxHeight: 40)
             
             HStack(spacing: 4) {
                 Button("Deanna Troi", action: { buttonTapped(selected: .troi) })
@@ -86,7 +87,7 @@ struct CharacterView: View {
                 Button("Wesley Crusher", action: { buttonTapped(selected: .wesley) })
                     .buttonStyle(CharacterButton(capsuleType: .rightEndCap, color: LCARSColor.tomato))
             }
-            .frame(maxHeight: 65)
+            .frame(maxHeight: 40)
             
             HStack(spacing: 4) {
                 Button("Tasha Yar", action: { buttonTapped(selected: .yar) })
@@ -134,6 +135,8 @@ struct CharacterButton: ButtonStyle {
             .multilineTextAlignment(.trailing)
             .font(.LCARS(size: 22))
             .minimumScaleFactor(0.8)
+            .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
+            .accessibilityShowsLargeContentViewer()
             .foregroundColor(.black)
             .textCase(.uppercase)
             .padding(.vertical, 8)
