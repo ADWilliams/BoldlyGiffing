@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ThumbnailView: View {
     @EnvironmentObject var viewModel: MainViewModel
+    @Namespace var thumbnailNamespace
     @State private var pressedGif: Gif?
     @GestureState private var longPressActive = false
     @State private var completedHold = false
@@ -18,38 +19,20 @@ struct ThumbnailView: View {
     private let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
     
     private func holdGesture(_ gif: Gif) -> some Gesture {
-        LongPressGesture(minimumDuration: 0.2).sequenced(before: DragGesture(minimumDistance: 0))
+        LongPressGesture(minimumDuration: 0.1, maximumDistance: 10).simultaneously(with: DragGesture(minimumDistance: 0, coordinateSpace: .local))
             .updating($longPressActive) { currentState, gestureState, transaction in
-                switch currentState {
-                case .second(true, nil):
-                    print("no drag")
-                    gestureState = true
-                case .second(true, _):
-                    print("drag")
-                    gestureState = false
-                    
-                default:
-                    break
+                gestureState = currentState.first == true
+            }
+            .onChanged { value in
+                print("onchange \(value)")
+                completedHold = value.first == true
+                withAnimation {
+                    pressedGif = longPressActive ? gif : nil
                 }
             }
-            .onChanged({ value in
-                switch value {
-                case .first(_):
-                    completedHold = false
-                case .second(true, _):
-                    print("long changed")
-                    completedHold = false
-                    withAnimation {
-                        if longPressActive {
-                            pressedGif = gif
-                        }
-                    }
-                default:
-                    break
-                }
-            })
             .onEnded({ value in
-                withAnimation {
+                withAnimation(.interactiveSpring(response: 0.1)) {
+                    print("hold ended")
                     completedHold = true
                     pressedGif = nil
                 }
@@ -68,35 +51,32 @@ struct ThumbnailView: View {
                     }
                     .background {
                         CreatorBar()
-                            .offset(y: -110)
+                            .offset(y: -115)
                     }
                     Section {
                         ForEach(gifs) { gif in
-                            Button {
-                                if !completedHold {
+                            GifView(gif: gif)
+                                .zIndex(pressedGif == gif ? 2 : 0)
+                                .matchedGeometryEffect(id: gif.id, in: thumbnailNamespace, isSource: false)
+                                .animation(.interactiveSpring(), value: pressedGif)
+                                .onTapGesture {
                                     viewModel.gifTapped(gif)
                                 }
-                            } label: {
-                                GifView(gif: gif)
-                            }
-                            .scaleEffect(pressedGif == gif ? 2 : 1)
-                            .zIndex(pressedGif == gif ? 2 : 1)
-                            .animation(.default, value: pressedGif)
-                            .buttonStyle(.plain)
-                            .overlay {
-                                if viewModel.selectedGif == gif {
-                                    let text = viewModel.downloadProgress < 100 ? "\(viewModel.downloadProgress)" : "Copied"
-                                    Text(text)
-                                        .font(.LCARS(size: 22))
-                                        .shadow(radius: 1)
+                                .gesture(holdGesture(gif))
+                                .overlay {
+                                    if viewModel.selectedGif == gif {
+                                        let text = viewModel.downloadProgress < 100 ? "\(viewModel.downloadProgress)" : "Copied"
+                                        Text(text)
+                                            .foregroundColor(.white)
+                                            .font(.LCARS(size: 22))
+                                            .shadow(radius: 1)
+                                    }
                                 }
-                            }
-                            .onAppear {
-                                if gif == gifs[gifs.count - 6] {
-                                    viewModel.fetchThumbnailsWithOffset()
+                                .onAppear {
+                                    if gif == gifs[gifs.count - 6] {
+                                        viewModel.fetchThumbnailsWithOffset()
+                                    }
                                 }
-                            }
-                            .simultaneousGesture(holdGesture(gif))
                         }
                     } header: {
                         ResultsHeader()
@@ -119,10 +99,12 @@ struct ThumbnailView: View {
                             )
                             .padding(.bottom, 8)
                     }
+                    .padding(.top, 4)
                 }
                 .padding(.bottom, 30)
             }
         }
+        .modifier(VersionAwareBounce())
         .clipped()
         .frame(maxWidth: .infinity)
         .background(
@@ -130,6 +112,22 @@ struct ThumbnailView: View {
                 .fill(.black)
             
         )
+        .overlay {
+            if let gif = pressedGif {
+                GifView(gif: gif, isLarge: true)
+                    .matchedGeometryEffect(id: gif.id, in: thumbnailNamespace)
+                    .transition(.identity)
+                    .frame(height: 200)
+            }
+        }
+    }
+}
+
+fileprivate struct VersionAwareBounce: ViewModifier {
+    func body(content: Content) -> some View {
+        if #available(macOS 13.3, iOS 16.4, *) {
+            content.scrollBounceBehavior(.always, axes: .vertical)
+        }
     }
 }
 

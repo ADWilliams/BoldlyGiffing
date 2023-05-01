@@ -11,12 +11,18 @@ import SDWebImageSwiftUI
 
 struct GifView: View {
     let gif: Gif
+    let isLarge: Bool
     @State private var progress: Double = 1
     
+    internal init(gif: Gif, isLarge: Bool = false) {
+        self.gif = gif
+        self.isLarge = isLarge
+    }
+    
     var body: some View {
-            AnimatedImage(url: gif.thumbnailURL)
+        AnimatedImage(url: isLarge ? gif.fullSizeURL : gif.thumbnailURL)
                 .placeholder(content: {
-                    Color(red: 0.26, green: 0.53, blue: 0.96).opacity(0.8)
+                    Color(red: 0.26, green: 0.53, blue: 0.96).opacity( isLarge ? 0 : 0.8)
                 })
                 .transition(.fade)
                 .resizable()
