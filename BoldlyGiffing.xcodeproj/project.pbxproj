@@ -40,7 +40,6 @@
 		C85321CD29B81276000D43FF /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D753B027F7BFB0004B4699 /* MainViewModel.swift */; };
 		C855573229B81CBF0091DE24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C89DE5461F06E636000ABC82 /* Assets.xcassets */; };
 		C855573329B81CC40091DE24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C89DE5461F06E636000ABC82 /* Assets.xcassets */; };
-		C855573429B81CC50091DE24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C89DE5461F06E636000ABC82 /* Assets.xcassets */; };
 		C855573529B81CC80091DE24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C89DE5461F06E636000ABC82 /* Assets.xcassets */; };
 		C855573629B95E310091DE24 /* Helvetica-UltraCompressed.otf in Resources */ = {isa = PBXBuildFile; fileRef = C851B019280F675500AC8B52 /* Helvetica-UltraCompressed.otf */; };
 		C855573729B960A00091DE24 /* ThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C816506327F65D4700281A8A /* ThumbnailView.swift */; };
@@ -722,7 +721,6 @@
 			files = (
 				C816504127F65D1700281A8A /* Preview Assets.xcassets in Resources */,
 				C816503E27F65D1700281A8A /* Assets.xcassets in Resources */,
-				C855573429B81CC50091DE24 /* Assets.xcassets in Resources */,
 				C851B01B280F675500AC8B52 /* Helvetica-UltraCompressed.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
