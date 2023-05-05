@@ -722,6 +722,7 @@
 			files = (
 				C816504127F65D1700281A8A /* Preview Assets.xcassets in Resources */,
 				C816503E27F65D1700281A8A /* Assets.xcassets in Resources */,
+				C8F870872A030B2F001D774C /* Assets.xcassets in Resources */,
 				C851B01B280F675500AC8B52 /* Helvetica-UltraCompressed.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
