@@ -31,10 +31,12 @@ struct ThumbnailView: View {
                 }
             }
             .onEnded({ value in
-                withAnimation(.interactiveSpring(response: 0.1)) {
-                    print("hold ended")
+                withAnimation(.interactiveSpring()) {
+                    print("hold ended, long press \(longPressActive)")
                     completedHold = true
-                    pressedGif = nil
+                    withAnimation {
+                        pressedGif = nil
+                    }
                 }
             })
     }
@@ -56,13 +58,13 @@ struct ThumbnailView: View {
                     Section {
                         ForEach(gifs) { gif in
                             GifView(gif: gif)
+                                .matchedGeometryEffect(id: longPressActive ? gif.id : "", in: thumbnailNamespace, isSource: false)
                                 .zIndex(pressedGif == gif ? 2 : 0)
-                                .matchedGeometryEffect(id: gif.id, in: thumbnailNamespace, isSource: false)
-                                .animation(.interactiveSpring(), value: pressedGif)
                                 .onTapGesture {
                                     viewModel.gifTapped(gif)
                                 }
                                 .gesture(holdGesture(gif))
+                                .animation( .interactiveSpring(), value: longPressActive)
                                 .overlay {
                                     if viewModel.selectedGif == gif {
                                         let text = viewModel.downloadProgress < 100 ? "\(viewModel.downloadProgress)" : "Copied"
@@ -113,12 +115,13 @@ struct ThumbnailView: View {
             
         )
         .overlay {
-            if let gif = pressedGif {
-                GifView(gif: gif, isLarge: true)
-                    .matchedGeometryEffect(id: gif.id, in: thumbnailNamespace)
-                    .transition(.identity)
-                    .frame(height: 200)
-            }
+            GifView(gif: pressedGif ?? Gif.empty, isLarge: true)
+                .opacity( longPressActive ? 1 : 0)
+                .matchedGeometryEffect(id: pressedGif?.id, in: thumbnailNamespace)
+                .animation( .interactiveSpring().delay(0.3), value: longPressActive)
+                .frame(height: 200)
+                .padding(16)
+            
         }
     }
 }

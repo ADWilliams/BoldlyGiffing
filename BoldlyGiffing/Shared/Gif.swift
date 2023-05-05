@@ -98,6 +98,14 @@ extension Gif: Transferable {
 }
 
 extension Gif {
+    
+    static let empty = Gif(
+        id: UUID().uuidString,
+        fullSizeURL: URL(string: "https://www.example.com")!,
+        thumbnailURL: URL(string: "https://www.example.com")!,
+        tags: []
+        )
+    
     static let mock = Gif(
         id: UUID().uuidString,
         fullSizeURL: URL(string: "https://64.media.tumblr.com/00cc50a1ccdea1b4e15735f1c6f723ec/tumblr_olppycIjeH1trbh6do1_400.gif")!,
