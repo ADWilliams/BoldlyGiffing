@@ -50,8 +50,8 @@ struct CharacterView: View {
     private func buttonTapped(selected: CharacterTag) {
         character = selected
 #if os(iOS)
-        let generator = UINotificationFeedbackGenerator()
-        generator.notificationOccurred(.success)
+        let generator = UISelectionFeedbackGenerator()
+        generator.selectionChanged()
 #endif
     }
     

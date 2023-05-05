@@ -62,12 +62,12 @@ class MainViewModel: ObservableObject {
     func gifTapped(_ gif: Gif) {
         selectedGif = gif
         loadFullSize(gif: gif) { completed in
-#if os(macOS)
+            
             self.copyGif(gif: gif)
-#else
+            
             let userInfo = ["key" : gif.fullSizeURL.absoluteString]
             NotificationCenter.default.post(name: Notification.Name("insertGif"), object: nil, userInfo: userInfo)
-#endif
+            
         }
     }
     
@@ -114,15 +114,16 @@ class MainViewModel: ObservableObject {
         }
     }
     
-#if os(macOS)
     private func copyGif(gif: Gif) {
-        let pasteboard = NSPasteboard.general
-        pasteboard.declareTypes([.fileContents], owner: nil)
         do {
             if let path = SDImageCache.shared.cachePath(forKey: gif.fullSizeURL.absoluteString) {
                 let url = URL(fileURLWithPath: path)
                 
                 let data = try Data(contentsOf: url)
+#if os(macOS)
+                let pasteboard = NSPasteboard.general
+                pasteboard.declareTypes([.fileContents], owner: nil)
+
                 if  pasteboard.setData(data, forType: NSPasteboard.PasteboardType(rawValue: "com.compuserve.gif")) {
                     print("✅ gif copied")
                     
@@ -131,13 +132,26 @@ class MainViewModel: ObservableObject {
                         downloadProgress = 0
                     }
                 }
+#elseif os(iOS)
+                let pasteboard = UIPasteboard.general
+                let type = "com.compuserve.gif"
+                
+                pasteboard.setData(data, forPasteboardType: type)
+                
+                let generator = UINotificationFeedbackGenerator()
+                generator.notificationOccurred(.success)
+                print("✅ gif copied")
+                withAnimation(.default.delay(1)) {
+                    selectedGif = nil
+                    downloadProgress = 0
+                }
+#endif
             }
         }
         catch {
             print(error)
         }
     }
-#endif
     
     func fetchRandomThumbnails() {
         let postCount = self.postCount - (self.postCount > 21 ? 21 : 0)
