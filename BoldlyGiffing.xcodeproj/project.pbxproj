@@ -88,6 +88,7 @@
 		C8D80FE929B81A1500B36CB8 /* Font+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A4516228078EA000B8CC2E /* Font+Extensions.swift */; };
 		C8D80FEA29B81A1800B36CB8 /* Color+LCARS.swift in Sources */ = {isa = PBXBuildFile; fileRef = C851B023281362F900AC8B52 /* Color+LCARS.swift */; };
 		C8D80FEB29B81A5700B36CB8 /* Int + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81CCA891F142B7400548B79 /* Int + Extensions.swift */; };
+		C8F870872A030B2F001D774C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C89DE5461F06E636000ABC82 /* Assets.xcassets */; };
 		C8FF84681F3E778200412148 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C89DE5571F06E636000ABC82 /* MainInterface.storyboard */; };
 /* End PBXBuildFile section */
 
