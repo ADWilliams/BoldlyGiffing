@@ -49,6 +49,7 @@
 		C875AFB729C3CE7C00692326 /* CreatorBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C875AFB529C3CE7C00692326 /* CreatorBar.swift */; };
 		C875AFB829C3CE7C00692326 /* CreatorBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C875AFB529C3CE7C00692326 /* CreatorBar.swift */; };
 		C881698929930BC700813F7C /* ExitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C881698829930BC700813F7C /* ExitButton.swift */; };
+		C8979E412A4E278200879B5E /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = C8979E402A4E278200879B5E /* ComposableArchitecture */; };
 		C89DE54E1F06E636000ABC82 /* BoldlyGiffing MessagesExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C89DE54D1F06E636000ABC82 /* BoldlyGiffing MessagesExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C89DE5531F06E636000ABC82 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C89DE5521F06E636000ABC82 /* Messages.framework */; };
 		C89DE55B1F06E636000ABC82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C89DE55A1F06E636000ABC82 /* Assets.xcassets */; };
@@ -88,7 +89,6 @@
 		C8D80FE929B81A1500B36CB8 /* Font+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A4516228078EA000B8CC2E /* Font+Extensions.swift */; };
 		C8D80FEA29B81A1800B36CB8 /* Color+LCARS.swift in Sources */ = {isa = PBXBuildFile; fileRef = C851B023281362F900AC8B52 /* Color+LCARS.swift */; };
 		C8D80FEB29B81A5700B36CB8 /* Int + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81CCA891F142B7400548B79 /* Int + Extensions.swift */; };
-		C8F870872A030B2F001D774C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C89DE5461F06E636000ABC82 /* Assets.xcassets */; };
 		C8FF84681F3E778200412148 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C89DE5571F06E636000ABC82 /* MainInterface.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -264,6 +264,7 @@
 			files = (
 				C851B02028120D4700AC8B52 /* ShapeUp in Frameworks */,
 				C8D753AB27F7ABE7004B4699 /* SDWebImageSwiftUI in Frameworks */,
+				C8979E412A4E278200879B5E /* ComposableArchitecture in Frameworks */,
 				C89DE5531F06E636000ABC82 /* Messages.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -639,6 +640,7 @@
 			packageProductDependencies = (
 				C8D753AA27F7ABE7004B4699 /* SDWebImageSwiftUI */,
 				C851B01F28120D4700AC8B52 /* ShapeUp */,
+				C8979E402A4E278200879B5E /* ComposableArchitecture */,
 			);
 			productName = "BoldyGiffing MessagesExtension";
 			productReference = C89DE54D1F06E636000ABC82 /* BoldlyGiffing MessagesExtension.appex */;
@@ -698,6 +700,7 @@
 			packageReferences = (
 				C8D753A027F79A29004B4699 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				C8A45157280643AC00B8CC2E /* XCRemoteSwiftPackageReference "ShapeUp" */,
+				C8979E3F2A4E278200879B5E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 			);
 			productRefGroup = C89DE5441F06E636000ABC82 /* Products */;
 			projectDirPath = "";
@@ -1566,6 +1569,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C8979E3F2A4E278200879B5E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.55.0;
+			};
+		};
 		C8A45157280643AC00B8CC2E /* XCRemoteSwiftPackageReference "ShapeUp" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ryanlintott/ShapeUp";
@@ -1589,6 +1600,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C8A45157280643AC00B8CC2E /* XCRemoteSwiftPackageReference "ShapeUp" */;
 			productName = ShapeUp;
+		};
+		C8979E402A4E278200879B5E /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C8979E3F2A4E278200879B5E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
 		};
 		C8A45158280643AC00B8CC2E /* ShapeUp */ = {
 			isa = XCSwiftPackageProductDependency;
