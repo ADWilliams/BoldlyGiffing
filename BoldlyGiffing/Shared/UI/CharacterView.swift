@@ -10,35 +10,68 @@ import SwiftUI
 
 struct ResultsHeader: View {
     @State private var isExiting = false
+    @State private var introVisible = true
 
     var body: some View {
-        HStack(spacing: 4) {
-
+        VStack {
+            HStack(spacing: 4) {
+                
 #if os(macOS)
-            
-            ExitButton(activated: $isExiting)
+                
+                ExitButton(activated: $isExiting)
+                    .onChange(of: isExiting) { newValue in
+                        introVisible = false
+                    }
 #else
-    
-            LCARSCapsule(.leftEndCap)
-                .fill(LCARSColor.lightBlue)
-                .frame(width: 35)
+                
+                LCARSCapsule(.leftEndCap)
+                    .fill(LCARSColor.lightBlue)
+                    .frame(width: 35)
 #endif
-            
-            Rectangle()
-                .fill( isExiting ? LCARSColor.red : LCARSColor.gold)
-            
-            if !isExiting {
-                Text("Query Results")
-                    .font(.LCARS(size: 22))
-                    .foregroundColor(LCARSColor.orange)
-                    .textCase(.uppercase)
-                    .offset(y: 1)
-                    .dynamicTypeSize(...DynamicTypeSize.accessibility1)
+                
+                Rectangle()
+                    .fill( isExiting ? LCARSColor.red : LCARSColor.gold)
+                
+                if !isExiting {
+                    if introVisible {
+                        HStack {
+                            Text("Tap to copy")
+                                .font(.LCARS(size: 22))
+                                .textCase(.uppercase)
+                                .foregroundColor(LCARSColor.orange)
+                                .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
+                                .fixedSize()
+                            
+                            Text("hold to enlarge")
+                                .font(.LCARS(size: 22))
+                                .textCase(.uppercase)
+                                .foregroundColor(LCARSColor.orange)
+                                .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
+                                .fixedSize()
+                                .onAppear {
+                                    Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { timer in
+                                        withAnimation {
+                                            self.introVisible = false
+                                        }
+                                        timer.invalidate()
+                                    }
+                                }
+                        }
+                        .transition(.move(edge: .leading))
+                    } else {
+                        Text("Query Results")
+                            .font(.LCARS(size: 22))
+                            .foregroundColor(LCARSColor.orange)
+                            .textCase(.uppercase)
+                            .offset(y: 1)
+                            .dynamicTypeSize(...DynamicTypeSize.accessibility1)
+                    }
+                }
+                
+                LCARSCapsule(.rightEndCap)
+                    .fill( isExiting ? LCARSColor.red : LCARSColor.gold)
+                    .frame(width: 35)
             }
-            
-            LCARSCapsule(.rightEndCap)
-                .fill( isExiting ? LCARSColor.red : LCARSColor.gold)
-                .frame(width: 35)
         }
     }
 }
