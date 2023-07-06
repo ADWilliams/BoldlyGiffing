@@ -3,7 +3,7 @@
 //  BoldlyGiffing
 //
 //  Created by Aaron Williams on 2023-07-04.
-//  Copyright © 2023 SweetieApps. All rights reserved.
+//  Copyright © 2023 Sweet Software. All rights reserved.
 //
 
 import Foundation

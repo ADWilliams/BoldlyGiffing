@@ -3,7 +3,7 @@
 //  BoldlyGiffingMac
 //
 //  Created by Aaron Williams on 2022-04-12.
-//  Copyright © 2022 SweetieApps. All rights reserved.
+//  Copyright © 2022 Sweet Software. All rights reserved.
 //
 
 import Foundation
