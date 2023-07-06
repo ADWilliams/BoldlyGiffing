@@ -312,6 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				C851B023281362F900AC8B52 /* Color+LCARS.swift */,
+				C8A4516228078EA000B8CC2E /* Font+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -356,14 +357,24 @@
 		C86717FD280639110065F17C /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				C816506827F6609B00281A8A /* GifView.swift */,
-				C816506327F65D4700281A8A /* ThumbnailView.swift */,
-				C8A45159280643DC00B8CC2E /* LCARSCapsule.swift */,
 				C8A4515E28078D2000B8CC2E /* CharacterView.swift */,
-				C851B01C280F723000AC8B52 /* LCARSCurve.swift */,
 				C875AFB529C3CE7C00692326 /* CreatorBar.swift */,
+				C816506827F6609B00281A8A /* GifView.swift */,
+				C8A45159280643DC00B8CC2E /* LCARSCapsule.swift */,
+				C851B01C280F723000AC8B52 /* LCARSCurve.swift */,
+				C816506327F65D4700281A8A /* ThumbnailView.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		C8979E5B2A57867F00879B5E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C816506D27F6614A00281A8A /* Gif.swift */,
+				C8D753B427FCEABE004B4699 /* InfoResponse.swift */,
+				C8ABCE4628062EBD0001CD71 /* Post.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		C89DE53C1F06E636000ABC82 = {
@@ -399,10 +410,10 @@
 		C89DE5451F06E636000ABC82 /* BoldlyGiffing */ = {
 			isa = PBXGroup;
 			children = (
-				C8ABCE49280638F10001CD71 /* Shared */,
-				C89DE5461F06E636000ABC82 /* Assets.xcassets */,
 				C851B019280F675500AC8B52 /* Helvetica-UltraCompressed.otf */,
 				C89DE5481F06E636000ABC82 /* Info.plist */,
+				C89DE5461F06E636000ABC82 /* Assets.xcassets */,
+				C8ABCE49280638F10001CD71 /* Shared */,
 			);
 			path = BoldlyGiffing;
 			sourceTree = "<group>";
@@ -430,14 +441,11 @@
 		C8ABCE49280638F10001CD71 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				C851B022281362EB00AC8B52 /* Extensions */,
-				C86717FD280639110065F17C /* UI */,
-				C8ABCE4628062EBD0001CD71 /* Post.swift */,
-				C816506D27F6614A00281A8A /* Gif.swift */,
-				C8D753B427FCEABE004B4699 /* InfoResponse.swift */,
-				C8D753B627FCF221004B4699 /* ModelLoader.swift */,
-				C8A4516228078EA000B8CC2E /* Font+Extensions.swift */,
 				C8979E422A54BEE300879B5E /* APIClient.swift */,
+				C8D753B627FCF221004B4699 /* ModelLoader.swift */,
+				C851B022281362EB00AC8B52 /* Extensions */,
+				C8979E5B2A57867F00879B5E /* Models */,
+				C86717FD280639110065F17C /* UI */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
