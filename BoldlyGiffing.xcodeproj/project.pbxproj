@@ -26,7 +26,6 @@
 		C851B01D280F723000AC8B52 /* LCARSCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = C851B01C280F723000AC8B52 /* LCARSCurve.swift */; };
 		C851B01E280F723000AC8B52 /* LCARSCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = C851B01C280F723000AC8B52 /* LCARSCurve.swift */; };
 		C851B02028120D4700AC8B52 /* ShapeUp in Frameworks */ = {isa = PBXBuildFile; productRef = C851B01F28120D4700AC8B52 /* ShapeUp */; };
-		C851B02128120F9900AC8B52 /* Helvetica-UltraCompressed.otf in Resources */ = {isa = PBXBuildFile; fileRef = C851B019280F675500AC8B52 /* Helvetica-UltraCompressed.otf */; };
 		C851B024281362F900AC8B52 /* Color+LCARS.swift in Sources */ = {isa = PBXBuildFile; fileRef = C851B023281362F900AC8B52 /* Color+LCARS.swift */; };
 		C851B0252813646200AC8B52 /* Color+LCARS.swift in Sources */ = {isa = PBXBuildFile; fileRef = C851B023281362F900AC8B52 /* Color+LCARS.swift */; };
 		C851B02628136D1A00AC8B52 /* Helvetica-UltraCompressed.otf in Resources */ = {isa = PBXBuildFile; fileRef = C851B019280F675500AC8B52 /* Helvetica-UltraCompressed.otf */; };
@@ -38,19 +37,21 @@
 		C85321BF29B810D8000D43FF /* BoldlyGiffingiOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85321BE29B810D8000D43FF /* BoldlyGiffingiOSUITests.swift */; };
 		C85321C129B810D8000D43FF /* BoldlyGiffingiOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85321C029B810D8000D43FF /* BoldlyGiffingiOSUITestsLaunchTests.swift */; };
 		C85321CD29B81276000D43FF /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D753B027F7BFB0004B4699 /* MainViewModel.swift */; };
-		C855573229B81CBF0091DE24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C89DE5461F06E636000ABC82 /* Assets.xcassets */; };
 		C855573329B81CC40091DE24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C89DE5461F06E636000ABC82 /* Assets.xcassets */; };
 		C855573529B81CC80091DE24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C89DE5461F06E636000ABC82 /* Assets.xcassets */; };
 		C855573629B95E310091DE24 /* Helvetica-UltraCompressed.otf in Resources */ = {isa = PBXBuildFile; fileRef = C851B019280F675500AC8B52 /* Helvetica-UltraCompressed.otf */; };
 		C855573729B960A00091DE24 /* ThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C816506327F65D4700281A8A /* ThumbnailView.swift */; };
 		C85BA4CC1F3660310055BA63 /* UIFont + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85BA4CB1F3660310055BA63 /* UIFont + Extensions.swift */; };
-		C87530F71F2136D700197CEC /* CharacterPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C87530F61F2136D700197CEC /* CharacterPickerView.xib */; };
 		C875AFB629C3CE7C00692326 /* CreatorBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C875AFB529C3CE7C00692326 /* CreatorBar.swift */; };
 		C875AFB729C3CE7C00692326 /* CreatorBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C875AFB529C3CE7C00692326 /* CreatorBar.swift */; };
 		C875AFB829C3CE7C00692326 /* CreatorBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C875AFB529C3CE7C00692326 /* CreatorBar.swift */; };
 		C881698929930BC700813F7C /* ExitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C881698829930BC700813F7C /* ExitButton.swift */; };
-		C8979E412A4E278200879B5E /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = C8979E402A4E278200879B5E /* ComposableArchitecture */; };
-		C89DE54E1F06E636000ABC82 /* BoldlyGiffing MessagesExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C89DE54D1F06E636000ABC82 /* BoldlyGiffing MessagesExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C8979E4C2A576D4400879B5E /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8979E422A54BEE300879B5E /* APIClient.swift */; };
+		C8979E532A57798D00879B5E /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = C8979E522A57798D00879B5E /* ComposableArchitecture */; };
+		C8979E552A577FD100879B5E /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8979E422A54BEE300879B5E /* APIClient.swift */; };
+		C8979E562A577FD200879B5E /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8979E422A54BEE300879B5E /* APIClient.swift */; };
+		C8979E582A577FE800879B5E /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = C8979E572A577FE800879B5E /* ComposableArchitecture */; };
+		C8979E5A2A577FF000879B5E /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = C8979E592A577FF000879B5E /* ComposableArchitecture */; };
 		C89DE5531F06E636000ABC82 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C89DE5521F06E636000ABC82 /* Messages.framework */; };
 		C89DE55B1F06E636000ABC82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C89DE55A1F06E636000ABC82 /* Assets.xcassets */; };
 		C8A4515A280643DC00B8CC2E /* LCARSCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A45159280643DC00B8CC2E /* LCARSCapsule.swift */; };
@@ -62,10 +63,8 @@
 		C8A4516428078EA000B8CC2E /* Font+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A4516228078EA000B8CC2E /* Font+Extensions.swift */; };
 		C8ABCE4728062EBD0001CD71 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8ABCE4628062EBD0001CD71 /* Post.swift */; };
 		C8ABCE48280631130001CD71 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8ABCE4628062EBD0001CD71 /* Post.swift */; };
-		C8B9C30C29B80D35003FFB5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C816503D27F65D1700281A8A /* Assets.xcassets */; };
 		C8D753A327F79A4D004B4699 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = C8D753A227F79A4D004B4699 /* SDWebImageSwiftUI */; };
 		C8D753A527F7AAB4004B4699 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D753A427F7AAB4004B4699 /* MainView.swift */; };
-		C8D753A827F7AB66004B4699 /* MainViewStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8D753A727F7AB66004B4699 /* MainViewStoryboard.storyboard */; };
 		C8D753AB27F7ABE7004B4699 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = C8D753AA27F7ABE7004B4699 /* SDWebImageSwiftUI */; };
 		C8D753AD27F7AC71004B4699 /* MessagesViewControllerNEW.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D753AC27F7AC71004B4699 /* MessagesViewControllerNEW.swift */; };
 		C8D753AF27F7B12F004B4699 /* MainHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D753AE27F7B12F004B4699 /* MainHostingController.swift */; };
@@ -89,7 +88,6 @@
 		C8D80FE929B81A1500B36CB8 /* Font+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A4516228078EA000B8CC2E /* Font+Extensions.swift */; };
 		C8D80FEA29B81A1800B36CB8 /* Color+LCARS.swift in Sources */ = {isa = PBXBuildFile; fileRef = C851B023281362F900AC8B52 /* Color+LCARS.swift */; };
 		C8D80FEB29B81A5700B36CB8 /* Int + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81CCA891F142B7400548B79 /* Int + Extensions.swift */; };
-		C8FF84681F3E778200412148 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C89DE5571F06E636000ABC82 /* MainInterface.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,12 +119,12 @@
 			remoteGlobalIDString = C85321A029B810D7000D43FF;
 			remoteInfo = BoldlyGiffingiOS;
 		};
-		C89DE54F1F06E636000ABC82 /* PBXContainerItemProxy */ = {
+		C8979E4F2A5776ED00879B5E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C89DE53D1F06E636000ABC82 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = C89DE54C1F06E636000ABC82;
-			remoteInfo = "BoldyGiffing MessagesExtension";
+			remoteInfo = "BoldlyGiffing MessagesExtension";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -138,17 +136,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C89DE5621F06E636000ABC82 /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				C89DE54E1F06E636000ABC82 /* BoldlyGiffing MessagesExtension.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -189,7 +176,7 @@
 		C87530F61F2136D700197CEC /* CharacterPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterPickerView.xib; sourceTree = "<group>"; };
 		C875AFB529C3CE7C00692326 /* CreatorBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatorBar.swift; sourceTree = "<group>"; };
 		C881698829930BC700813F7C /* ExitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitButton.swift; sourceTree = "<group>"; };
-		C89DE5431F06E636000ABC82 /* BoldlyGiffing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoldlyGiffing.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8979E422A54BEE300879B5E /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		C89DE5461F06E636000ABC82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C89DE5481F06E636000ABC82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C89DE54D1F06E636000ABC82 /* BoldlyGiffing MessagesExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "BoldlyGiffing MessagesExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -218,6 +205,7 @@
 			files = (
 				C8D753A327F79A4D004B4699 /* SDWebImageSwiftUI in Frameworks */,
 				C8A4515D2806443B00B8CC2E /* ShapeUp in Frameworks */,
+				C8979E5A2A577FF000879B5E /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +229,7 @@
 			files = (
 				C8D80FDA29B816F300B36CB8 /* SDWebImageSwiftUI in Frameworks */,
 				C8D80FDC29B816F300B36CB8 /* ShapeUp in Frameworks */,
+				C8979E532A57798D00879B5E /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,7 +253,7 @@
 			files = (
 				C851B02028120D4700AC8B52 /* ShapeUp in Frameworks */,
 				C8D753AB27F7ABE7004B4699 /* SDWebImageSwiftUI in Frameworks */,
-				C8979E412A4E278200879B5E /* ComposableArchitecture in Frameworks */,
+				C8979E582A577FE800879B5E /* ComposableArchitecture in Frameworks */,
 				C89DE5531F06E636000ABC82 /* Messages.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,7 +385,6 @@
 		C89DE5441F06E636000ABC82 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C89DE5431F06E636000ABC82 /* BoldlyGiffing.app */,
 				C89DE54D1F06E636000ABC82 /* BoldlyGiffing MessagesExtension.appex */,
 				C816503727F65D1700281A8A /* BoldlyGiffingMac.app */,
 				C816504727F65D1700281A8A /* BoldlyGiffingMacTests.xctest */,
@@ -449,6 +437,7 @@
 				C8D753B427FCEABE004B4699 /* InfoResponse.swift */,
 				C8D753B627FCF221004B4699 /* ModelLoader.swift */,
 				C8A4516228078EA000B8CC2E /* Font+Extensions.swift */,
+				C8979E422A54BEE300879B5E /* APIClient.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -499,11 +488,13 @@
 			buildRules = (
 			);
 			dependencies = (
+				C8979E472A54C60A00879B5E /* PBXTargetDependency */,
 			);
 			name = BoldlyGiffingMac;
 			packageProductDependencies = (
 				C8D753A227F79A4D004B4699 /* SDWebImageSwiftUI */,
 				C8A4515C2806443B00B8CC2E /* ShapeUp */,
+				C8979E592A577FF000879B5E /* ComposableArchitecture */,
 			);
 			productName = BoldlyGiffingMac;
 			productReference = C816503727F65D1700281A8A /* BoldlyGiffingMac.app */;
@@ -556,11 +547,13 @@
 			buildRules = (
 			);
 			dependencies = (
+				C8979E502A5776ED00879B5E /* PBXTargetDependency */,
 			);
 			name = BoldlyGiffingiOS;
 			packageProductDependencies = (
 				C8D80FD929B816F300B36CB8 /* SDWebImageSwiftUI */,
 				C8D80FDB29B816F300B36CB8 /* ShapeUp */,
+				C8979E522A57798D00879B5E /* ComposableArchitecture */,
 			);
 			productName = BoldlyGiffingiOS;
 			productReference = C85321A129B810D7000D43FF /* BoldlyGiffingiOS.app */;
@@ -602,27 +595,6 @@
 			productReference = C85321BA29B810D8000D43FF /* BoldlyGiffingiOSUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		C89DE5421F06E636000ABC82 /* BoldlyGiffing */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C89DE5631F06E636000ABC82 /* Build configuration list for PBXNativeTarget "BoldlyGiffing" */;
-			buildPhases = (
-				C89DE5411F06E636000ABC82 /* Resources */,
-				C89DE5621F06E636000ABC82 /* Embed App Extensions */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C89DE5501F06E636000ABC82 /* PBXTargetDependency */,
-			);
-			name = BoldlyGiffing;
-			packageProductDependencies = (
-				C8D753A127F79A29004B4699 /* SDWebImageSwiftUI */,
-				C8A45158280643AC00B8CC2E /* ShapeUp */,
-			);
-			productName = BoldyGiffing;
-			productReference = C89DE5431F06E636000ABC82 /* BoldlyGiffing.app */;
-			productType = "com.apple.product-type.application.messages";
-		};
 		C89DE54C1F06E636000ABC82 /* BoldlyGiffing MessagesExtension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C89DE55F1F06E636000ABC82 /* Build configuration list for PBXNativeTarget "BoldlyGiffing MessagesExtension" */;
@@ -640,7 +612,7 @@
 			packageProductDependencies = (
 				C8D753AA27F7ABE7004B4699 /* SDWebImageSwiftUI */,
 				C851B01F28120D4700AC8B52 /* ShapeUp */,
-				C8979E402A4E278200879B5E /* ComposableArchitecture */,
+				C8979E572A577FE800879B5E /* ComposableArchitecture */,
 			);
 			productName = "BoldyGiffing MessagesExtension";
 			productReference = C89DE54D1F06E636000ABC82 /* BoldlyGiffing MessagesExtension.appex */;
@@ -679,12 +651,9 @@
 						CreatedOnToolsVersion = 14.2;
 						TestTargetID = C85321A029B810D7000D43FF;
 					};
-					C89DE5421F06E636000ABC82 = {
-						CreatedOnToolsVersion = 9.0;
-					};
 					C89DE54C1F06E636000ABC82 = {
 						CreatedOnToolsVersion = 9.0;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = "";
 					};
 				};
 			};
@@ -700,13 +669,12 @@
 			packageReferences = (
 				C8D753A027F79A29004B4699 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				C8A45157280643AC00B8CC2E /* XCRemoteSwiftPackageReference "ShapeUp" */,
-				C8979E3F2A4E278200879B5E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				C8979E512A57798D00879B5E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 			);
 			productRefGroup = C89DE5441F06E636000ABC82 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C89DE5421F06E636000ABC82 /* BoldlyGiffing */,
 				C89DE54C1F06E636000ABC82 /* BoldlyGiffing MessagesExtension */,
 				C816503627F65D1700281A8A /* BoldlyGiffingMac */,
 				C816504627F65D1700281A8A /* BoldlyGiffingMacTests */,
@@ -769,26 +737,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C89DE5411F06E636000ABC82 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C8B9C30C29B80D35003FFB5A /* Assets.xcassets in Resources */,
-				C855573229B81CBF0091DE24 /* Assets.xcassets in Resources */,
-				C851B02128120F9900AC8B52 /* Helvetica-UltraCompressed.otf in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C89DE54B1F06E636000ABC82 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				C851B02628136D1A00AC8B52 /* Helvetica-UltraCompressed.otf in Resources */,
-				C8FF84681F3E778200412148 /* MainInterface.storyboard in Resources */,
-				C8D753A827F7AB66004B4699 /* MainViewStoryboard.storyboard in Resources */,
 				C89DE55B1F06E636000ABC82 /* Assets.xcassets in Resources */,
 				C855573329B81CC40091DE24 /* Assets.xcassets in Resources */,
-				C87530F71F2136D700197CEC /* CharacterPickerView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -800,6 +755,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C875AFB729C3CE7C00692326 /* CreatorBar.swift in Sources */,
+				C8979E552A577FD100879B5E /* APIClient.swift in Sources */,
 				C8D753B927FCFB93004B4699 /* InfoResponse.swift in Sources */,
 				C8D753B227F7CB1C004B4699 /* MainViewModel.swift in Sources */,
 				C8A4515B280643DC00B8CC2E /* LCARSCapsule.swift in Sources */,
@@ -840,6 +796,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C875AFB829C3CE7C00692326 /* CreatorBar.swift in Sources */,
+				C8979E4C2A576D4400879B5E /* APIClient.swift in Sources */,
 				C8D80FE329B81A1200B36CB8 /* LCARSCapsule.swift in Sources */,
 				C8D80FE529B81A1200B36CB8 /* GifView.swift in Sources */,
 				C8D80FE229B819EC00B36CB8 /* CharacterView.swift in Sources */,
@@ -887,6 +844,7 @@
 				C816506927F6609B00281A8A /* GifView.swift in Sources */,
 				C8D753B127F7BFB0004B4699 /* MainViewModel.swift in Sources */,
 				C85BA4CC1F3660310055BA63 /* UIFont + Extensions.swift in Sources */,
+				C8979E562A577FD200879B5E /* APIClient.swift in Sources */,
 				C8ABCE48280631130001CD71 /* Post.swift in Sources */,
 				C8A4515F28078D2000B8CC2E /* CharacterView.swift in Sources */,
 				C855573729B960A00091DE24 /* ThumbnailView.swift in Sources */,
@@ -925,10 +883,14 @@
 			target = C85321A029B810D7000D43FF /* BoldlyGiffingiOS */;
 			targetProxy = C85321BB29B810D8000D43FF /* PBXContainerItemProxy */;
 		};
-		C89DE5501F06E636000ABC82 /* PBXTargetDependency */ = {
+		C8979E472A54C60A00879B5E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = C8979E462A54C60A00879B5E /* ComposableArchitecture */;
+		};
+		C8979E502A5776ED00879B5E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C89DE54C1F06E636000ABC82 /* BoldlyGiffing MessagesExtension */;
-			targetProxy = C89DE54F1F06E636000ABC82 /* PBXContainerItemProxy */;
+			targetProxy = C8979E4F2A5776ED00879B5E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1342,7 +1304,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1395,7 +1357,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -1409,10 +1371,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
 				DEVELOPMENT_TEAM = AVB95ZHUR8;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/BoldlyGiffing MessagesExtension/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1433,10 +1392,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
 				DEVELOPMENT_TEAM = AVB95ZHUR8;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/BoldlyGiffing MessagesExtension/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1448,36 +1404,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		C89DE5641F06E636000ABC82 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = AVB95ZHUR8;
-				INFOPLIST_FILE = BoldlyGiffing/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.aaronwilliams.BoldyGiffing;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		C89DE5651F06E636000ABC82 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = AVB95ZHUR8;
-				INFOPLIST_FILE = BoldlyGiffing/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.aaronwilliams.BoldyGiffing;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1557,19 +1483,18 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C89DE5631F06E636000ABC82 /* Build configuration list for PBXNativeTarget "BoldlyGiffing" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C89DE5641F06E636000ABC82 /* Debug */,
-				C89DE5651F06E636000ABC82 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
 		C8979E3F2A4E278200879B5E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.55.0;
+			};
+		};
+		C8979E512A57798D00879B5E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
 			requirement = {
@@ -1601,25 +1526,30 @@
 			package = C8A45157280643AC00B8CC2E /* XCRemoteSwiftPackageReference "ShapeUp" */;
 			productName = ShapeUp;
 		};
-		C8979E402A4E278200879B5E /* ComposableArchitecture */ = {
+		C8979E462A54C60A00879B5E /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C8979E3F2A4E278200879B5E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
 			productName = ComposableArchitecture;
 		};
-		C8A45158280643AC00B8CC2E /* ShapeUp */ = {
+		C8979E522A57798D00879B5E /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C8A45157280643AC00B8CC2E /* XCRemoteSwiftPackageReference "ShapeUp" */;
-			productName = ShapeUp;
+			package = C8979E512A57798D00879B5E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+		C8979E572A577FE800879B5E /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C8979E512A57798D00879B5E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+		C8979E592A577FF000879B5E /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C8979E512A57798D00879B5E /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
 		};
 		C8A4515C2806443B00B8CC2E /* ShapeUp */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C8A45157280643AC00B8CC2E /* XCRemoteSwiftPackageReference "ShapeUp" */;
 			productName = ShapeUp;
-		};
-		C8D753A127F79A29004B4699 /* SDWebImageSwiftUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C8D753A027F79A29004B4699 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
-			productName = SDWebImageSwiftUI;
 		};
 		C8D753A227F79A4D004B4699 /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
