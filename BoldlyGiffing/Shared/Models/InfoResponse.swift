@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct InfoResponse: Decodable {
+struct InfoResponse: Decodable, Equatable {
     let postCount: Int
     
     enum OuterKeys: String, CodingKey {

@@ -52,6 +52,9 @@
 		C8979E562A577FD200879B5E /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8979E422A54BEE300879B5E /* APIClient.swift */; };
 		C8979E582A577FE800879B5E /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = C8979E572A577FE800879B5E /* ComposableArchitecture */; };
 		C8979E5A2A577FF000879B5E /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = C8979E592A577FF000879B5E /* ComposableArchitecture */; };
+		C8979E5D2A57874500879B5E /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8979E5C2A57874500879B5E /* AppView.swift */; };
+		C8979E5E2A57874500879B5E /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8979E5C2A57874500879B5E /* AppView.swift */; };
+		C8979E5F2A57874500879B5E /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8979E5C2A57874500879B5E /* AppView.swift */; };
 		C89DE5531F06E636000ABC82 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C89DE5521F06E636000ABC82 /* Messages.framework */; };
 		C89DE55B1F06E636000ABC82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C89DE55A1F06E636000ABC82 /* Assets.xcassets */; };
 		C8A4515A280643DC00B8CC2E /* LCARSCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A45159280643DC00B8CC2E /* LCARSCapsule.swift */; };
@@ -177,6 +180,7 @@
 		C875AFB529C3CE7C00692326 /* CreatorBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatorBar.swift; sourceTree = "<group>"; };
 		C881698829930BC700813F7C /* ExitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitButton.swift; sourceTree = "<group>"; };
 		C8979E422A54BEE300879B5E /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		C8979E5C2A57874500879B5E /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		C89DE5461F06E636000ABC82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C89DE5481F06E636000ABC82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C89DE54D1F06E636000ABC82 /* BoldlyGiffing MessagesExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "BoldlyGiffing MessagesExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -442,6 +446,7 @@
 			isa = PBXGroup;
 			children = (
 				C8979E422A54BEE300879B5E /* APIClient.swift */,
+				C8979E5C2A57874500879B5E /* AppView.swift */,
 				C8D753B627FCF221004B4699 /* ModelLoader.swift */,
 				C851B022281362EB00AC8B52 /* Extensions */,
 				C8979E5B2A57867F00879B5E /* Models */,
@@ -774,6 +779,7 @@
 				C816503C27F65D1700281A8A /* ContentView.swift in Sources */,
 				C816503A27F65D1700281A8A /* BoldlyGiffingMacApp.swift in Sources */,
 				C8A4516428078EA000B8CC2E /* Font+Extensions.swift in Sources */,
+				C8979E5E2A57874500879B5E /* AppView.swift in Sources */,
 				C851B0252813646200AC8B52 /* Color+LCARS.swift in Sources */,
 				C881698929930BC700813F7C /* ExitButton.swift in Sources */,
 				C816506F27F6615000281A8A /* Gif.swift in Sources */,
@@ -815,6 +821,7 @@
 				C8D80FE129B819E300B36CB8 /* ThumbnailView.swift in Sources */,
 				C8D80FE429B81A1200B36CB8 /* LCARSCurve.swift in Sources */,
 				C8D80FE029B8198E00B36CB8 /* Gif.swift in Sources */,
+				C8979E5F2A57874500879B5E /* AppView.swift in Sources */,
 				C8D80FE929B81A1500B36CB8 /* Font+Extensions.swift in Sources */,
 				C8D80FE629B81A1500B36CB8 /* InfoResponse.swift in Sources */,
 				C8D80FEB29B81A5700B36CB8 /* Int + Extensions.swift in Sources */,
@@ -856,6 +863,7 @@
 				C8ABCE48280631130001CD71 /* Post.swift in Sources */,
 				C8A4515F28078D2000B8CC2E /* CharacterView.swift in Sources */,
 				C855573729B960A00091DE24 /* ThumbnailView.swift in Sources */,
+				C8979E5D2A57874500879B5E /* AppView.swift in Sources */,
 				C851B024281362F900AC8B52 /* Color+LCARS.swift in Sources */,
 				C816506E27F6614F00281A8A /* Gif.swift in Sources */,
 				C85010F91F214A8B00F703A4 /* CharacterPickerView.swift in Sources */,

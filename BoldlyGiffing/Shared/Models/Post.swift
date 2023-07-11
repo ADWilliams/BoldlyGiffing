@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct PostResponse: Decodable {
+struct PostResponse: Decodable, Equatable {
     var posts: [Post]
     
     enum OuterContainer: String, CodingKey {
@@ -26,7 +26,7 @@ struct PostResponse: Decodable {
     }
 }
 
-struct Post: Decodable {
+struct Post: Decodable, Equatable {
     var gifs: [Gif]
     let tags: [String]
     
