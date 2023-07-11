@@ -18,6 +18,7 @@ extension DependencyValues {
 
 enum APIClientError: Error {
     case invalidRequestURL
+    case decodingError
 }
 
 struct APIClientKey: DependencyKey {
@@ -38,7 +39,24 @@ struct APIClientKey: DependencyKey {
         )
     }()
     
+    public func request<A: Decodable>(route: String, as: A.Type) async throws -> A {
+        let (data, _ ) = try await request(route)
+        do {
+            return try apiDecode(A.self, from: data)
+        } catch {
+            throw error
+        }
+    }
+    
     public var request: @Sendable (_ route: String) async throws -> (Data, URLResponse)
+    
+    let jsonDecoder = JSONDecoder()
+    
+    public func apiDecode<A: Decodable>(_ type: A.Type, from data: Data) throws -> A {
+        do {
+            return try jsonDecoder.decode(A.self, from: data)
+        } catch {
+            throw APIClientError.decodingError
+        }
+    }
 }
-
-
