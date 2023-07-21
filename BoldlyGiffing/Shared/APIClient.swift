@@ -28,9 +28,14 @@ struct APIClientKey: DependencyKey {
         let apiKey = "GXeFiXAi3Ho0HXbCX9Arm4dlxMuuPG4dIjhj7TVfCsUMCVCLRT"
 
         return Self(request: { route in
-            let requestString = baseURL + route + "&api_key=" + apiKey
+            let requestString = baseURL + route
+            
+            
 
-            if let url = URL(string: requestString) {
+            let apiKey = URLQueryItem(name: "api_key", value: apiKey)
+            
+            if var url = URL(string: requestString) {
+                url.append(queryItems:[apiKey])
                 return try await URLSession.shared.data(from: url)
             } else {
                 throw(APIClientError.invalidRequestURL)
@@ -56,6 +61,7 @@ struct APIClientKey: DependencyKey {
         do {
             return try jsonDecoder.decode(A.self, from: data)
         } catch {
+            print("🚨 Decoding Error: \(error)")
             throw APIClientError.decodingError
         }
     }
