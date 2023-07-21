@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct InfoResponse: Decodable, Equatable {
+public struct InfoResponse: Decodable, Equatable {
     let postCount: Int
     
     enum OuterKeys: String, CodingKey {
@@ -23,7 +23,7 @@ struct InfoResponse: Decodable, Equatable {
         case posts
     }
     
-    init(from decoder: Decoder) throws {
+   public init(from decoder: Decoder) throws {
         let outerContainer = try decoder.container(keyedBy: OuterKeys.self)
         let responseContainer = try outerContainer.nestedContainer(
             keyedBy: ResponseKeys.self,

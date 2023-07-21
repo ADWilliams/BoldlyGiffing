@@ -10,7 +10,7 @@ import Foundation
 import SDWebImage
 import SwiftUI
 
-enum CharacterTag: String {
+public enum CharacterTag: String {
     case crusher = "beverly crusher"
     case data = "data"
     case laForge = "geordi la forge"

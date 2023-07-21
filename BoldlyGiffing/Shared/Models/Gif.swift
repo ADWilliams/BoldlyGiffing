@@ -19,12 +19,8 @@ struct GifAltSize: Decodable, Equatable {
     let height: Int
 }
 
-struct Gif: Decodable, Equatable, Identifiable {
-    static func ==(lhs: Gif, rhs: Gif) -> Bool {
-        return lhs.fullSizeURL == rhs.fullSizeURL
-    }
-
-    var id: String?
+public struct Gif: Decodable, Equatable, Identifiable {
+    public var id: String?
     let fullSizeURL: URL
     var thumbnailURL: URL?
     var tags: [String] = []
@@ -42,7 +38,7 @@ struct Gif: Decodable, Equatable, Identifiable {
         case url
     }
     
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let outerContainer = try decoder.container(keyedBy: OuterContainer.self)
         let originalSizeContainer = try outerContainer.nestedContainer(
             keyedBy: OriginalSizeContainer.self,
@@ -92,7 +88,7 @@ extension Gif {
 }
 
 extension Gif: Transferable {
-    static var transferRepresentation: some TransferRepresentation {
+    public static var transferRepresentation: some TransferRepresentation {
         ProxyRepresentation(exporting: \.fullSizeURL)
     }
 }
