@@ -8,7 +8,18 @@
 
 import SwiftUI
 import ComposableArchitecture
+import SDWebImage
 
+
+public enum DownloadStatus: Equatable {
+    case progress(Double)
+    case completed
+    case failed(ImageError)
+}
+
+public enum ImageError: Equatable {
+    case download
+}
 
 public struct Thumbnails: ReducerProtocol {
     public struct State: Equatable {
@@ -17,6 +28,7 @@ public struct Thumbnails: ReducerProtocol {
         var characterTag: CharacterTag = .all
         var offset = 0
         var selectedGif: Gif?
+        var selectedDownloadProgress: Int = 0
         
     }
     
@@ -28,6 +40,8 @@ public struct Thumbnails: ReducerProtocol {
         case fetchThumbnailsResponse(TaskResult<PostResponse>)
         case gifTapped(Gif)
         case setCharacterTag(CharacterTag)
+        case downloadProgressUpdated(DownloadStatus)
+        case handleCachedImage
     }
     
     enum CancelID {
@@ -63,14 +77,13 @@ public struct Thumbnails: ReducerProtocol {
             let randomOffset = Int.random(in: 0...postCount)
 #endif
             let offset = randomOffset < 0 ? 0 : randomOffset
-            state.offset = offset
             
             return.run { send in
                 await send(.fetchThumbnails(limit: 21, offset: offset))
             }
             
         case let .fetchThumbnails(limit, offset):
-            
+            state.offset = offset
             var tagPath: String = ""
             if let characterTag = state.characterTag.rawValue.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) {
                 tagPath = characterTag.isEmpty ? characterTag : "&tag=\(characterTag)"
@@ -93,11 +106,98 @@ public struct Thumbnails: ReducerProtocol {
             state.dataSet.append(contentsOf: IdentifiedArrayOf(uniqueElements: newItems))
             state.offset += 21
             return .none
+            
         case let .gifTapped(gif):
             state.selectedGif = gif
+            state.selectedDownloadProgress = 0
+
+            let downloadStream: AsyncStream<DownloadStatus> = AsyncStream { continuation in
+                SDWebImageManager.shared.loadImage(with: gif.fullSizeURL,
+                                                   options: .waitStoreCache) { recieved, size, _ in
+                    let progress = (Double(recieved) / Double(size) * 100)
+                    print(progress)
+                    continuation.yield(.progress(progress))
+
+
+                } completed: { _, _, error, _, _, _ in
+                    if let _ = error {
+                        continuation.yield(.failed(.download))
+                        continuation.finish()
+
+                    } else {
+                        continuation.yield(.completed)
+                        continuation.finish()
+
+                    }
+                }
+            }
+            
+            return .run { send in
+                for await status in downloadStream {
+                    await send(.downloadProgressUpdated(status))
+                }
+            }
             
         case let .setCharacterTag(tag):
             state.characterTag = tag
+            state.dataSet.removeAll()
+            return .run { send in
+                if tag == .all {
+                    await send(.fetchRandomThumbnails)
+                } else {
+                    await send(.fetchThumbnails(limit: 21, offset: 0))
+                }
+            }
+            
+        case let .downloadProgressUpdated(status):
+            switch status {
+            case let .progress(progress):
+                state.selectedDownloadProgress = Int(progress)
+            case .completed:
+                state.selectedDownloadProgress = 100
+                return .run { send in
+                    await send(.handleCachedImage, animation: .default.delay(1))
+                }
+            case let .failed(error):
+                print(error)
+            }
+        case .handleCachedImage:
+            if let gif = state.selectedGif {
+                do {
+                    if let path = SDImageCache.shared.cachePath(forKey: gif.fullSizeURL.absoluteString) {
+                        let url = URL(fileURLWithPath: path)
+                        
+                        let data = try Data(contentsOf: url)
+#if os(macOS)
+                        let pasteboard = NSPasteboard.general
+                        pasteboard.declareTypes([.fileContents], owner: nil)
+                        
+                        if  pasteboard.setData(data, forType: NSPasteboard.PasteboardType(rawValue: "com.compuserve.gif")) {
+                            print("✅ gif copied")
+                            
+                            state.selectedGif = nil
+                            state.selectedDownloadProgress = 0
+                            
+                        }
+#elseif os(iOS)
+                        let pasteboard = UIPasteboard.general
+                        let type = "com.compuserve.gif"
+                        
+                        pasteboard.setData(data, forPasteboardType: type)
+                        
+                        let generator = UINotificationFeedbackGenerator()
+                        generator.notificationOccurred(.success)
+                        print("✅ gif copied")
+                        state.selectedGif = nil
+                        state.selectedDownloadProgress = 0
+                        
+#endif
+                    }
+                }
+                catch {
+                    print(error)
+                }
+            }
         }
         return .none
     }
@@ -161,17 +261,17 @@ struct ThumbnailView: View {
                                     .matchedGeometryEffect(id: longPressActive ? gif.id : "", in: thumbnailNamespace, isSource: false)
                                     .zIndex(pressedGif == gif ? 2 : 0)
                                     .onTapGesture {
-                                        store.send(.gifTapped(gif))
+                                        store.send(.gifTapped(gif), animation: .default)
                                     }
                                     .gesture(holdGesture(gif))
                                     .animation( .interactiveSpring(), value: longPressActive)
                                     .overlay {
                                         if store.selectedGif == gif {
-//                                            let text = viewModel.downloadProgress < 100 ? "\(viewModel.downloadProgress)" : "Copied"
-//                                            Text(text)
-//                                                .foregroundColor(.white)
-//                                                .font(.LCARS(size: 22))
-//                                                .shadow(radius: 1)
+                                            let text = store.selectedDownloadProgress < 100 ? "\(store.selectedDownloadProgress)" : "Copied"
+                                            Text(text)
+                                                .foregroundColor(.white)
+                                                .font(.LCARS(size: 22))
+                                                .shadow(radius: 1)
                                         }
                                     }
                                     .onAppear {
