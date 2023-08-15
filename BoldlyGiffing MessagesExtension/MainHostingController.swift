@@ -8,10 +8,18 @@
 
 import Foundation
 import SwiftUI
+import ComposableArchitecture
 
-class MainHostingController: UIHostingController<MainView> {
+class MainHostingController: UIHostingController<AppView> {
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder, rootView: MainView())
+        super.init(
+            coder: aDecoder,
+            rootView: AppView(store: Store(
+                initialState: .init(),
+                reducer: AppReducer()
+            )
+            )
+        )
     }
 }
