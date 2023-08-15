@@ -238,7 +238,7 @@ struct ThumbnailView: View {
     }
     
     var body: some View {
-        WithViewStore(store) { store in
+        WithViewStore(store, observe: { $0 } ) { store in
             ScrollView(showsIndicators: false) {
                 ScrollViewReader { proxy in
                     LazyVGrid(columns: columns, pinnedViews: .sectionHeaders) {
