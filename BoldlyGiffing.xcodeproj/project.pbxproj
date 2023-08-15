@@ -66,7 +66,6 @@
 		C8ABCE4728062EBD0001CD71 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8ABCE4628062EBD0001CD71 /* Post.swift */; };
 		C8ABCE48280631130001CD71 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8ABCE4628062EBD0001CD71 /* Post.swift */; };
 		C8D753A327F79A4D004B4699 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = C8D753A227F79A4D004B4699 /* SDWebImageSwiftUI */; };
-		C8D753A527F7AAB4004B4699 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D753A427F7AAB4004B4699 /* MainView.swift */; };
 		C8D753AB27F7ABE7004B4699 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = C8D753AA27F7ABE7004B4699 /* SDWebImageSwiftUI */; };
 		C8D753AD27F7AC71004B4699 /* MessagesViewControllerNEW.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D753AC27F7AC71004B4699 /* MessagesViewControllerNEW.swift */; };
 		C8D753AF27F7B12F004B4699 /* MainHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D753AE27F7B12F004B4699 /* MainHostingController.swift */; };
@@ -190,8 +189,6 @@
 		C8A4516228078EA000B8CC2E /* Font+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extensions.swift"; sourceTree = "<group>"; };
 		C8ABCE452804D7AB0001CD71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C8ABCE4628062EBD0001CD71 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		C8D753A427F7AAB4004B4699 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		C8D753A727F7AB66004B4699 /* MainViewStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainViewStoryboard.storyboard; sourceTree = "<group>"; };
 		C8D753AC27F7AC71004B4699 /* MessagesViewControllerNEW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewControllerNEW.swift; sourceTree = "<group>"; };
 		C8D753AE27F7B12F004B4699 /* MainHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHostingController.swift; sourceTree = "<group>"; };
 		C8D753B027F7BFB0004B4699 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
@@ -466,8 +463,6 @@
 				C87530F61F2136D700197CEC /* CharacterPickerView.xib */,
 				C8377AD91F352BDD00936729 /* LcarsButton.swift */,
 				C89DE5571F06E636000ABC82 /* MainInterface.storyboard */,
-				C8D753A427F7AAB4004B4699 /* MainView.swift */,
-				C8D753A727F7AB66004B4699 /* MainViewStoryboard.storyboard */,
 				C8D753B027F7BFB0004B4699 /* MainViewModel.swift */,
 			);
 			path = UI;
@@ -847,7 +842,6 @@
 				C8A4516328078EA000B8CC2E /* Font+Extensions.swift in Sources */,
 				C851B01D280F723000AC8B52 /* LCARSCurve.swift in Sources */,
 				C8D753AF27F7B12F004B4699 /* MainHostingController.swift in Sources */,
-				C8D753A527F7AAB4004B4699 /* MainView.swift in Sources */,
 				C875AFB629C3CE7C00692326 /* CreatorBar.swift in Sources */,
 				C816506927F6609B00281A8A /* GifView.swift in Sources */,
 				C8D753B127F7BFB0004B4699 /* MainViewModel.swift in Sources */,
