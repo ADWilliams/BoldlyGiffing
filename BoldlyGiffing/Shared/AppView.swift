@@ -9,6 +9,7 @@
 import Foundation
 import ComposableArchitecture
 import SwiftUI
+import XCTestDynamicOverlay
 
 struct AppReducer: ReducerProtocol {
     @Dependency(\.APIClient) var apiClient
@@ -38,11 +39,13 @@ struct AppView: View {
     let store: Store<AppReducer.State, AppReducer.Action>
     
     var body: some View {
-        ThumbnailView(store: store.scope(state: \.thumbnails, action: AppReducer.Action.thumbnails))
-            .padding(.horizontal, 8)
-            .background(
-                Color.black
-            )
+        if !_XCTIsTesting {
+            ThumbnailView(store: store.scope(state: \.thumbnails, action: AppReducer.Action.thumbnails))
+                .padding(.horizontal, 8)
+                .background(
+                    Color.black
+                )
+        }
     }
 }
 

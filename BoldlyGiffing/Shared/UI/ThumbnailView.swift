@@ -49,6 +49,7 @@ public struct Thumbnails: ReducerProtocol {
     }
     
     @Dependency(\.APIClient) var apiClient
+    @Dependency(\.withRandomNumberGenerator) var randomGenerator
     
     public func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
         switch action {
@@ -71,11 +72,10 @@ public struct Thumbnails: ReducerProtocol {
             
         case .fetchRandomThumbnails:
             let postCount = state.postCount - (state.postCount > 21 ? 21 : 0)
-#if os(iOS)
-            let randomOffset = Int.random(postCount)
-#elseif os(macOS)
-            let randomOffset = Int.random(in: 0...postCount)
-#endif
+            let randomOffset = randomGenerator { generator in
+                Int.random(in: 0...postCount, using: &generator)
+            }
+            
             let offset = randomOffset < 0 ? 0 : randomOffset
             
             return.run { send in

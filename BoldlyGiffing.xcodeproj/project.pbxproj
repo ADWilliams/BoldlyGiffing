@@ -87,6 +87,7 @@
 		C8D80FE929B81A1500B36CB8 /* Font+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A4516228078EA000B8CC2E /* Font+Extensions.swift */; };
 		C8D80FEA29B81A1800B36CB8 /* Color+LCARS.swift in Sources */ = {isa = PBXBuildFile; fileRef = C851B023281362F900AC8B52 /* Color+LCARS.swift */; };
 		C8D80FEB29B81A5700B36CB8 /* Int + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81CCA891F142B7400548B79 /* Int + Extensions.swift */; };
+		C8D853312A8C3BFA00C333C3 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = C8D853302A8C3BFA00C333C3 /* SDWebImageSwiftUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -547,6 +548,9 @@
 				C85321B229B810D8000D43FF /* PBXTargetDependency */,
 			);
 			name = BoldlyGiffingiOSTests;
+			packageProductDependencies = (
+				C8D853302A8C3BFA00C333C3 /* SDWebImageSwiftUI */,
+			);
 			productName = BoldlyGiffingiOSTests;
 			productReference = C85321B029B810D8000D43FF /* BoldlyGiffingiOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -1444,6 +1448,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C8A45157280643AC00B8CC2E /* XCRemoteSwiftPackageReference "ShapeUp" */;
 			productName = ShapeUp;
+		};
+		C8D853302A8C3BFA00C333C3 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C8D753A027F79A29004B4699 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

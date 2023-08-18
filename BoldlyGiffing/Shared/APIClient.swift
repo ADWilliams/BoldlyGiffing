@@ -23,6 +23,10 @@ enum APIClientError: Error {
 
 struct APIClientKey: DependencyKey {
     
+    static var testValue: APIClientKey = {
+        return Self(request: unimplemented("\(Self.self).request"))
+    }()
+    
     public static var liveValue = {
         let baseURL = "https://api.tumblr.com/v2/blog/boldlygiffing.tumblr.com/"
         let apiKey = "GXeFiXAi3Ho0HXbCX9Arm4dlxMuuPG4dIjhj7TVfCsUMCVCLRT"
@@ -30,8 +34,6 @@ struct APIClientKey: DependencyKey {
         return Self(request: { route in
             let requestString = baseURL + route
             
-            
-
             let apiKey = URLQueryItem(name: "api_key", value: apiKey)
             
             if var url = URL(string: requestString) {
@@ -66,3 +68,39 @@ struct APIClientKey: DependencyKey {
         }
     }
 }
+
+extension APIClientKey: TestDependencyKey {
+    public mutating func override(
+        route matchingRoute: String,
+        withResponse response: @escaping @Sendable () async throws -> (Data, URLResponse)
+    ) {
+        self.request = { @Sendable [self] route in
+            if route == matchingRoute {
+                return try await response()
+            } else {
+                return try await self.request(route)
+            }
+        }
+    }
+}
+
+#if DEBUG
+
+  public func OK<A: Encodable>(
+    _ value: A, encoder: JSONEncoder = .init()
+  ) async throws -> (Data, URLResponse) {
+    (
+      try encoder.encode(value),
+      HTTPURLResponse(
+        url: URL(string: "/")!, statusCode: 200, httpVersion: nil, headerFields: nil)!
+    )
+  }
+
+  public func OK(_ jsonObject: Any) async throws -> (Data, URLResponse) {
+    (
+      try JSONSerialization.data(withJSONObject: jsonObject, options: []),
+      HTTPURLResponse(
+        url: URL(string: "/")!, statusCode: 200, httpVersion: nil, headerFields: nil)!
+    )
+  }
+#endif
