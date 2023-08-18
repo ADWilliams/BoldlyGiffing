@@ -56,7 +56,82 @@ final class BoldlyGiffingiOSTests: XCTestCase {
             $0.dataSet = IdentifiedArrayOf(uniqueElements: Gif.mockArray)
         }
     }
+    
+    func testSelectCharacter() async {
+        let store = TestStore(initialState: Thumbnails.State()) {
+            Thumbnails()
+        } withDependencies: {
+            $0.withRandomNumberGenerator = WithRandomNumberGenerator(LCRNG(seed: 2))
+            $0.mainQueue = .immediate
+        }
+        
+        let postResponse = PostResponse(
+            posts: [Post(
+                gifs: Gif.mockArray,
+                tags: ["picard"])
+            ]
+        )
+        store.dependencies.APIClient.override(route: "posts/photo?limit=\(21)&offset=\(0)&tag=jean%20luc%20picard") {
+            try await OK(postResponse)
+        }
+        
+        await store.send(.setCharacterTag(.picard)) {
+            $0.characterTag = .picard
+            $0.dataSet = []
+        }
+        
+        await store.receive(.fetchThumbnails(limit: 21, offset: 0))
+        
+        await store.receive(
+            .fetchThumbnailsResponse(
+                .success(postResponse)
+            )
+        ) {
+            $0.offset += 21
+            $0.dataSet = IdentifiedArrayOf(uniqueElements: Gif.mockArray)
+        }
+    }
+    
+    func testGifDownloadProgress() async {
+        let store = TestStore(initialState: Thumbnails.State()) {
+            Thumbnails()
+        }
+         
+         await store.send(.downloadProgressUpdated(.progress(20))) {
+             $0.selectedDownloadProgress = 20
+         }
+    }
+    
+    func testGifDownloadComplete() async {
+        let store = TestStore(
+            initialState: Thumbnails.State(
+                dataSet: [],
+                postCount: 0,
+                characterTag: .all,
+                offset: 0,
+                selectedGif: Gif.mock,
+                selectedDownloadProgress: 80
+            )
+        ){
+            Thumbnails()
+        }
+        
+        //Should probably make this a dependency
+        await SDImageCache.shared.store(.checkmark, forKey: Gif.mock.fullSizeURL.absoluteString)
+        
+        await store.send(.downloadProgressUpdated(.completed)) {
+            $0.selectedDownloadProgress = 100
+        }
+        
+        await store.receive(.handleCachedImage) {
+            $0.selectedGif = nil
+            $0.selectedDownloadProgress = 0
+        }
+    }
 }
+
+
+
 
 private struct LCRNG: RandomNumberGenerator {
   var seed: UInt64
