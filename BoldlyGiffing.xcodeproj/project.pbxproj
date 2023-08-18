@@ -32,8 +32,6 @@
 		C85321A829B810D7000D43FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C85321A729B810D7000D43FF /* Assets.xcassets */; };
 		C85321AB29B810D7000D43FF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C85321AA29B810D7000D43FF /* Preview Assets.xcassets */; };
 		C85321B529B810D8000D43FF /* BoldlyGiffingiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85321B429B810D8000D43FF /* BoldlyGiffingiOSTests.swift */; };
-		C85321BF29B810D8000D43FF /* BoldlyGiffingiOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85321BE29B810D8000D43FF /* BoldlyGiffingiOSUITests.swift */; };
-		C85321C129B810D8000D43FF /* BoldlyGiffingiOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85321C029B810D8000D43FF /* BoldlyGiffingiOSUITestsLaunchTests.swift */; };
 		C85321CD29B81276000D43FF /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D753B027F7BFB0004B4699 /* MainViewModel.swift */; };
 		C855573329B81CC40091DE24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C89DE5461F06E636000ABC82 /* Assets.xcassets */; };
 		C855573529B81CC80091DE24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C89DE5461F06E636000ABC82 /* Assets.xcassets */; };
@@ -113,13 +111,6 @@
 			remoteGlobalIDString = C85321A029B810D7000D43FF;
 			remoteInfo = BoldlyGiffingiOS;
 		};
-		C85321BB29B810D8000D43FF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C89DE53D1F06E636000ABC82 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C85321A029B810D7000D43FF;
-			remoteInfo = BoldlyGiffingiOS;
-		};
 		C8979E4F2A5776ED00879B5E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C89DE53D1F06E636000ABC82 /* Project object */;
@@ -167,9 +158,6 @@
 		C85321AA29B810D7000D43FF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C85321B029B810D8000D43FF /* BoldlyGiffingiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoldlyGiffingiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C85321B429B810D8000D43FF /* BoldlyGiffingiOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoldlyGiffingiOSTests.swift; sourceTree = "<group>"; };
-		C85321BA29B810D8000D43FF /* BoldlyGiffingiOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoldlyGiffingiOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C85321BE29B810D8000D43FF /* BoldlyGiffingiOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoldlyGiffingiOSUITests.swift; sourceTree = "<group>"; };
-		C85321C029B810D8000D43FF /* BoldlyGiffingiOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoldlyGiffingiOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C85321CB29B81133000D43FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C85BA4CB1F3660310055BA63 /* UIFont + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extensions.swift"; sourceTree = "<group>"; };
 		C87530F61F2136D700197CEC /* CharacterPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterPickerView.xib; sourceTree = "<group>"; };
@@ -235,13 +223,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C85321B729B810D8000D43FF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				C8D853312A8C3BFA00C333C3 /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,15 +323,6 @@
 			path = BoldlyGiffingiOSTests;
 			sourceTree = "<group>";
 		};
-		C85321BD29B810D8000D43FF /* BoldlyGiffingiOSUITests */ = {
-			isa = PBXGroup;
-			children = (
-				C85321BE29B810D8000D43FF /* BoldlyGiffingiOSUITests.swift */,
-				C85321C029B810D8000D43FF /* BoldlyGiffingiOSUITestsLaunchTests.swift */,
-			);
-			path = BoldlyGiffingiOSUITests;
-			sourceTree = "<group>";
-		};
 		C86717FD280639110065F17C /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -383,7 +356,6 @@
 				C816505427F65D1700281A8A /* BoldlyGiffingMacUITests */,
 				C85321A229B810D7000D43FF /* BoldlyGiffingiOS */,
 				C85321B329B810D8000D43FF /* BoldlyGiffingiOSTests */,
-				C85321BD29B810D8000D43FF /* BoldlyGiffingiOSUITests */,
 				C89DE5511F06E636000ABC82 /* Frameworks */,
 				C89DE5441F06E636000ABC82 /* Products */,
 			);
@@ -398,7 +370,6 @@
 				C816505127F65D1700281A8A /* BoldlyGiffingMacUITests.xctest */,
 				C85321A129B810D7000D43FF /* BoldlyGiffingiOS.app */,
 				C85321B029B810D8000D43FF /* BoldlyGiffingiOSTests.xctest */,
-				C85321BA29B810D8000D43FF /* BoldlyGiffingiOSUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -580,24 +551,6 @@
 			productReference = C85321B029B810D8000D43FF /* BoldlyGiffingiOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		C85321B929B810D8000D43FF /* BoldlyGiffingiOSUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C85321C829B810D8000D43FF /* Build configuration list for PBXNativeTarget "BoldlyGiffingiOSUITests" */;
-			buildPhases = (
-				C85321B629B810D8000D43FF /* Sources */,
-				C85321B729B810D8000D43FF /* Frameworks */,
-				C85321B829B810D8000D43FF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C85321BC29B810D8000D43FF /* PBXTargetDependency */,
-			);
-			name = BoldlyGiffingiOSUITests;
-			productName = BoldlyGiffingiOSUITests;
-			productReference = C85321BA29B810D8000D43FF /* BoldlyGiffingiOSUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		C89DE54C1F06E636000ABC82 /* BoldlyGiffing MessagesExtension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C89DE55F1F06E636000ABC82 /* Build configuration list for PBXNativeTarget "BoldlyGiffing MessagesExtension" */;
@@ -650,10 +603,6 @@
 						CreatedOnToolsVersion = 14.2;
 						TestTargetID = C85321A029B810D7000D43FF;
 					};
-					C85321B929B810D8000D43FF = {
-						CreatedOnToolsVersion = 14.2;
-						TestTargetID = C85321A029B810D7000D43FF;
-					};
 					C89DE54C1F06E636000ABC82 = {
 						CreatedOnToolsVersion = 9.0;
 						LastSwiftMigration = "";
@@ -684,7 +633,6 @@
 				C816505027F65D1700281A8A /* BoldlyGiffingMacUITests */,
 				C85321A029B810D7000D43FF /* BoldlyGiffingiOS */,
 				C85321AF29B810D8000D43FF /* BoldlyGiffingiOSTests */,
-				C85321B929B810D8000D43FF /* BoldlyGiffingiOSUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -727,13 +675,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		C85321AE29B810D8000D43FF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C85321B829B810D8000D43FF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -826,15 +767,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C85321B629B810D8000D43FF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C85321BF29B810D8000D43FF /* BoldlyGiffingiOSUITests.swift in Sources */,
-				C85321C129B810D8000D43FF /* BoldlyGiffingiOSUITestsLaunchTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C89DE5491F06E636000ABC82 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -880,11 +812,6 @@
 			isa = PBXTargetDependency;
 			target = C85321A029B810D7000D43FF /* BoldlyGiffingiOS */;
 			targetProxy = C85321B129B810D8000D43FF /* PBXContainerItemProxy */;
-		};
-		C85321BC29B810D8000D43FF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C85321A029B810D7000D43FF /* BoldlyGiffingiOS */;
-			targetProxy = C85321BB29B810D8000D43FF /* PBXContainerItemProxy */;
 		};
 		C8979E472A54C60A00879B5E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1210,53 +1137,6 @@
 			};
 			name = Release;
 		};
-		C85321C929B810D8000D43FF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AVB95ZHUR8;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
-				MARKETING_VERSION = 1.0;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.SweetSoftware.BoldlyGiffingiOSUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = BoldlyGiffingiOS;
-			};
-			name = Debug;
-		};
-		C85321CA29B810D8000D43FF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AVB95ZHUR8;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
-				MARKETING_VERSION = 1.0;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.SweetSoftware.BoldlyGiffingiOSUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = BoldlyGiffingiOS;
-			};
-			name = Release;
-		};
 		C89DE55D1F06E636000ABC82 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1455,15 +1335,6 @@
 			buildConfigurations = (
 				C85321C629B810D8000D43FF /* Debug */,
 				C85321C729B810D8000D43FF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C85321C829B810D8000D43FF /* Build configuration list for PBXNativeTarget "BoldlyGiffingiOSUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C85321C929B810D8000D43FF /* Debug */,
-				C85321CA29B810D8000D43FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
