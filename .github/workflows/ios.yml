@@ -1,44 +1,95 @@
-name: iOS starter workflow
+- name: mxcl/Xcodebuild
+  # You may pin to the exact commit or the version.
+  # uses: mxcl/xcodebuild@6e60022a0cbe8c89278be2dd1773a2f68e7c5c87
+  uses: mxcl/xcodebuild@v2.0.0
+  with:
+    # A semantic version range, eg. ^10, ~10.3 or 10.3.1
+Leave unset for the image‑default.
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    xcode: # optional
+    # A semantic version range, eg. ^5, ~5.4 or 5.4.1
+    swift: # optional
+    # Either `iOS`, `tvOS`, `macOS`, `watchOS` or (more rarely)
+`mac-catalyst`
+Leave unset and `xcodebuild` decides itself.
 
-jobs:
-  build:
-    name: Build and Test default scheme using any available iPhone simulator
-    runs-on: macos-latest
+    platform: # optional
+    # * The most common actions are `test`, `build`.
+* See the `xcodebuild` manual for available actions.
+* Specifying `none` skips the explicit `xcodebuild` step allowing you
+  to use this (GitHub) Action solely for selecting an Xcode version.
+* Specifying `''`, `null` or `~` will cause xcodebuild to behave as it
+  does without an action specified (usually `build`)
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Set Default Scheme
-        run: |
-          scheme_list=$(xcodebuild -list -json | tr -d "\n")
-          default=$(echo $scheme_list | ruby -e "require 'json'; puts JSON.parse(STDIN.gets)['project']['targets'][0]")
-          echo $default | cat >default
-          echo Using default scheme: $default
-      - name: Build
-        env:
-          scheme: ${{ 'default' }}
-          platform: ${{ 'iOS Simulator' }}
-        run: |
-          # xcrun xctrace returns via stderr, not the expected stdout (see https://developer.apple.com/forums/thread/663959)
-          device=`xcrun xctrace list devices 2>&1 | grep -oE 'iPhone.*?[^\(]+' | head -1 | awk '{$1=$1;print}' | sed -e "s/ Simulator$//"`
-          if [ $scheme = default ]; then scheme=$(cat default); fi
-          if [ "`ls -A | grep -i \\.xcworkspace\$`" ]; then filetype_parameter="workspace" && file_to_build="`ls -A | grep -i \\.xcworkspace\$`"; else filetype_parameter="project" && file_to_build="`ls -A | grep -i \\.xcodeproj\$`"; fi
-          file_to_build=`echo $file_to_build | awk '{$1=$1;print}'`
-          xcodebuild build-for-testing -scheme "$scheme" -"$filetype_parameter" "$file_to_build" -destination "platform=$platform,name=$device"
-      - name: Test
-        env:
-          scheme: ${{ 'default' }}
-          platform: ${{ 'iOS Simulator' }}
-        run: |
-          # xcrun xctrace returns via stderr, not the expected stdout (see https://developer.apple.com/forums/thread/663959)
-          device=`xcrun xctrace list devices 2>&1 | grep -oE 'iPhone.*?[^\(]+' | head -1 | awk '{$1=$1;print}' | sed -e "s/ Simulator$//"`
-          if [ $scheme = default ]; then scheme=$(cat default); fi
-          if [ "`ls -A | grep -i \\.xcworkspace\$`" ]; then filetype_parameter="workspace" && file_to_build="`ls -A | grep -i \\.xcworkspace\$`"; else filetype_parameter="project" && file_to_build="`ls -A | grep -i \\.xcodeproj\$`"; fi
-          file_to_build=`echo $file_to_build | awk '{$1=$1;print}'`
-          xcodebuild test-without-building -scheme "$scheme" -"$filetype_parameter" "$file_to_build" -destination "platform=$platform,name=$device"
+    action: # optional, default is test
+    # Enables code coverage
+    code-coverage: # optional, default is false
+    # A Base64-encoded authentication key issued by App Store Connect. If
+specified, `xcodebuild`` will authenticate with the Apple Developer
+website using this credential. The `authentication-key-id` and
+`authentication-key-issuer-id` parameters are required. Using this key,
+`xcodebuild` will register the GitHub Actions runner device and manage
+code signing certificates for it. Please note that this may cause
+undesired behavior when using GitHub-hosted runners. For best results, use
+App Store Connect API keys only on self-hosted runners.
+
+    authentication-key-base64: # optional
+    # The key identifier associated with the App Store Conect authentication key
+specified in `authentication-key-base64`. This string can be located in
+the users and access details for your provider at
+"https://appstoreconnect.apple.com". For best results, use App Store
+Connect API keys only on self-hosted runners.
+
+    authentication-key-id: # optional
+    # The App Store Connect issuer identifier associated with the authentication
+key specified in `authentication-key-base64`. This string can be located
+in the users and access details for your provider at
+"https://appstoreconnect.apple.com". For best results, use App Store
+Connect API keys only on self-hosted runners.
+
+    authentication-key-issuer-id: # optional
+    # A Base64-encoded certificate to be installed to the macOS Keychain for
+code signing. It is removed from the keychain in the post action. This
+certificate should correspond to the `CODE_SIGN_IDENTITY` specified in
+your project or to the `code-sign-identity` input. Pass this in as a
+GitHub Encrypted Secret. Requires macOS and
+`code-sign-certificate-passphrase`.
+
+    code-sign-certificate: # optional
+    # The passphrase used to protect the code signing certificate. Pass this in
+as a GitHub Encrypted Secret.
+
+    code-sign-certificate-passphrase: # optional
+    # Identity to be used for code signing. If your project specifies a
+`CODE_SIGN_IDENTITY`, this will override it.
+
+    code-sign-identity: # optional
+    # A multiline list of Base64-encoded mobile provisioning profiles.
+
+    mobile-provisioning-profiles-base64: # optional
+    # A multiline list of Base64-encoded Mac provisioning profiles.
+
+    provisioning-profiles-base64: # optional
+    # …
+    working-directory: # optional
+    # Typically `Release` or `Debug`.
+Leave unset and `xcodebuild` decides itself.
+
+    configuration: # optional
+    # A scheme defined by an Xcode project or workspace.
+If not specified, xcodebuild builds only the first target.
+
+    scheme: # optional
+    # We try to detect your workspace, but if we fail you can manually specify
+it with this parameter.
+
+    workspace: # optional
+    # Fails the build if any warnings in *non test targets*.
+    warnings-as-errors: # optional, default is false
+    # One of `xcpretty`, `quiet` or `verbose`.
+    verbosity: # optional, default is xcpretty
+    # One of `always` or `on-failure`.
+Consider `always` if you want access to your coverage-reports.
+Beware that artifacts count against your GitHub Actions storage limits.
+
+    upload-logs: # optional, default is on-failure
