@@ -1,23 +1,13 @@
-- name: mxcl/Xcodebuild
-  uses: mxcl/xcodebuild@v2.0.0
-  with:
-    xcode: # optional
-    swift: # optional
-    platform: # optional
-    action: # optional
-    code-coverage: # optional, default is false
-    authentication-key-base64:
-    authentication-key-id: 
-    authentication-key-issuer-id: 
-    code-sign-certificate: 
-    code-sign-certificate-passphrase: # optional
-    code-sign-identity: # optional
-    mobile-provisioning-profiles-base64: # optional
-    provisioning-profiles-base64: # optional
-    working-directory:
-    configuration: 
-    scheme: # optional
-    workspace: # optional
-    warnings-as-errors: # optional, default is false
-    verbosity: # optional, default is xcpretty
-    upload-logs: # optional, default is on-failure
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  run_Xcodebuild:
+    name: build and test
+    runs-on: macos-latest
+    steps: 
+    - name: mxcl/Xcodebuild
+      uses: mxcl/xcodebuild@v2.0.0
