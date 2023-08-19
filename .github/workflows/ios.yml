@@ -5,11 +5,11 @@ on:
     branches: [ "main" ]
 
 jobs:
-  run_Xcodebuild:
-    name: build and test
+  bulid:
     runs-on: macos-latest
     steps: 
-    - name: Xcodebuild Action
-      uses: sersoft-gmbh/xcodebuild-action@v2.0.1
-      with: 
-        project: BoldlyGiffing.xcodeproj
+     - name: Checkout
+       uses: actions/checkout@v3
+     - name: xcodeBuild
+       uses: mxcl/xcodebuild@v2.0.0
+      
