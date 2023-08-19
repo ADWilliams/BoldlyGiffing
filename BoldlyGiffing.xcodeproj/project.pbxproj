@@ -631,11 +631,11 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				C85321A029B810D7000D43FF /* BoldlyGiffingiOS */,
 				C89DE54C1F06E636000ABC82 /* BoldlyGiffing MessagesExtension */,
 				C816503627F65D1700281A8A /* BoldlyGiffingMac */,
 				C816504627F65D1700281A8A /* BoldlyGiffingMacTests */,
 				C816505027F65D1700281A8A /* BoldlyGiffingMacUITests */,
-				C85321A029B810D7000D43FF /* BoldlyGiffingiOS */,
 				C85321AF29B810D8000D43FF /* BoldlyGiffingiOSTests */,
 			);
 		};
