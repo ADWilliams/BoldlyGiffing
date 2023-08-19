@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C816503A27F65D1700281A8A /* BoldlyGiffingMacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C816503927F65D1700281A8A /* BoldlyGiffingMacApp.swift */; };
-		C816503C27F65D1700281A8A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C816503B27F65D1700281A8A /* ContentView.swift */; };
 		C816503E27F65D1700281A8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C816503D27F65D1700281A8A /* Assets.xcassets */; };
 		C816504127F65D1700281A8A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C816504027F65D1700281A8A /* Preview Assets.xcassets */; };
 		C816504C27F65D1700281A8A /* BoldlyGiffingMacTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C816504B27F65D1700281A8A /* BoldlyGiffingMacTests.swift */; };
@@ -30,7 +29,6 @@
 		C851B0252813646200AC8B52 /* Color+LCARS.swift in Sources */ = {isa = PBXBuildFile; fileRef = C851B023281362F900AC8B52 /* Color+LCARS.swift */; };
 		C851B02628136D1A00AC8B52 /* Helvetica-UltraCompressed.otf in Resources */ = {isa = PBXBuildFile; fileRef = C851B019280F675500AC8B52 /* Helvetica-UltraCompressed.otf */; };
 		C85321A429B810D7000D43FF /* BoldlyGiffingiOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85321A329B810D7000D43FF /* BoldlyGiffingiOSApp.swift */; };
-		C85321A629B810D7000D43FF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85321A529B810D7000D43FF /* ContentView.swift */; };
 		C85321A829B810D7000D43FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C85321A729B810D7000D43FF /* Assets.xcassets */; };
 		C85321AB29B810D7000D43FF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C85321AA29B810D7000D43FF /* Preview Assets.xcassets */; };
 		C85321B529B810D8000D43FF /* BoldlyGiffingiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85321B429B810D8000D43FF /* BoldlyGiffingiOSTests.swift */; };
@@ -55,6 +53,7 @@
 		C8979E5D2A57874500879B5E /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8979E5C2A57874500879B5E /* AppView.swift */; };
 		C8979E5E2A57874500879B5E /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8979E5C2A57874500879B5E /* AppView.swift */; };
 		C8979E5F2A57874500879B5E /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8979E5C2A57874500879B5E /* AppView.swift */; };
+		C8979E612A6B3E3700879B5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C89DE5461F06E636000ABC82 /* Assets.xcassets */; };
 		C89DE5531F06E636000ABC82 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C89DE5521F06E636000ABC82 /* Messages.framework */; };
 		C89DE55B1F06E636000ABC82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C89DE55A1F06E636000ABC82 /* Assets.xcassets */; };
 		C8A4515A280643DC00B8CC2E /* LCARSCapsule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A45159280643DC00B8CC2E /* LCARSCapsule.swift */; };
@@ -146,7 +145,6 @@
 /* Begin PBXFileReference section */
 		C816503727F65D1700281A8A /* BoldlyGiffingMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoldlyGiffingMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C816503927F65D1700281A8A /* BoldlyGiffingMacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoldlyGiffingMacApp.swift; sourceTree = "<group>"; };
-		C816503B27F65D1700281A8A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C816503D27F65D1700281A8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C816504027F65D1700281A8A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C816504227F65D1700281A8A /* BoldlyGiffingMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BoldlyGiffingMac.entitlements; sourceTree = "<group>"; };
@@ -166,7 +164,6 @@
 		C851B023281362F900AC8B52 /* Color+LCARS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+LCARS.swift"; sourceTree = "<group>"; };
 		C85321A129B810D7000D43FF /* BoldlyGiffingiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoldlyGiffingiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C85321A329B810D7000D43FF /* BoldlyGiffingiOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoldlyGiffingiOSApp.swift; sourceTree = "<group>"; };
-		C85321A529B810D7000D43FF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C85321A729B810D7000D43FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C85321AA29B810D7000D43FF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C85321B029B810D8000D43FF /* BoldlyGiffingiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoldlyGiffingiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -271,7 +268,6 @@
 				C8ABCE452804D7AB0001CD71 /* Info.plist */,
 				C816506B27F660A200281A8A /* UI */,
 				C816503927F65D1700281A8A /* BoldlyGiffingMacApp.swift */,
-				C816503B27F65D1700281A8A /* ContentView.swift */,
 				C816503D27F65D1700281A8A /* Assets.xcassets */,
 				C816504227F65D1700281A8A /* BoldlyGiffingMac.entitlements */,
 				C816503F27F65D1700281A8A /* Preview Content */,
@@ -326,7 +322,6 @@
 			children = (
 				C85321CB29B81133000D43FF /* Info.plist */,
 				C85321A329B810D7000D43FF /* BoldlyGiffingiOSApp.swift */,
-				C85321A529B810D7000D43FF /* ContentView.swift */,
 				C85321A729B810D7000D43FF /* Assets.xcassets */,
 				C85321A929B810D7000D43FF /* Preview Content */,
 			);
@@ -706,7 +701,7 @@
 			files = (
 				C816504127F65D1700281A8A /* Preview Assets.xcassets in Resources */,
 				C816503E27F65D1700281A8A /* Assets.xcassets in Resources */,
-				C8F870872A030B2F001D774C /* Assets.xcassets in Resources */,
+				C8979E612A6B3E3700879B5E /* Assets.xcassets in Resources */,
 				C851B01B280F675500AC8B52 /* Helvetica-UltraCompressed.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -776,7 +771,6 @@
 				C816506527F65D4700281A8A /* ThumbnailView.swift in Sources */,
 				C816506A27F6609B00281A8A /* GifView.swift in Sources */,
 				C8A4516028078D2000B8CC2E /* CharacterView.swift in Sources */,
-				C816503C27F65D1700281A8A /* ContentView.swift in Sources */,
 				C816503A27F65D1700281A8A /* BoldlyGiffingMacApp.swift in Sources */,
 				C8A4516428078EA000B8CC2E /* Font+Extensions.swift in Sources */,
 				C8979E5E2A57874500879B5E /* AppView.swift in Sources */,
@@ -816,7 +810,6 @@
 				C8D80FE229B819EC00B36CB8 /* CharacterView.swift in Sources */,
 				C8D80FE829B81A1500B36CB8 /* Post.swift in Sources */,
 				C8D80FE729B81A1500B36CB8 /* ModelLoader.swift in Sources */,
-				C85321A629B810D7000D43FF /* ContentView.swift in Sources */,
 				C85321A429B810D7000D43FF /* BoldlyGiffingiOSApp.swift in Sources */,
 				C8D80FE129B819E300B36CB8 /* ThumbnailView.swift in Sources */,
 				C8D80FE429B81A1200B36CB8 /* LCARSCurve.swift in Sources */,

@@ -7,14 +7,20 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 @main
 struct BoldlyGiffingMacApp: App {
     
     var body: some Scene {
         MenuBarExtra("Trek", image: "badge") {
-            ContentView()
-                .frame(width: 450, height: 600)
+            AppView(
+                store: Store(
+                    initialState: .init(),
+                    reducer: AppReducer()
+                )
+            )
+            .frame(width: 450, height: 600)
         }
         .menuBarExtraStyle(.window)
     }

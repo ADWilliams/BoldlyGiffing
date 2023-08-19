@@ -7,12 +7,18 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 @main
 struct BoldlyGiffingiOSApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AppView(
+                store: Store(
+                    initialState: .init(),
+                    reducer: AppReducer()
+                )
+            )
         }
     }
 }
