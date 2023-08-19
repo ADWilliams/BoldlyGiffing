@@ -9,7 +9,5 @@ jobs:
     name: build and test
     runs-on: macos-latest
     steps: 
-    - name: mxcl/Xcodebuild
-      uses: mxcl/xcodebuild@v2.0.0
-      with:
-        working-directory: /Users/runner/work/BoldlyGiffing
+    - name: Xcodebuild Action
+      uses: sersoft-gmbh/xcodebuild-action@v2.0.1
