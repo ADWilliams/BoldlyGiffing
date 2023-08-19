@@ -3,7 +3,7 @@
 //  BoldyGiffing
 //
 //  Created by Aaron Williams on 2022-03-31.
-//  Copyright © 2022 SweetieApps. All rights reserved.
+//  Copyright © 2022 Sweet Software. All rights reserved.
 //
 
 import Foundation
@@ -13,18 +13,14 @@ enum GifError: Error {
     case decoding
 }
 
-struct GifAltSize: Decodable, Equatable {
+struct GifAltSize: Codable, Equatable {
     let url: String
     let width: Int
     let height: Int
 }
 
-struct Gif: Decodable, Equatable, Identifiable {
-    static func ==(lhs: Gif, rhs: Gif) -> Bool {
-        return lhs.fullSizeURL == rhs.fullSizeURL
-    }
-
-    var id: String?
+public struct Gif: Codable, Equatable, Identifiable {
+    public var id: String?
     let fullSizeURL: URL
     var thumbnailURL: URL?
     var tags: [String] = []
@@ -42,7 +38,29 @@ struct Gif: Decodable, Equatable, Identifiable {
         case url
     }
     
-    init(from decoder: Decoder) throws {
+    public func encode(to encoder: Encoder) throws {
+        var outerContainer = encoder.container(keyedBy: OuterContainer.self)
+        var originalSizeContainer = outerContainer.nestedContainer(
+            keyedBy: OriginalSizeContainer.self,
+            forKey: .originalSize
+        )
+        try originalSizeContainer.encode(self.fullSizeURL, forKey: .url)
+        let altSizes = [
+            GifAltSize(
+                url: self.fullSizeURL.absoluteString,
+                width: 400,
+                height: 400
+            ),
+            GifAltSize(
+                url: self.thumbnailURL?.absoluteString ?? "",
+                width: 250,
+                height: 250
+            )
+        ]
+        try outerContainer.encode(altSizes, forKey: .altSizes)
+    }
+    
+    public init(from decoder: Decoder) throws {
         let outerContainer = try decoder.container(keyedBy: OuterContainer.self)
         let originalSizeContainer = try outerContainer.nestedContainer(
             keyedBy: OriginalSizeContainer.self,
@@ -92,7 +110,7 @@ extension Gif {
 }
 
 extension Gif: Transferable {
-    static var transferRepresentation: some TransferRepresentation {
+    public static var transferRepresentation: some TransferRepresentation {
         ProxyRepresentation(exporting: \.fullSizeURL)
     }
 }
@@ -115,26 +133,26 @@ extension Gif {
     
     static let mockArray = [
         Gif(
-        id: UUID().uuidString,
+        id: "tumblr_olppycIjeH1trbh6do1_400.gif",
         fullSizeURL: URL(string: "https://64.media.tumblr.com/00cc50a1ccdea1b4e15735f1c6f723ec/tumblr_olppycIjeH1trbh6do1_400.gif")!,
         thumbnailURL: URL(string: "https://64.media.tumblr.com/00cc50a1ccdea1b4e15735f1c6f723ec/tumblr_olppycIjeH1trbh6do1_100.gif")!,
         tags: ["picard"]
     ),
         Gif(
-            id: UUID().uuidString,
-            fullSizeURL: URL(string: "https://64.media.tumblr.com/00cc50a1ccdea1b4e15735f1c6f723ec/tumblr_olppycIjeH1trbh6do1_400.gif")!,
+            id: "tumblr_olppycIjeH1trbh6do1_401.gif",
+            fullSizeURL: URL(string: "https://64.media.tumblr.com/00cc50a1ccdea1b4e15735f1c6f723ec/tumblr_olppycIjeH1trbh6do1_401.gif")!,
             thumbnailURL: URL(string: "https://64.media.tumblr.com/00cc50a1ccdea1b4e15735f1c6f723ec/tumblr_olppycIjeH1trbh6do1_100.gif")!,
             tags: ["picard"]
         ),
         Gif(
-            id: UUID().uuidString,
-            fullSizeURL: URL(string: "https://64.media.tumblr.com/00cc50a1ccdea1b4e15735f1c6f723ec/tumblr_olppycIjeH1trbh6do1_400.gif")!,
+            id: "tumblr_olppycIjeH1trbh6do1_402.gif",
+            fullSizeURL: URL(string: "https://64.media.tumblr.com/00cc50a1ccdea1b4e15735f1c6f723ec/tumblr_olppycIjeH1trbh6do1_402.gif")!,
             thumbnailURL: URL(string: "https://64.media.tumblr.com/00cc50a1ccdea1b4e15735f1c6f723ec/tumblr_olppycIjeH1trbh6do1_100.gif")!,
             tags: ["picard"]
         ),
         Gif(
-            id: UUID().uuidString,
-            fullSizeURL: URL(string: "https://64.media.tumblr.com/00cc50a1ccdea1b4e15735f1c6f723ec/tumblr_olppycIjeH1trbh6do1_400.gif")!,
+            id: "tumblr_olppycIjeH1trbh6do1_403.gif",
+            fullSizeURL: URL(string: "https://64.media.tumblr.com/00cc50a1ccdea1b4e15735f1c6f723ec/tumblr_olppycIjeH1trbh6do1_403.gif")!,
             thumbnailURL: URL(string: "https://64.media.tumblr.com/00cc50a1ccdea1b4e15735f1c6f723ec/tumblr_olppycIjeH1trbh6do1_100.gif")!,
             tags: ["picard"]
         )

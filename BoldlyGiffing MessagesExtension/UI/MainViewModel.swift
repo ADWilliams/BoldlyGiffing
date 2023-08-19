@@ -3,14 +3,14 @@
 //  BoldyGiffing MessagesExtension
 //
 //  Created by Aaron Williams on 2022-04-01.
-//  Copyright © 2022 SweetieApps. All rights reserved.
+//  Copyright © 2022 Sweet Software. All rights reserved.
 //
 
 import Foundation
 import SDWebImage
 import SwiftUI
 
-enum CharacterTag: String {
+public enum CharacterTag: String {
     case crusher = "beverly crusher"
     case data = "data"
     case laForge = "geordi la forge"

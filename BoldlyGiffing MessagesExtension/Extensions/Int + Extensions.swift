@@ -3,7 +3,7 @@
 //  BoldyGiffing MessagesExtension
 //
 //  Created by Aaron Williams on 2017-07-10.
-//  Copyright © 2017 SweetieApps. All rights reserved.
+//  Copyright © 2017 Sweet Software. All rights reserved.
 //
 
 import Foundation

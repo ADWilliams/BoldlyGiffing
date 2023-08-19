@@ -3,16 +3,22 @@
 //  BoldlyGiffingiOS
 //
 //  Created by Aaron Williams on 2023-03-07.
-//  Copyright © 2023 SweetieApps. All rights reserved.
+//  Copyright © 2023 Sweet Software. All rights reserved.
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 @main
 struct BoldlyGiffingiOSApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AppView(
+                store: Store(
+                    initialState: .init(),
+                    reducer: AppReducer()
+                )
+            )
         }
     }
 }

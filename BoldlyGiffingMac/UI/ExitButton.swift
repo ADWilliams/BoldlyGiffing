@@ -3,7 +3,7 @@
 //  BoldlyGiffingMac
 //
 //  Created by Aaron Williams on 2023-02-07.
-//  Copyright © 2023 SweetieApps. All rights reserved.
+//  Copyright © 2023 Sweet Software. All rights reserved.
 //
 
 import SwiftUI
