@@ -25,14 +25,14 @@ public struct Thumbnails: Reducer {
     public struct State: Equatable {
         var dataSet: IdentifiedArrayOf<Gif> = []
         var postCount = 0
-        var characterTag: CharacterTag = .all
+        @BindingState var characterTag: CharacterTag = .all
         var offset = 0
         var selectedGif: Gif?
         var selectedDownloadProgress: Int = 0
         
     }
     
-    public enum Action: Equatable {
+    public enum Action: Equatable, BindableAction {
         case fetchInfo
         case fetchInfoResponse(TaskResult<InfoResponse>)
         case fetchRandomThumbnails
@@ -42,6 +42,7 @@ public struct Thumbnails: Reducer {
         case setCharacterTag(CharacterTag)
         case downloadProgressUpdated(DownloadStatus)
         case handleCachedImage
+        case binding(BindingAction<State>)
     }
     
     enum CancelID {
@@ -51,157 +52,163 @@ public struct Thumbnails: Reducer {
     @Dependency(\.APIClient) var apiClient
     @Dependency(\.withRandomNumberGenerator) var randomGenerator
     
-    public func reduce(into state: inout State, action: Action) -> Effect<Action> {
-        switch action {
-        case .fetchInfo:
-            return .run { send in
-                await send(.fetchInfoResponse(TaskResult {
-                    try await apiClient.request(route: "info", as: InfoResponse.self)
-                }))
-            }
-        case .fetchInfoResponse(.failure(let error)):
-            print(error)
-            return .none
-            
-        case let .fetchInfoResponse(.success(response)):
-            state.postCount = response.postCount
-            
-            return .run { send in
-                await send(.fetchRandomThumbnails)
-            }
-            
-        case .fetchRandomThumbnails:
-            let postCount = state.postCount - (state.postCount > 21 ? 21 : 0)
-            let randomOffset = randomGenerator { generator in
-                Int.random(in: 0...postCount, using: &generator)
-            }
-            
-            let offset = randomOffset < 0 ? 0 : randomOffset
-            
-            return.run { send in
-                await send(.fetchThumbnails(limit: 21, offset: offset))
-            }
-            
-        case let .fetchThumbnails(limit, offset):
-            state.offset = offset
-            var tagPath: String = ""
-            if let characterTag = state.characterTag.rawValue.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) {
-                tagPath = characterTag.isEmpty ? characterTag : "&tag=\(characterTag)"
-            }
-            
-            let route = "posts/photo?limit=\(limit)&offset=\(offset)\(tagPath)"
-            return .run { send in
-                await send(.fetchThumbnailsResponse(TaskResult<PostResponse> {
-                    try await apiClient.request(route: route, as: PostResponse.self)
-                }))
-            }
-            
-        case .fetchThumbnailsResponse(.failure):
-            return .none
-            
-        case let .fetchThumbnailsResponse(.success(response)):
-            var newItems: [Gif] = []
-            response.posts.forEach { newItems.append(contentsOf: $0.gifs) }
-            
-            state.dataSet.append(contentsOf: IdentifiedArrayOf(uniqueElements: newItems))
-            state.offset += 21
-            return .none
-            
-        case let .gifTapped(gif):
-            state.selectedGif = gif
-            state.selectedDownloadProgress = 0
-
-            let downloadStream: AsyncStream<DownloadStatus> = AsyncStream { continuation in
-                SDWebImageManager.shared.loadImage(with: gif.fullSizeURL,
-                                                   options: .waitStoreCache) { recieved, size, _ in
-                    let progress = (Double(recieved) / Double(size) * 100)
-                    print(progress)
-                    continuation.yield(.progress(progress))
-
-
-                } completed: { _, _, error, _, _, _ in
-                    if let _ = error {
-                        continuation.yield(.failed(.download))
-                        continuation.finish()
-
-                    } else {
-                        continuation.yield(.completed)
-                        continuation.finish()
-
+    public var body: some ReducerOf<Self> {
+        BindingReducer()
+        Reduce { state, action in
+            switch action {
+            case .fetchInfo:
+                return .run { send in
+                    await send(.fetchInfoResponse(TaskResult {
+                        try await apiClient.request(route: "info", as: InfoResponse.self)
+                    }))
+                }
+            case .fetchInfoResponse(.failure(let error)):
+                print(error)
+                return .none
+                
+            case let .fetchInfoResponse(.success(response)):
+                state.postCount = response.postCount
+                
+                return .run { send in
+                    await send(.fetchRandomThumbnails)
+                }
+                
+            case .fetchRandomThumbnails:
+                let postCount = state.postCount - (state.postCount > 21 ? 21 : 0)
+                let randomOffset = randomGenerator { generator in
+                    Int.random(in: 0...postCount, using: &generator)
+                }
+                
+                let offset = randomOffset < 0 ? 0 : randomOffset
+                
+                return.run { send in
+                    await send(.fetchThumbnails(limit: 21, offset: offset))
+                }
+                
+            case let .fetchThumbnails(limit, offset):
+                state.offset = offset
+                var tagPath: String = ""
+                if let characterTag = state.characterTag.rawValue.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) {
+                    tagPath = characterTag.isEmpty ? characterTag : "&tag=\(characterTag)"
+                }
+                
+                let route = "posts/photo?limit=\(limit)&offset=\(offset)\(tagPath)"
+                return .run { send in
+                    await send(.fetchThumbnailsResponse(TaskResult<PostResponse> {
+                        try await apiClient.request(route: route, as: PostResponse.self)
+                    }))
+                }
+                
+            case .fetchThumbnailsResponse(.failure):
+                return .none
+                
+            case let .fetchThumbnailsResponse(.success(response)):
+                var newItems: [Gif] = []
+                response.posts.forEach { newItems.append(contentsOf: $0.gifs) }
+                
+                state.dataSet.append(contentsOf: IdentifiedArrayOf(uniqueElements: newItems))
+                state.offset += 21
+                return .none
+                
+            case let .gifTapped(gif):
+                state.selectedGif = gif
+                state.selectedDownloadProgress = 0
+                
+                let downloadStream: AsyncStream<DownloadStatus> = AsyncStream { continuation in
+                    SDWebImageManager.shared.loadImage(with: gif.fullSizeURL,
+                                                       options: .waitStoreCache) { recieved, size, _ in
+                        let progress = (Double(recieved) / Double(size) * 100)
+                        print(progress)
+                        continuation.yield(.progress(progress))
+                        
+                        
+                    } completed: { _, _, error, _, _, _ in
+                        if let _ = error {
+                            continuation.yield(.failed(.download))
+                            continuation.finish()
+                            
+                        } else {
+                            continuation.yield(.completed)
+                            continuation.finish()
+                            
+                        }
                     }
                 }
-            }
-            
-            return .run { send in
-                for await status in downloadStream {
-                    await send(.downloadProgressUpdated(status))
-                }
-            }
-            
-        case let .setCharacterTag(tag):
-            state.characterTag = tag
-            state.dataSet.removeAll()
-            return .run { send in
-                if tag == .all {
-                    await send(.fetchRandomThumbnails)
-                } else {
-                    await send(.fetchThumbnails(limit: 21, offset: 0))
-                }
-            }
-            
-        case let .downloadProgressUpdated(status):
-            switch status {
-            case let .progress(progress):
-                state.selectedDownloadProgress = Int(progress)
-            case .completed:
-                state.selectedDownloadProgress = 100
+                
                 return .run { send in
-                    await send(.handleCachedImage, animation: .default.delay(1))
+                    for await status in downloadStream {
+                        await send(.downloadProgressUpdated(status))
+                    }
                 }
-            case let .failed(error):
-                print(error)
-            }
-        case .handleCachedImage:
-            if let gif = state.selectedGif {
-                do {
-                    if let path = SDImageCache.shared.cachePath(forKey: gif.fullSizeURL.absoluteString) {
-                        let url = URL(fileURLWithPath: path)
-                        
-                        let data = try Data(contentsOf: url)
-#if os(macOS)
-                        let pasteboard = NSPasteboard.general
-                        pasteboard.declareTypes([.fileContents], owner: nil)
-                        
-                        if  pasteboard.setData(data, forType: NSPasteboard.PasteboardType(rawValue: "com.compuserve.gif")) {
-                            print("✅ gif copied")
+                
+            case let .setCharacterTag(tag):
+                state.characterTag = tag
+                state.dataSet.removeAll()
+                return .run { send in
+                    if tag == .all {
+                        await send(.fetchRandomThumbnails)
+                    } else {
+                        await send(.fetchThumbnails(limit: 21, offset: 0))
+                    }
+                }
+                
+            case let .downloadProgressUpdated(status):
+                switch status {
+                case let .progress(progress):
+                    state.selectedDownloadProgress = Int(progress)
+                case .completed:
+                    state.selectedDownloadProgress = 100
+                    return .run { send in
+                        await send(.handleCachedImage, animation: .default.delay(1))
+                    }
+                case let .failed(error):
+                    print(error)
+                }
+            case .handleCachedImage:
+                if let gif = state.selectedGif {
+                    do {
+                        if let path = SDImageCache.shared.cachePath(forKey: gif.fullSizeURL.absoluteString) {
+                            let url = URL(fileURLWithPath: path)
                             
+                            let data = try Data(contentsOf: url)
+#if os(macOS)
+                            let pasteboard = NSPasteboard.general
+                            pasteboard.declareTypes([.fileContents], owner: nil)
+                            
+                            if  pasteboard.setData(data, forType: NSPasteboard.PasteboardType(rawValue: "com.compuserve.gif")) {
+                                print("✅ gif copied")
+                                
+                                state.selectedGif = nil
+                                state.selectedDownloadProgress = 0
+                                
+                            }
+#elseif os(iOS)
+                            let pasteboard = UIPasteboard.general
+                            let type = "com.compuserve.gif"
+                            
+                            pasteboard.setData(data, forPasteboardType: type)
+                            
+                            let generator = UINotificationFeedbackGenerator()
+                            generator.notificationOccurred(.success)
+                            print("✅ gif copied")
                             state.selectedGif = nil
                             state.selectedDownloadProgress = 0
                             
-                        }
-#elseif os(iOS)
-                        let pasteboard = UIPasteboard.general
-                        let type = "com.compuserve.gif"
-                        
-                        pasteboard.setData(data, forPasteboardType: type)
-                        
-                        let generator = UINotificationFeedbackGenerator()
-                        generator.notificationOccurred(.success)
-                        print("✅ gif copied")
-                        state.selectedGif = nil
-                        state.selectedDownloadProgress = 0
-                        
 #endif
+                        }
+                    }
+                    catch {
+                        print(error)
                     }
                 }
-                catch {
-                    print(error)
-                }
+            case .binding(_):
+                return .none
             }
+            return .none
         }
-        return .none
     }
 }
+    
 
 
 struct ThumbnailView: View {
@@ -245,10 +252,7 @@ struct ThumbnailView: View {
                         Section {
                             // Intentionally left blank
                         } footer: {
-                            CharacterView(character: store.binding(
-                                get: \.characterTag,
-                                send: { .setCharacterTag($0) }
-                            ) )
+                            CharacterView(character: store.$characterTag )
                                 .id("CharacterPicker")
                         }
                         .background {
