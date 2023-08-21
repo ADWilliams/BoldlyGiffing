@@ -306,7 +306,7 @@ struct ThumbnailView: View {
                     .padding(.bottom, 30)
                 }
             }
-            .modifier(VersionAwareBounce())
+            .scrollBounceBehavior(.always, axes: .vertical)
             .clipped()
             .frame(maxWidth: .infinity)
             .background(
@@ -326,14 +326,6 @@ struct ThumbnailView: View {
                     .padding(16)
                 
             }
-        }
-    }
-}
-
-fileprivate struct VersionAwareBounce: ViewModifier {
-    func body(content: Content) -> some View {
-        if #available(macOS 13.3, iOS 16.4, *) {
-            content.scrollBounceBehavior(.always, axes: .vertical)
         }
     }
 }
