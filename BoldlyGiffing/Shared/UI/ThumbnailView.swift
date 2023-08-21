@@ -21,7 +21,7 @@ public enum ImageError: Equatable {
     case download
 }
 
-public struct Thumbnails: ReducerProtocol {
+public struct Thumbnails: Reducer {
     public struct State: Equatable {
         var dataSet: IdentifiedArrayOf<Gif> = []
         var postCount = 0
@@ -51,7 +51,7 @@ public struct Thumbnails: ReducerProtocol {
     @Dependency(\.APIClient) var apiClient
     @Dependency(\.withRandomNumberGenerator) var randomGenerator
     
-    public func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
+    public func reduce(into state: inout State, action: Action) -> Effect<Action> {
         switch action {
         case .fetchInfo:
             return .run { send in
@@ -332,11 +332,13 @@ struct ThumbnailView: View {
 
 struct ThumbnailView_Previews: PreviewProvider {
     static var previews: some View {
-        ThumbnailView(store:
-                .init(
-                    initialState: Thumbnails.State.init(),
-                    reducer: Thumbnails()
-                )
+        ThumbnailView(
+            store: Store(
+                initialState: .init(),
+                reducer: {
+                    Thumbnails()
+                }
+            )
         )
     }
 }

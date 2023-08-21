@@ -11,7 +11,7 @@ import ComposableArchitecture
 import SwiftUI
 import XCTestDynamicOverlay
 
-struct AppReducer: ReducerProtocol {
+struct AppReducer: Reducer {
     @Dependency(\.APIClient) var apiClient
     
     struct State: Equatable {
@@ -23,7 +23,7 @@ struct AppReducer: ReducerProtocol {
         case thumbnails(Thumbnails.Action)
     }
 
-    public var body: some ReducerProtocol<State, Action> {
+    public var body: some Reducer<State, Action> {
         Reduce { state, action in
             return .none
         }
@@ -52,9 +52,11 @@ struct AppView: View {
 struct AppView_Previews: PreviewProvider {
     static var previews: some View {
         AppView(
-            store: .init(
+            store: Store(
                 initialState: .init(),
-                reducer: AppReducer()
+                reducer: {
+                    AppReducer()
+                }
             )
         )
     }

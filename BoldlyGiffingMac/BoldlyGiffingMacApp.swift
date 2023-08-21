@@ -17,7 +17,9 @@ struct BoldlyGiffingMacApp: App {
             AppView(
                 store: Store(
                     initialState: .init(),
-                    reducer: AppReducer()
+                    reducer: {
+                        AppReducer()
+                    }
                 )
             )
             .frame(width: 450, height: 600)

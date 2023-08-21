@@ -16,7 +16,9 @@ struct BoldlyGiffingiOSApp: App {
             AppView(
                 store: Store(
                     initialState: .init(),
-                    reducer: AppReducer()
+                    reducer: {
+                        AppReducer()
+                    }
                 )
             )
         }
