@@ -39,7 +39,7 @@ public struct Thumbnails: Reducer {
         case fetchThumbnails(limit: Int, offset: Int)
         case fetchThumbnailsResponse(TaskResult<PostResponse>)
         case gifTapped(Gif)
-        case setCharacterTag(CharacterTag)
+        case characterTagChanged
         case downloadProgressUpdated(DownloadStatus)
         case handleCachedImage
         case binding(BindingAction<State>)
@@ -141,16 +141,19 @@ public struct Thumbnails: Reducer {
                     }
                 }
                 
-            case let .setCharacterTag(tag):
-                state.characterTag = tag
+            case .characterTagChanged:
                 state.dataSet.removeAll()
-                return .run { send in
-                    if tag == .all {
+                if state.characterTag == .all {
+                    return .run { send in
                         await send(.fetchRandomThumbnails)
-                    } else {
+                    }
+                } else {
+                    return .run { send in
                         await send(.fetchThumbnails(limit: 21, offset: 0))
                     }
                 }
+
+                
                 
             case let .downloadProgressUpdated(status):
                 switch status {
@@ -201,6 +204,11 @@ public struct Thumbnails: Reducer {
                         print(error)
                     }
                 }
+            case .binding(\.$characterTag):
+                return .run { send in
+                    await send(.characterTagChanged)
+                }
+                
             case .binding(_):
                 return .none
             }
