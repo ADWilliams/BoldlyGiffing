@@ -58,7 +58,7 @@ final class BoldlyGiffingiOSTests: XCTestCase {
     }
     
     func testSelectCharacter() async {
-        let store = TestStore(initialState: Thumbnails.State()) {
+        let store = TestStore(initialState: Thumbnails.State(dataSet: IdentifiedArray(uniqueElements: Gif.mockArray))) {
             Thumbnails()
         } withDependencies: {
             $0.withRandomNumberGenerator = WithRandomNumberGenerator(LCRNG(seed: 2))
@@ -75,8 +75,11 @@ final class BoldlyGiffingiOSTests: XCTestCase {
             try await OK(postResponse)
         }
         
-        await store.send(.setCharacterTag(.picard)) {
+        await store.send(.binding(.set(\.$characterTag, .picard))) {
             $0.characterTag = .picard
+        }
+
+        await store.receive(.characterTagChanged) {
             $0.dataSet = []
         }
         
